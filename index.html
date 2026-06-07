@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Simple Lightbox for customer images -->
     <style>
         * {
             margin: 0;
@@ -126,7 +125,7 @@
             text-align: center;
         }
 
-        /* customer gallery — clickable images with lightbox */
+        /* customer gallery — clickable, no extra text */
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -204,7 +203,7 @@
             transform: scale(1.1);
         }
 
-        /* gifts grid - modern, no emojis */
+        /* gifts grid — only names, no extra descriptions */
         .gifts-grid {
             display: flex;
             flex-wrap: wrap;
@@ -236,24 +235,19 @@
         .gift-card h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             color: #f3e5c0;
         }
-        .gift-card p {
-            font-size: 0.95rem;
-            color: #cfc1a0;
-            line-height: 1.5;
-        }
-        .gift-detail {
+        /* resort extra info line, for the specific resort gift */
+        .resort-info {
             margin-top: 14px;
-            font-weight: 500;
+            font-size: 0.8rem;
+            color: #cfc1a0;
             border-top: 1px dashed #d8b25660;
-            padding-top: 12px;
-            font-size: 0.85rem;
-            color: #e6cf92;
+            padding-top: 10px;
         }
 
-        /* resort cards - only minimal location name */
+        /* resort cards - only location name */
         .resort-grid {
             display: flex;
             flex-wrap: wrap;
@@ -417,18 +411,18 @@
     </div>
     <p class="intro-text" data-aos="fade-up" data-aos-delay="200">
         شركة <strong class="glow-text">هوليدايز</strong> متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية.<br>
-        استمع لإعلاناتنا لـ <strong>30 دقيقة أو ساعة</strong> في مقرنا، واختر هديتك المجانية.  
-        <i class="fas fa-camera"></i> التصوير <strong>اختياري وليس إجباري</strong> — نقدّر خصوصيتك.
+        استمع لإعلاناتنا لـ <strong>30 دقيقة أو ساعة</strong> في مقرنا، واحصل على هدية مجانية.  
+        التصوير <strong>اختياري وليس إجباري</strong> — نقدّر خصوصيتك.
     </p>
 </div>
 
 <main>
-    <!-- CUSTOMER PHOTOS SECTION — clickable images, lightbox, no emojis -->
+    <!-- CUSTOMER PHOTOS SECTION — no persuasive text, only photos and optional photography note without camera icon -->
     <div class="section">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
                 <h2 class="section-title">عملاء استلموا هداياهم</h2>
-                <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.8;">صور حقيقية — التصوير بموافقتهم (اضغط لتكبير الصورة)</p>
+                <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.8;">التصوير اختياري وليس إجباري</p>
             </div>
             <div class="customer-grid" data-aos="fade-up" data-aos-delay="100">
                 <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg">
@@ -447,57 +441,55 @@
                     <img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="عميل هوليدايز" loading="lazy">
                 </div>
             </div>
+            <!-- note without camera icon, just text -->
             <div class="optional-note-badge" style="display: block; text-align: center; width: fit-content; margin: 20px auto 0;">
-                <i class="fas fa-camera-retro"></i> التصوير تم بإرادة العملاء لتوثيق التجربة — لكم حرية الرفض
+                التصوير اختياري وليس إجباري
             </div>
         </div>
     </div>
 
-    <!-- GIFTS SECTION — only text descriptions -->
+    <!-- GIFTS SECTION — only names, no extra details for devices, resort with specific terms -->
     <div class="section" style="background: linear-gradient(165deg, #0a0806 0%, #050302 100%);">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">هدايا مجانية • اختر ما يناسبك</h2>
+                <h2 class="section-title">هدايا مجانية</h2>
                 <p style="opacity:0.85;">مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)</p>
             </div>
             <div class="gifts-grid" data-aos="fade-up" data-aos-delay="100">
                 <div class="gift-card">
                     <div class="gift-icon"><i class="fas fa-tv"></i></div>
                     <h3>شاشة 32 بوصة</h3>
-                    <p>شاشة LED عالية الوضوح، مثالية للمنزل.</p>
-                    <div class="gift-detail">هدية فورية • تسليم باليد</div>
                 </div>
                 <div class="gift-card">
                     <div class="gift-icon"><i class="fas fa-micro-wave"></i></div>
                     <h3>ميكرويف صغير</h3>
-                    <p>فرن ميكروويف عملي، أنيق وسهل الاستخدام.</p>
-                    <div class="gift-detail">جودة عالية • ضمان</div>
                 </div>
                 <div class="gift-card">
                     <div class="gift-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>موبايل ريلمي</h3>
-                    <p>هاتف ذكي حديث، أداء ممتاز وكاميرا رائعة.</p>
-                    <div class="gift-detail">Realme • هدية حصرية</div>
                 </div>
                 <div class="gift-card">
                     <div class="gift-icon"><i class="fas fa-umbrella-beach"></i></div>
                     <h3>أسبوع مصيف</h3>
-                    <p>إقامة كاملة في منتجع 5 نجوم (شرم، الغردقة أو العين السخنة).</p>
-                    <div class="gift-detail">طيران وإفطار • لشخصين</div>
+                    <div class="resort-info">
+                        3 أيام، 4 ليالي · 4-6 أفراد<br>
+                        العميل يتحمل الوجبات<br>
+                        الهدية تحدد برقم الإيصال (ليست اختيارية)
+                    </div>
                 </div>
             </div>
             <div class="optional-note-badge" style="margin: 30px auto 0; background: rgba(0,0,0,0.6); text-align: center;">
-                <i class="fas fa-headset"></i> الهدية مجانية بالكامل، بدون أي رسوم إضافية.
+                الهدية مجانية بالكامل، بدون أي رسوم إضافية
             </div>
         </div>
     </div>
 
-    <!-- RESORT GALLERY — only location names: شرم الشيخ, الغردقة, العين السخنة -->
+    <!-- RESORT GALLERY — only location names -->
     <div class="section">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">أسبوع مجاني في أروع الوجهات</h2>
-                <p>استلم هدية رحلة متكاملة إلى المنتجعات السياحية الفاخرة</p>
+                <h2 class="section-title">وجهات المصيف المجانية</h2>
+                <p>استلم هدية رحلة إلى منتجعات سياحية فاخرة</p>
             </div>
             <div class="resort-grid" data-aos="fade-up" data-aos-delay="100">
                 <div class="resort-card">
@@ -516,7 +508,7 @@
         </div>
     </div>
 
-    <!-- BRANCHES SECTION with updated pickup hours and support hours -->
+    <!-- BRANCHES SECTION with pickup hours and support hours -->
     <div class="section" style="background: rgba(5,3,2,0.5);">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
@@ -532,7 +524,7 @@
                         شركه هوليدايز، الدور الثامن.
                     </address>
                     <div class="pickup-hours">
-                        <i class="fas fa-clock"></i> مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
+                        مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
                     </div>
                 </div>
                 <div class="branch">
@@ -543,12 +535,12 @@
                         عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.
                     </address>
                     <div class="pickup-hours">
-                        <i class="fas fa-clock"></i> مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
+                        مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
                     </div>
                 </div>
             </div>
             <div class="optional-note-badge" style="margin: 20px auto 0; display: table;">
-                <i class="fas fa-headset"></i> خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً
+                خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً
             </div>
         </div>
     </div>
