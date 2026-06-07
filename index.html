@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Simple Lightbox for customer images -->
     <style>
         * {
             margin: 0;
@@ -26,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -44,7 +44,7 @@
             padding: 0 28px;
         }
 
-        /* ========== LOGO SECTION ========== */
+        /* LOGO SECTION */
         .hero-logo {
             text-align: center;
             padding: 64px 0 40px;
@@ -92,7 +92,6 @@
             font-weight: 400;
         }
 
-        /* sections */
         .section {
             padding: 70px 0;
             border-bottom: 1px solid rgba(216, 178, 86, 0.12);
@@ -127,7 +126,7 @@
             text-align: center;
         }
 
-        /* customer gallery — only images, no text */
+        /* customer gallery — clickable images with lightbox */
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -143,6 +142,7 @@
             border: 1px solid rgba(216, 178, 86, 0.35);
             transition: all 0.35s ease;
             box-shadow: 0 18px 28px -12px rgba(0,0,0,0.6);
+            cursor: pointer;
         }
         .customer-photo:hover {
             transform: scale(1.02);
@@ -155,12 +155,56 @@
             object-fit: cover;
             display: block;
             transition: transform 0.5s;
+            pointer-events: none;
         }
         .customer-photo:hover img {
             transform: scale(1.03);
         }
 
-        /* gift cards — elegant, no product images, just text */
+        /* lightbox overlay (fullscreen image) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            flex-direction: column;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 2px solid rgba(216,178,86,0.4);
+        }
+        .lightbox .close-lightbox {
+            position: absolute;
+            top: 28px;
+            left: 32px;
+            font-size: 2rem;
+            color: #e6bc6e;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lightbox .close-lightbox:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* gifts grid - modern, no emojis */
         .gifts-grid {
             display: flex;
             flex-wrap: wrap;
@@ -209,7 +253,7 @@
             color: #e6cf92;
         }
 
-        /* resorts gallery with actual images */
+        /* resort cards - only minimal location name */
         .resort-grid {
             display: flex;
             flex-wrap: wrap;
@@ -275,6 +319,13 @@
             font-weight: 500;
             line-height: 1.65;
             color: #eadbbc;
+        }
+        .pickup-hours {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #e2bc73;
+            border-top: 1px dashed #c9a03d50;
+            padding-top: 12px;
         }
 
         /* contact numbers */
@@ -372,27 +423,27 @@
 </div>
 
 <main>
-    <!-- CUSTOMER PHOTOS SECTION — no text, just images -->
+    <!-- CUSTOMER PHOTOS SECTION — clickable images, lightbox, no emojis -->
     <div class="section">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">📸 عملاء استلموا هداياهم</h2>
-                <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.8;">صور حقيقية — التصوير بموافقتهم</p>
+                <h2 class="section-title">عملاء استلموا هداياهم</h2>
+                <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.8;">صور حقيقية — التصوير بموافقتهم (اضغط لتكبير الصورة)</p>
             </div>
             <div class="customer-grid" data-aos="fade-up" data-aos-delay="100">
-                <div class="customer-photo">
+                <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg">
                     <img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="عميل هوليدايز" loading="lazy">
                 </div>
-                <div class="customer-photo">
+                <div class="customer-photo" data-img-src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg">
                     <img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="عميل هوليدايز" loading="lazy">
                 </div>
-                <div class="customer-photo">
+                <div class="customer-photo" data-img-src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg">
                     <img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="عميل هوليدايز" loading="lazy">
                 </div>
-                <div class="customer-photo">
+                <div class="customer-photo" data-img-src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg">
                     <img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="عميل هوليدايز" loading="lazy">
                 </div>
-                <div class="customer-photo">
+                <div class="customer-photo" data-img-src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg">
                     <img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="عميل هوليدايز" loading="lazy">
                 </div>
             </div>
@@ -402,11 +453,11 @@
         </div>
     </div>
 
-    <!-- GIFTS SECTION — Minimal, elegant, only descriptions: شاشة 32, ميكرويف صغير, موبايل ريلمي, اسبوع مصيف -->
+    <!-- GIFTS SECTION — only text descriptions -->
     <div class="section" style="background: linear-gradient(165deg, #0a0806 0%, #050302 100%);">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">🎁 هدايا مجانية • اختر ما يناسبك</h2>
+                <h2 class="section-title">هدايا مجانية • اختر ما يناسبك</h2>
                 <p style="opacity:0.85;">مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)</p>
             </div>
             <div class="gifts-grid" data-aos="fade-up" data-aos-delay="100">
@@ -441,35 +492,35 @@
         </div>
     </div>
 
-    <!-- RESORT GALLERY — using exact filenames: Sharm, Hurghada, Ain Sokhna -->
+    <!-- RESORT GALLERY — only location names: شرم الشيخ, الغردقة, العين السخنة -->
     <div class="section">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">🏝️ أسبوع مجاني في أروع الوجهات</h2>
+                <h2 class="section-title">أسبوع مجاني في أروع الوجهات</h2>
                 <p>استلم هدية رحلة متكاملة إلى المنتجعات السياحية الفاخرة</p>
             </div>
             <div class="resort-grid" data-aos="fade-up" data-aos-delay="100">
                 <div class="resort-card">
                     <div class="resort-img" style="background-image: url('IMG_3019.jpeg'); background-size: cover; background-position: center;"></div>
-                    <h4>شرم الشيخ · خليج نعمة</h4>
+                    <h4>شرم الشيخ</h4>
                 </div>
                 <div class="resort-card">
                     <div class="resort-img" style="background-image: url('IMG_3020.jpeg'); background-size: cover; background-position: center;"></div>
-                    <h4>الغردقة · ماريوت وشواطئ خلابة</h4>
+                    <h4>الغردقة</h4>
                 </div>
                 <div class="resort-card">
                     <div class="resort-img" style="background-image: url('IMG_3021.jpeg'); background-size: cover; background-position: center;"></div>
-                    <h4>العين السخنة · منتجعات هادئة</h4>
+                    <h4>العين السخنة</h4>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- BRANCHES SECTION with exact addresses -->
+    <!-- BRANCHES SECTION with updated pickup hours and support hours -->
     <div class="section" style="background: rgba(5,3,2,0.5);">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">📍 فروع شركة هوليدايز</h2>
+                <h2 class="section-title">فروع شركة هوليدايز</h2>
                 <p>تفضل بزيارتنا في أي من الفرعين لتسلم هديتك بعد الجلسة</p>
             </div>
             <div class="branches-grid" data-aos="fade-up" data-aos-delay="100">
@@ -480,7 +531,9 @@
                         38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي،<br>
                         شركه هوليدايز، الدور الثامن.
                     </address>
-                    <div style="margin-top: 12px;"><i class="fas fa-clock"></i> السبت - الخميس: 10ص – 10م</div>
+                    <div class="pickup-hours">
+                        <i class="fas fa-clock"></i> مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
+                    </div>
                 </div>
                 <div class="branch">
                     <i class="fas fa-location-dot"></i>
@@ -489,8 +542,13 @@
                         25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر،<br>
                         عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.
                     </address>
-                    <div style="margin-top: 12px;"><i class="fas fa-car"></i> موقف سيارات متاح</div>
+                    <div class="pickup-hours">
+                        <i class="fas fa-clock"></i> مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
+                    </div>
                 </div>
+            </div>
+            <div class="optional-note-badge" style="margin: 20px auto 0; display: table;">
+                <i class="fas fa-headset"></i> خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً
             </div>
         </div>
     </div>
@@ -499,7 +557,7 @@
     <div class="section" style="padding-bottom: 50px;">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">📞 تواصل مع خدمة العملاء</h2>
+                <h2 class="section-title">تواصل مع خدمة العملاء</h2>
                 <p>احجز جلستك الدعائية واستعلم عن الهدايا عبر الاتصال أو واتساب</p>
             </div>
             <div class="contact-numbers" data-aos="fade-up" data-aos-delay="100">
@@ -519,14 +577,11 @@
                     <a href="tel:01040514792"><i class="fas fa-phone-alt"></i></a>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 28px;">
-                <span class="optional-note-badge"><i class="fas fa-headset"></i> الدعم متاح 10ص – 11م يومياً</span>
-            </div>
         </div>
     </div>
 
     <div class="designer" data-aos="fade-up">
-        <span style="font-weight: 300;">✨ designed by </span><strong style="font-size: 1.1rem; letter-spacing: 1px; color:#e6bc6e;">Amr Khaled</strong>
+        <span style="font-weight: 300;">designed by </span><strong style="font-size: 1.1rem; letter-spacing: 1px; color:#e6bc6e;">Amr Khaled</strong>
         <div style="margin: 10px auto 0; width: 40px; height: 1px; background: #d8b256;"></div>
         <span style="font-size: 0.7rem;">تصميم غامض وهادئ • جودة احترافية</span>
     </div>
@@ -539,17 +594,59 @@
     </div>
 </footer>
 
+<!-- Lightbox overlay for customer images -->
+<div id="lightbox" class="lightbox">
+    <button class="close-lightbox" id="closeLightboxBtn">✕</button>
+    <img id="lightboxImg" src="" alt="صورة مكبرة">
+</div>
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 800, once: true, easing: 'ease-out-quad' });
-    // إضافة سلوك تحويل روابط الواتساب
+    
+    // Lightbox logic for customer photos
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightboxBtn');
+    
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+    }
+    
+    document.querySelectorAll('.customer-photo').forEach(photo => {
+        photo.addEventListener('click', (e) => {
+            const imgElement = photo.querySelector('img');
+            if (imgElement && imgElement.src) {
+                openLightbox(imgElement.src);
+            }
+        });
+    });
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    closeBtn.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+    
+    // WhatsApp and call links behavior
     document.querySelectorAll('.phone-card a').forEach(link => {
         if (link.href.includes('wa.me')) {
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener');
         }
     });
-    // تحريك بسيط لأيقونات الفروع
+    
+    // subtle hover effect on branch icons
     const iconsBranch = document.querySelectorAll('.branch i');
     iconsBranch.forEach(icon => {
         icon.addEventListener('mouseenter', () => { icon.style.transform = 'scale(1.1)'; icon.style.transition = '0.2s'; });
