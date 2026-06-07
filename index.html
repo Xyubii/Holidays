@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هوليدايز Holidays | للدعاية والإعلان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --primary-gold: #d4af37;
+            --secondary-gold: #f3e5ab;
+            --card-bg: #111;
+            --text-color: #fff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header & Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+        }
+
+        .logo-container img {
+            width: 300px;
+            max-width: 100%;
+            animation: fadeInLogo 2s ease-out, float 4s ease-in-out infinite;
+            filter: drop-shadow(0px 10px 20px rgba(212, 175, 55, 0.2));
+        }
+
+        .hero h1 {
+            color: var(--primary-gold);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: slideUp 1.5s ease-out 0.5s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.8;
+            color: #ccc;
+            animation: slideUp 1.5s ease-out 0.8s both;
+        }
+
+        /* --- Sections General --- */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--primary-gold);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 50%;
+            height: 2px;
+            background: var(--primary-gold);
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+        }
+
+        /* --- Offer & Gifts Section --- */
+        .offer-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .highlight { color: var(--primary-gold); font-weight: bold; }
+        
+        .optional-note {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--secondary-gold);
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--primary-gold);
+        }
+
+        .gallery-item h3 {
+            padding: 15px;
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        /* --- Branches Section --- */
+        .branches-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .branch-card {
+            background-color: var(--card-bg);
+            border-right: 4px solid var(--primary-gold);
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            text-align: right;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: 0.3s ease;
+        }
+
+        .branch-card:hover { background-color: #1a1a1a; }
+        .branch-card h3 { color: var(--primary-gold); margin-top: 0; }
+        .branch-card p { line-height: 1.8; color: #ddd; }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            width: 250px;
+        }
+
+        .contact-card h3 { color: #fff; margin-bottom: 15px; direction: ltr; }
+        
+        .contact-btns {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-call { background-color: #333; color: #fff; border: 1px solid #555; }
+        .btn-call:hover { background-color: var(--primary-gold); color: #000; border-color: var(--primary-gold); }
+        
+        .btn-wa { background-color: #25D366; color: #fff; }
+        .btn-wa:hover { background-color: #128C7E; }
+
+        /* --- Footer Animation --- */
+        footer {
+            padding: 40px 20px;
+            background-color: #000;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .designer {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: transparent;
+            animation: mysteriousGlow 4s infinite alternate;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes mysteriousGlow {
+            0% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.2); color: rgba(255, 255, 255, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8); color: rgba(212, 175, 55, 0.9); }
+            100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.2); color: rgba(255, 255, 255, 0.3); }
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <div class="logo-container">
+            <img src="IMG_2845.jpeg" alt="Holidays Logo"> 
+        </div>
+        <h1>شركة هوليدايز - Holidays</h1>
+        <p>الخيار الأمثل للدعاية والإعلان والترويج لأفضل الأماكن التجارية، الترفيهية، والسياحية. نصنع الفارق في عالم التسويق برؤية عصرية ومبتكرة.</p>
+    </div>
+
+    <section class="reveal">
+        <h2 class="section-title">عملائنا المميزين</h2>
+        <div class="offer-text">
+            ندعوك لزيارة مقر شركتنا والاستمتاع بعرض دعائي مميز. ستحصل فوراً على هدايا مجانية!
+            <br>
+            <div class="optional-note">
+                📸 تنويه: التصوير اختياري وليس إجبارياً للحصول على الهدية.
+            </div>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="هدية"><h3>سعداء بتقديم الهدايا</h3></div>
+            <div class="gallery-item"><img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="هدية"><h3>تجربة فريدة</h3></div>
+            <div class="gallery-item"><img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="هدية"><h3>هدايا قيمة</h3></div>
+            <div class="gallery-item"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="هدية"><h3>فرحة الفوز</h3></div>
+            <div class="gallery-item"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="هدية"><h3>عملاء هوليدايز</h3></div>
+        </div>
+    </section>
+
+    <section class="reveal" style="background-color: #0a0a0a;">
+        <h2 class="section-title">فروعنا</h2>
+        <div class="branches-container">
+            <div class="branch-card">
+                <h3>📌 فرع الطيران</h3>
+                <p>38 شارع الطيران، البرج الذي يعلو البنك الأهلي، أول كوبري التأمين الصحي، شركة هوليدايز، الدور الثامن.</p>
+            </div>
+            <div class="branch-card">
+                <h3>📌 فرع مدينة نصر</h3>
+                <p>25 ناصر خسرو، ثاني تقاطع شارع السجلات العسكرية، بعد الحديقة الدولية، عمارة 25، الدور الثاني، شركة هوليدايز.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <h2 class="section-title">تواصل معنا</h2>
+        <div class="contact-container">
+            <div class="contact-card">
+                <h3>01040782134</h3>
+                <div class="contact-btns">
+                    <a href="tel:+201040782134" class="btn btn-call">📞 اتصال</a>
+                    <a href="https://wa.me/201040782134" target="_blank" class="btn btn-wa">💬 واتساب</a>
+                </div>
+            </div>
+            <div class="contact-card">
+                <h3>01515752259</h3>
+                <div class="contact-btns">
+                    <a href="tel:+201515752259" class="btn btn-call">📞 اتصال</a>
+                    <a href="https://wa.me/201515752259" target="_blank" class="btn btn-wa">💬 واتساب</a>
+                </div>
+            </div>
+            <div class="contact-card">
+                <h3>01040514792</h3>
+                <div class="contact-btns">
+                    <a href="tel:+201040514792" class="btn btn-call">📞 اتصال</a>
+                    <a href="https://wa.me/201040514792" target="_blank" class="btn btn-wa">💬 واتساب</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="designer">Designed by Amr Khaled</div>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
