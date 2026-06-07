@@ -3,63 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holidays | تجربة الفخامة</title>
+    <title>هوليدايز | Holidays - عالم من الهدايا والفرص</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0a0a0a; --gold: #c5a059; --glass: rgba(255, 255, 255, 0.05); }
-        body { margin: 0; background-color: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; }
+        :root { --bg: #050505; --gold: #c5a059; --light-gold: #e5c175; --white: #ffffff; }
+        body { margin: 0; background-color: var(--bg); color: var(--white); font-family: 'Cairo', sans-serif; line-height: 1.6; }
+        
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle, #1a1a1a 0%, #050505 100%); text-align: center; padding: 20px; }
+        .hero img { width: 300px; filter: drop-shadow(0 0 20px var(--gold)); }
+        .hero h1 { font-size: 3rem; color: var(--gold); margin: 20px 0; }
+        
+        /* Sections */
+        section { padding: 80px 5%; }
+        h2 { color: var(--gold); text-align: center; font-size: 2.5rem; margin-bottom: 50px; border-bottom: 2px solid var(--gold); display: inline-block; width: auto; }
+        .section-wrapper { text-align: center; }
+        
+        /* The "Why Gifts" Section */
+        .explanation-box { background: rgba(197, 160, 89, 0.05); border: 1px solid var(--gold); padding: 40px; border-radius: 20px; max-width: 900px; margin: 0 auto; font-size: 1.2rem; }
+        .highlight { color: var(--gold); font-weight: bold; }
 
-        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .logo-container img { width: 250px; animation: pulse 3s infinite; }
+        /* Gallery */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #333; transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .card img { width: 100%; height: 250px; object-fit: contain; background: #000; }
+        .card h3 { padding: 15px; color: var(--light-gold); text-align: center; }
 
-        /* تعديل الصور: عرض كامل */
-        .gallery { display: flex; flex-direction: column; gap: 30px; padding: 20px; align-items: center; }
-        .card { background: var(--glass); border: 1px solid var(--gold); border-radius: 20px; overflow: hidden; width: 100%; max-width: 500px; }
-        .card img { width: 100%; height: auto; display: block; object-fit: contain; background-color: #000; }
-        .card h3 { padding: 20px; text-align: center; color: var(--gold); margin: 0; }
-
-        /* تعديل العناوين: نص كامل */
-        .branch-grid { display: flex; flex-direction: column; gap: 20px; padding: 20px; align-items: center; }
-        .branch-box { background: #111; padding: 25px; border-radius: 20px; width: 90%; max-width: 500px; border-right: 5px solid var(--gold); }
-        .branch-box h3 { color: var(--gold); margin-top: 0; }
-        .branch-box p { line-height: 1.6; font-size: 1.1rem; }
-
-        .btn { display: block; width: 200px; margin: 30px auto; background: var(--gold); color: #000; padding: 15px; text-align: center; border-radius: 50px; font-weight: bold; text-decoration: none; }
-        footer { padding: 40px; text-align: center; color: var(--gold); font-style: italic; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        /* Branches */
+        .branch-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .branch-card { background: #000; border: 1px solid var(--gold); padding: 30px; border-radius: 15px; width: 400px; text-align: right; }
+        
+        /* Contact */
+        .contact-section { background: #0a0a0a; text-align: center; }
+        .btn-wa { background: var(--gold); color: #000; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; }
+        
+        footer { padding: 30px; text-align: center; color: var(--gold); border-top: 1px solid #333; }
     </style>
 </head>
 <body>
 
     <div class="hero">
-        <div class="logo-container"><img src="IMG_2845.jpeg" alt="Logo"></div>
-        <h1>هـولـيـدايـز</h1>
+        <img src="IMG_2845.jpeg" alt="Holidays Logo">
+        <h1>شركة هوليدايز للدعاية والإعلان</h1>
+        <p>نحن الجسر الذي يربطك بأفضل الوجهات السياحية والأماكن الترفيهية في مصر</p>
     </div>
 
-    <section>
-        <h2 style="text-align: center; color: var(--gold);">لحظات السعادة</h2>
-        <div class="gallery">
-            <div class="card"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg"><h3>عملاءنا سعداء بهداياهم</h3></div>
-            <div class="card"><img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg"><h3>تجربة استثنائية مع هوليدايز</h3></div>
-            <div class="card"><img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg"><h3>استلام الأجهزة المجانية</h3></div>
-            <div class="card"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg"><h3>فرحة الفوز بالرحلات</h3></div>
-            <div class="card"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg"><h3>رؤيتنا الترفيهية</h3></div>
+    <section class="section-wrapper">
+        <h2>لماذا تقدم هوليدايز هدايا مجانية؟</h2>
+        <div class="explanation-box">
+            تعتمد شركتنا استراتيجية تسويقية ذكية ومبتكرة. نحن نؤمن أن <span class="highlight">التجربة الحقيقية هي أقوى وسيلة إعلانية</span>. 
+            عند زيارتك لنا، أنت لا تحصل على هدية فحسب، بل تمنحنا فرصة لنطلعك على أحدث العروض الترفيهية والسياحية في مصر لمدة <span class="highlight">30 إلى 60 دقيقة</span>.
+            <br><br>
+            هذه الهدايا (أجهزة كهربائية، رحلات مصيف، والمزيد) هي تقديرنا لوقتك.
+            <br><br>
+            <span class="highlight">تنويه هام:</span> نحن نقدر خصوصيتك؛ التصوير وتوثيق تسليم الهدايا يتم فقط برغبة العميل وبموافقته الشخصية، وهو أمر اختياري تماماً وليس إجبارياً على الإطلاق.
         </div>
     </section>
 
-    <div class="branch-grid">
-        <div class="branch-box">
-            <h3>📍 فرع الطيران</h3>
-            <p>38 شارع الطيران، البرج الذي يعلو البنك الأهلي، أول كوبري التأمين الصحي، شركة هوليدايز، الدور الثامن.</p>
+    <section>
+        <h2>لحظات السعادة مع عملائنا</h2>
+        <div class="gallery">
+            <div class="card"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg"><h3>عميل سعيد يستلم هديته</h3></div>
+            <div class="card"><img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg"><h3>توزيع الأجهزة الكهربائية</h3></div>
+            <div class="card"><img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg"><h3>رحلات المصيف المجانية</h3></div>
+            <div class="card"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg"><h3>شراكة مع أرقى المنتجعات</h3></div>
+            <div class="card"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg"><h3>ابتسامة الفوز بالرحلات</h3></div>
         </div>
-        <div class="branch-box">
-            <h3>📍 فرع مدينة نصر</h3>
-            <p>25 ناصر خسرو، تاني تقاطع شارع السجلات العسكرية بعد الحديقة الدولية، عباس العقاد، بجوار صيدلية الحرم الشريف ومعرض سيارات سند صبحي والوكيل، الدور الثاني.</p>
+    </section>
+
+    <section class="contact-section">
+        <h2>فروعنا الرسمية</h2>
+        <div class="branch-container">
+            <div class="branch-card">
+                <h3>📍 فرع الطيران</h3>
+                <p>38 شارع الطيران، البرج الذي يعلو البنك الأهلي، أول كوبري التأمين الصحي، شركة هوليدايز، الدور الثامن.</p>
+            </div>
+            <div class="branch-card">
+                <h3>📍 فرع مدينة نصر</h3>
+                <p>25 ناصر خسرو، تاني تقاطع شارع السجلات العسكرية بعد الحديقة الدولية، عباس العقاد، بجوار صيدلية الحرم الشريف ومعرض سيارات سند صبحي والوكيل، الدور الثاني، شركة هوليدايز.</p>
+            </div>
         </div>
-    </div>
 
-    <a href="https://wa.me/201040782134" class="btn">تواصل عبر واتساب</a>
+        <h2 style="margin-top:60px;">تواصل مع خدمة العملاء</h2>
+        <p>فريقنا متاح للرد على استفساراتكم وحجز مواعيد زيارتكم عبر واتساب أو الاتصال:</p>
+        <a href="https://wa.me/201040782134" class="btn-wa">01040782134 - واتساب / اتصال</a><br>
+        <a href="https://wa.me/201515752259" class="btn-wa" style="margin-top:10px;">01515752259 - واتساب / اتصال</a><br>
+        <a href="https://wa.me/201040514792" class="btn-wa" style="margin-top:10px;">01040514792 - واتساب / اتصال</a>
+    </section>
 
-    <footer>Designed by Amr Khaled</footer>
+    <footer>
+        Designed by Amr Khaled
+    </footer>
+
 </body>
 </html>
