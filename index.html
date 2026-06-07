@@ -2,80 +2,622 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هوليدايز | Holidays - البوابة الاحترافية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>هوليدايز | Holidayz - دعاية وإعلان وهدايا مجانية</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Library for subtle scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        :root { --bg: #050505; --gold: #c5a059; --white: #ffffff; }
-        body { margin: 0; background-color: var(--bg); color: var(--white); font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
-        
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9); padding: 15px 0; text-align: center; z-index: 1000; border-bottom: 1px solid var(--gold); }
-        nav a { color: var(--gold); margin: 0 15px; text-decoration: none; font-weight: bold; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        section { padding: 100px 5%; min-height: 80vh; }
-        h2 { color: var(--gold); border-bottom: 2px solid var(--gold); display: inline-block; margin-bottom: 30px; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #fefcf5;
+            color: #1e2a32;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-        /* Gallery Layout */
-        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .grid-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; border: 1px solid #333; }
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9e0cf;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c2a575;
+            border-radius: 10px;
+        }
 
-        .info-box { background: #111; padding: 40px; border-radius: 20px; border-right: 5px solid var(--gold); }
+        /* container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== ANIMATED LOGO SECTION (Mysterious & Premium) ========== */
+        .hero-logo {
+            text-align: center;
+            padding: 60px 0 30px;
+            background: linear-gradient(135deg, #fff8ed 0%, #fff3e0 100%);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo-wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+            animation: floatGlow 3s ease-in-out infinite;
+        }
+        .logo-img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 8px 18px rgba(0,0,0,0.12));
+            transition: all 0.4s ease;
+            animation: softPulseLogo 2.5s infinite alternate;
+        }
+        @keyframes softPulseLogo {
+            0% { transform: scale(0.98); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));}
+            100% { transform: scale(1.02); filter: drop-shadow(0 12px 24px rgba(180,130,48,0.2));}
+        }
+        @keyframes floatGlow {
+            0% { transform: translateY(0px);}
+            50% { transform: translateY(-8px);}
+            100% { transform: translateY(0px);}
+        }
+        .logo-sub {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #6b4e2e;
+            letter-spacing: 2px;
+            border-top: 2px solid #e0c9a5;
+            display: inline-block;
+            padding-top: 12px;
+            margin-top: 16px;
+            opacity: 0.85;
+        }
+
+        /* headings */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: 0;
+            width: 60px;
+            height: 4px;
+            background: #d4af37;
+            border-radius: 4px;
+        }
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #ede3d2;
+        }
+        .bg-soft {
+            background-color: #faf7f0;
+        }
+
+        /* company intro */
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 20px auto 0;
+            color: #3c2a1f;
+        }
+
+        /* gift cards & gallery - using actual customer images */
+        .gift-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .gift-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            width: 320px;
+            backdrop-filter: blur(0px);
+            border: 1px solid #f3e9db;
+        }
+        .gift-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 40px -16px rgba(0,0,0,0.2);
+        }
+        .gift-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+        .gift-card:hover .gift-img {
+            transform: scale(1.03);
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .badge-free {
+            background: #e6b42220;
+            color: #aa7c2c;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 0.8rem;
+        }
+        .gift-card p {
+            color: #4a3a28;
+        }
+        .optional-note {
+            font-size: 0.8rem;
+            color: #8f7a5c;
+            border-right: 3px solid #d4af37;
+            padding-right: 10px;
+            margin-top: 12px;
+        }
+        /* resort gallery */
+        .resort-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .resort-item {
+            width: 260px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+            background: #fff;
+        }
+        .resort-img {
+            height: 170px;
+            background-size: cover;
+            transition: 0.3s;
+        }
+        .resort-item h4 {
+            padding: 12px;
+            text-align: center;
+            background: white;
+        }
+
+        /* branches - elegant cards */
+        .branches-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .branch {
+            flex: 1;
+            min-width: 280px;
+            background: #ffffffdb;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 26px 24px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid #f1e5d4;
+        }
+        .branch:hover {
+            background: white;
+            border-color: #e2cfb0;
+        }
+        .branch i {
+            font-size: 2rem;
+            color: #c2a162;
+            margin-bottom: 12px;
+        }
+        .branch address {
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #2b2b2b;
+        }
+
+        /* contact numbers */
+        .contact-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0 30px;
+        }
+        .phone-card {
+            background: #ffffff;
+            border-radius: 60px;
+            padding: 12px 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            border: 1px solid #e9ddcb;
+        }
+        .phone-card a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #2a4b3c;
+            direction: ltr;
+            display: inline-block;
+        }
+        .phone-card i {
+            font-size: 1.5rem;
+            color: #25D366;
+        }
+        .phone-card .fa-phone-alt {
+            color: #1e88e5;
+        }
+        .phone-card:hover {
+            transform: scale(1.02);
+            background: #fffbf4;
+            border-color: #d4af37;
+        }
+        .designer {
+            text-align: center;
+            padding: 30px 0 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #8f7b5c;
+            border-top: 1px dashed #e2cfb0;
+            margin-top: 40px;
+        }
+
+        footer {
+            background: #1e2a24;
+            color: #ddd2c0;
+            padding: 28px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .logo-img { max-width: 200px; }
+            h2 { font-size: 1.8rem; }
+            .container { padding: 0 18px; }
+            .phone-card a { font-size: 0.9rem; }
+            .phone-card { padding: 8px 16px; }
+        }
+        .wa-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        /* Customer image gallery styling */
+        .customer-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0 20px;
+        }
+        .customer-card {
+            background: white;
+            border-radius: 28px;
+            width: 220px;
+            overflow: hidden;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #f0e3d2;
+        }
+        .customer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 30px rgba(0,0,0,0.1);
+        }
+        .customer-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .customer-card p {
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            background: #fffef7;
+        }
+        .optional-camera {
+            background: #fcf6e8;
+            border-radius: 28px;
+            padding: 12px 20px;
+            text-align: center;
+            max-width: 480px;
+            margin: 20px auto 0;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#home">الرئيسية</a>
-        <a href="#about">فلسفة الهدايا</a>
-        <a href="#gallery">معرض العملاء</a>
-        <a href="#destinations">وجهاتنا السياحية</a>
-        <a href="#contact">تواصل معنا</a>
-    </nav>
+<div class="hero-logo" data-aos="fade-down" data-aos-duration="800">
+    <div class="logo-wrapper">
+        <!-- Actual logo image from the provided IMG_2845.jpeg (Holidays Logo) -->
+        <img src="IMG_2845.jpeg" alt="هوليدايز - Holidayz Logo" class="logo-img" onerror="this.src='https://placehold.co/400x150/f2e0c0/a67c45?text=Holidays+لوجو';">
+        <div class="logo-sub">HOLIDAYS · دعاية وإعلان فاخر</div>
+    </div>
+    <p class="intro-text" data-aos="fade-up" data-aos-delay="200">
+        شركة <strong>هوليدايز</strong> متخصصة في الدعاية والتسويق للأماكن التجارية والترفيهية والسياحية.  
+        نقدم تجربة فريدة: استمع لإعلاناتنا لمدة نصف ساعة أو ساعة في مقرنا، واحصل على هدايا مجانية بالكامل.  
+        التصوير <strong>اختياري وليس إجباري</strong> — راحتك أولاً.
+    </p>
+</div>
 
-    <section id="home" style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
-        <img src="IMG_2845.jpeg" width="300">
-        <h1>شركة هوليدايز للدعاية والإعلان</h1>
-    </section>
-
-    <section id="about">
-        <h2>لماذا نقدم هدايا مجانية؟</h2>
-        <div class="info-box">
-            <p>نحن في "هوليدايز" نؤمن أن الكلمة الطيبة والتجربة الشخصية هما أفضل إعلان. لذا نقدم هدايا قيمة لعملائنا مقابل قضاء 30-60 دقيقة في الاستماع لعروضنا الإعلانية التي تشمل:</p>
-            <ul>
-                <li>أرقى الأماكن التجارية والمولات في مصر.</li>
-                <li>أحدث الوجهات الترفيهية العائلية.</li>
-                <li>عروض سياحية وفندقية لا تضاهى.</li>
-            </ul>
-            <p><strong>تنويه:</strong> كافة عمليات التصوير اختيارية بالكامل لضمان خصوصيتكم.</p>
+<main>
+    <!-- free gifts section with ACTUAL customer images (the 5 photos provided) -->
+    <div class="section">
+        <div class="container" data-aos="fade-up">
+            <h2 style="text-align: center;">🎁 هدايا مجانية حقيقية</h2>
+            <p style="text-align: center; max-width: 700px; margin: 12px auto 0;">ناس حقيقية استلمت أجهزة كهربائية ورحلات مصيف بعد حضور جلسة دعائية (نصف ساعة/ساعة). التصوير بإرادتهم لتوثيق التجربة.</p>
+            
+            <!-- Customer Images Gallery (exactly the 5 images from repository) -->
+            <div class="customer-gallery">
+                <div class="customer-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="customer-img" style="background-image: url('31288508-5ef4-4f6b-9d99-118af667e451.jpeg'); background-size: cover;"></div>
+                    <p><i class="fas fa-gift" style="color:#c2a162;"></i> استلمت جهاز كهربائي</p>
+                </div>
+                <div class="customer-card" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="customer-img" style="background-image: url('547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg'); background-size: cover;"></div>
+                    <p><i class="fas fa-tv"></i> هدية مجانية - موافقة على التصوير</p>
+                </div>
+                <div class="customer-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="customer-img" style="background-image: url('b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg'); background-size: cover;"></div>
+                    <p><i class="fas fa-umbrella-beach"></i> فائزة برحلة مصيف</p>
+                </div>
+                <div class="customer-card" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="customer-img" style="background-image: url('b516ba67-ad60-49c5-a707-103a13ece57d.jpeg'); background-size: cover;"></div>
+                    <p><i class="fas fa-microphone"></i> استلمت هدية قيمة</p>
+                </div>
+                <div class="customer-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="customer-img" style="background-image: url('d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg'); background-size: cover;"></div>
+                    <p><i class="fas fa-laptop"></i> جهاز إلكتروني مجاني</p>
+                </div>
+            </div>
+            
+            <!-- additional gift cards explaining electric & trips -->
+            <div class="gift-showcase">
+                <div class="gift-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gift-img" style="background-image: url('https://placehold.co/600x400/f2e8da/ab8e54?text=أجهزة+كهربائية+مجانية&font=arabic');"></div>
+                    <div class="card-content">
+                        <div class="badge-free"><i class="fas fa-gift"></i> هدية مجانية</div>
+                        <h3>أجهزة كهربائية حديثة</h3>
+                        <p>ثلاجات، ميكروويف، غسالات — تم تسليمها فعلياً لعملائنا بعد جلسة الدعاية الإعلانية.</p>
+                        <div class="optional-note"><i class="fas fa-camera"></i> التصوير اختياري وليس إجباري — تم بموافقة المستلمين.</div>
+                    </div>
+                </div>
+                <div class="gift-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gift-img" style="background-image: url('https://placehold.co/600x400/e6d5bc/b77c2c?text=رحلة+مصيف+مجانية&font=arabic');"></div>
+                    <div class="card-content">
+                        <div class="badge-free"><i class="fas fa-umbrella-beach"></i> رحلة مجانية</div>
+                        <h3>رحلة مصيف (شرم / الغردقة)</h3>
+                        <p>ناس استلمت تذاكر وإقامة مجانية لمدة 4 أيام في أفخم القرى السياحية.</p>
+                        <div class="optional-note"><i class="fas fa-check-circle"></i> موافقة المستلمين على التوثيق الدعائي.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="optional-camera">
+                <i class="fas fa-camera-retro" style="margin-left: 10px;"></i> ملاحظة هامة: التصوير اختياري بالكامل، وليس إجباري. نحترم خصوصيتك، والصور المنشورة تمت بموافقة المستلمين لتشجيع الآخرين على التجربة الممتعة.
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section id="gallery">
-        <h2>لحظات السعادة مع عملائنا</h2>
-        <div class="grid-gallery">
-            <img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg">
-            <img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg">
-            <img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg">
-            <img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg">
-            <img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg">
+    <!-- resort gallery: Sharm & Hurghada -->
+    <div class="section bg-soft">
+        <div class="container" data-aos="fade-up">
+            <h2 style="text-align: center;">🏝️ وجهات المصيف المجانية</h2>
+            <p style="text-align: center;">استلم هدية رحلة إلى شرم الشيخ أو الغردقة – إقامة كاملة.</p>
+            <div class="resort-gallery">
+                <div class="resort-item" data-aos="flip-right">
+                    <div class="resort-img" style="background-image: url('https://placehold.co/400x300/97c8e0/ffffff?text=شرم+الشيخ');"></div>
+                    <h4>شرم الشيخ · خليج نعمة</h4>
+                </div>
+                <div class="resort-item" data-aos="flip-right" data-aos-delay="150">
+                    <div class="resort-img" style="background-image: url('https://placehold.co/400x300/f2c94c/2f2e41?text=الغردقة');"></div>
+                    <h4>الغردقة · ماريوت البحر الأحمر</h4>
+                </div>
+                <div class="resort-item" data-aos="flip-right" data-aos-delay="300">
+                    <div class="resort-img" style="background-image: url('https://placehold.co/400x300/d9b48b/2d2a24?text=منتجعات+5+نجوم');"></div>
+                    <h4>منتجعات فاخرة بالغردقة</h4>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section id="destinations">
-        <h2>وجهاتنا السياحية المميزة</h2>
-        <div class="grid-gallery">
-            <div style="background:#111; padding:20px; border-radius:10px;"><h3>شرم الشيخ</h3><p>جوهرة البحر الأحمر.</p></div>
-            <div style="background:#111; padding:20px; border-radius:10px;"><h3>الغردقة</h3><p>منتجعات عالمية واستجمام.</p></div>
-            <div style="background:#111; padding:20px; border-radius:10px;"><h3>العين السخنة</h3><p>أقرب الوجهات الراقية للقاهرة.</p></div>
+    <!-- company branches (exact addresses) -->
+    <div class="section">
+        <div class="container" data-aos="fade-up">
+            <h2 style="text-align: center;">📍 فروع شركة هوليدايز</h2>
+            <div class="branches-grid">
+                <div class="branch" data-aos="fade-left">
+                    <i class="fas fa-building"></i>
+                    <address>
+                        <strong>الفرع الأول - مدينة نصر</strong><br>
+                        38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي،<br>
+                        شركه هوليدايز، الدور الثامن.
+                    </address>
+                    <div style="margin-top: 12px;"><i class="fas fa-clock"></i> السبت - الخميس 10ص-10م</div>
+                </div>
+                <div class="branch" data-aos="fade-right">
+                    <i class="fas fa-location-dot"></i>
+                    <address>
+                        <strong>الفرع الثاني - عباس العقاد</strong><br>
+                        25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر،<br>
+                        عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.
+                    </address>
+                    <div style="margin-top: 12px;"><i class="fas fa-car"></i> متوفر موقف سيارات قريب</div>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 0.9rem; color: #ab8e54; margin-top: 10px;">
+                <i class="fas fa-map-marker-alt"></i> زورنا في أي من الفرعين — واحصل على هديتك المجانية فوراً
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section id="contact">
-        <h2>تواصل معنا</h2>
-        <p>يسعدنا انضمامك لقائمة عملائنا المميزين.</p>
-        <a href="https://wa.me/201040782134" style="color:var(--gold); font-size:1.5rem;">01040782134</a>
-    </section>
+    <!-- customer service numbers (WhatsApp & Call) -->
+    <div class="section bg-soft" style="padding-bottom: 40px;">
+        <div class="container" data-aos="fade-up">
+            <h2 style="text-align: center;">📞 تواصل مع خدمة العملاء</h2>
+            <p style="text-align: center;">اتصل أو واتساب على الأرقام التالية للحجز والاستفسار عن الهدايا المجانية وجلسات الدعاية.</p>
+            <div class="contact-numbers">
+                <div class="phone-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/201040782134" target="_blank" class="wa-link">01040782134 <span style="font-size: 0.8rem;">واتساب</span></a>
+                    <a href="tel:01040782134" style="margin-right: 12px;"><i class="fas fa-phone-alt"></i></a>
+                </div>
+                <div class="phone-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/201515752259" target="_blank" class="wa-link">01515752259 <span style="font-size: 0.8rem;">واتساب</span></a>
+                    <a href="tel:01515752259" style="margin-right: 12px;"><i class="fas fa-phone-alt"></i></a>
+                </div>
+                <div class="phone-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/201040514792" target="_blank" class="wa-link">01040514792 <span style="font-size: 0.8rem;">واتساب</span></a>
+                    <a href="tel:01040514792" style="margin-right: 12px;"><i class="fas fa-phone-alt"></i></a>
+                </div>
+            </div>
+            <div style="text-align: center; background: #fff1e0; max-width: 500px; margin: 20px auto 0; border-radius: 40px; padding: 12px;">
+                <i class="fas fa-headset"></i> خدمة العملاء متاحة يومياً من 10 صباحاً إلى 11 مساءً
+            </div>
+        </div>
+    </div>
 
+    <!-- Designed by Amr Khaled with mysterious & calm animation -->
+    <div class="designer" data-aos="fade-up" data-aos-duration="1000">
+        <span style="font-weight: 300;">✨ designed by </span><strong style="font-size: 1.2rem; letter-spacing: 1px; color:#a67c45;">Amr Khaled</strong>
+        <span style="display: block; font-size: 0.7rem; margin-top: 8px;">روح غامضة وهادئة • ابتكار وإبهار</span>
+        <div style="width: 60px; height: 2px; background: #e0c9a5; margin: 12px auto 0;"></div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 شركة هوليدايز – الدعاية الإعلانية الذكية | استمع لدقائق، واربح هدايا حقيقية.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">جميع الحقوق محفوظة | التصوير اختياري، والهدايا ليست وهمية بل واقعية.</p>
+    </div>
+</footer>
+
+<!-- AOS initialization + extra calm animations -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 900,
+        once: true,
+        mirror: false,
+        easing: 'ease-out-quart',
+    });
+    
+    // WhatsApp and call links behavior
+    document.querySelectorAll('.phone-card a').forEach(link => {
+        if (link.href.includes('wa.me')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+    
+    // Branch hover icon animation
+    const branchIcons = document.querySelectorAll('.branch i');
+    branchIcons.forEach(icon => {
+        icon.style.transition = 'transform 0.2s';
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'scale(1.1) translateY(-3px)';
+            icon.style.color = '#b8860b';
+        });
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = 'scale(1)';
+            icon.style.color = '#c2a162';
+        });
+    });
+    
+    // Optional console calm
+    console.log('هوليدايز - شركة دعاية راقية مع هدايا حقيقية وخصوصية تامة');
+</script>
+
+<!-- Extra background pattern for calm atmosphere -->
+<style>
+    body:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(#e7ddce 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.2;
+        pointer-events: none;
+        z-index: -1;
+    }
+    .gift-img, .resort-img, .customer-img {
+        background-color: #f7efdf;
+        background-blend-mode: overlay;
+        transition: all 0.5s;
+    }
+    .branch address {
+        font-weight: 500;
+    }
+    .logo-wrapper {
+        perspective: 800px;
+    }
+    .logo-img {
+        animation: softPulseLogo 2.5s infinite alternate, floatGlow 3s ease-in-out infinite;
+    }
+    @keyframes subtleTextGlow {
+        0% { text-shadow: 0 0 2px rgba(180,130,48,0.2);}
+        100% { text-shadow: 0 0 12px rgba(212,175,55,0.4);}
+    }
+    .section {
+        transition: background 0.3s;
+    }
+    .gift-card, .branch, .customer-card {
+        transition: all 0.4s cubic-bezier(0.15,0.85,0.35,1);
+    }
+    a {
+        transition: all 0.2s ease;
+    }
+    .phone-card:hover a {
+        color: #b87c2e;
+    }
+    /* make images responsive and fit */
+    .customer-img {
+        background-size: cover;
+        background-position: center;
+    }
+    .logo-img {
+        max-width: 260px;
+        border-radius: 18px;
+    }
+    @media (max-width: 680px) {
+        .customer-card { width: 170px; }
+        .customer-img { height: 150px; }
+        .logo-img { max-width: 180px; }
+    }
+</style>
 </body>
 </html>
