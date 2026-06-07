@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>هوليدايز | Holidayz - دعاية راقية | هدايا حصرية</title>
+    <title>هوليدايز | Holidayz - دعاية وإعلان</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,27 +14,49 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        /* Light mode (default) */
+        :root {
+            --bg-body: #fefcf5;
+            --bg-hero: #fff8ed;
+            --bg-section: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #1e2a32;
+            --text-secondary: #3c2a1f;
+            --border-light: #ede3d2;
+            --accent: #d4af37;
+            --accent-dark: #b8860b;
+            --shadow: 0 12px 28px rgba(0,0,0,0.05);
+            --card-bg: rgba(255,255,255,0.9);
+            --footer-bg: #1e2a24;
+            --footer-text: #ddd2c0;
+        }
+
+        body.dark {
+            --bg-body: #0b0a0a;
+            --bg-hero: #0c0907;
+            --bg-section: #050302;
+            --bg-card: #1f1b16e6;
+            --text-primary: #ece3d4;
+            --text-secondary: #dcd0b0;
+            --border-light: rgba(216, 178, 86, 0.2);
+            --accent: #e6bc6e;
+            --accent-dark: #c9a03d;
+            --shadow: 0 18px 28px -12px rgba(0,0,0,0.6);
+            --card-bg: rgba(20, 17, 14, 0.7);
+            --footer-bg: #050302;
+            --footer-text: #aa8f60;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: #0b0a0a;
-            background-image: radial-gradient(circle at 25% 40%, #13100c 0%, #030202 100%);
-            color: #ece3d4;
+            background: var(--bg-body);
+            color: var(--text-primary);
             line-height: 1.45;
             scroll-behavior: smooth;
             overflow-x: hidden;
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e1915;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d8b256;
-            border-radius: 8px;
         }
 
         .container {
@@ -43,13 +65,57 @@
             padding: 0 28px;
         }
 
-        /* LOGO SECTION */
+        /* Header with toggles */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+            padding: 16px 28px;
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .toggle-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 40px;
+            padding: 6px 16px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: 0.2s;
+        }
+        .toggle-btn:hover {
+            background: var(--accent);
+            color: #1e1a15;
+        }
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 0 4px;
+        }
+        .lang-btn.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Hero logo */
         .hero-logo {
             text-align: center;
-            padding: 64px 0 40px;
-            background: linear-gradient(145deg, #0c0907 0%, #020100 100%);
-            border-bottom: 1px solid rgba(216, 178, 86, 0.25);
-            position: relative;
+            padding: 40px 0 30px;
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--border-light);
         }
         .logo-wrapper {
             display: inline-flex;
@@ -61,10 +127,9 @@
             max-width: 260px;
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 12px 20px rgba(0,0,0,0.7));
-            transition: all 0.3s;
+            filter: drop-shadow(0 8px 18px rgba(0,0,0,0.12));
             border-radius: 24px;
-            background: #15100b;
+            background: #15100b10;
             padding: 6px 12px;
         }
         @keyframes floatGlow {
@@ -75,25 +140,24 @@
         .logo-sub {
             font-size: 0.9rem;
             font-weight: 500;
-            color: #e2c28b;
-            letter-spacing: 3px;
-            border-top: 1px solid #d8b256;
+            color: var(--accent-dark);
+            letter-spacing: 2px;
+            border-top: 1px solid var(--accent);
             padding-top: 12px;
             margin-top: 16px;
-            opacity: 0.8;
         }
         .intro-text {
             font-size: 1.1rem;
             line-height: 1.7;
             max-width: 720px;
             margin: 24px auto 0;
-            color: #dcd0b0;
-            font-weight: 400;
+            color: var(--text-secondary);
         }
 
         .section {
             padding: 70px 0;
-            border-bottom: 1px solid rgba(216, 178, 86, 0.12);
+            border-bottom: 1px solid var(--border-light);
+            background: var(--bg-section);
         }
         .section-title {
             text-align: center;
@@ -102,9 +166,7 @@
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
-            width: auto;
-            color: #f2e2b0;
-            letter-spacing: -0.5px;
+            color: var(--accent-dark);
         }
         .section-title::after {
             content: '';
@@ -113,19 +175,15 @@
             right: 20%;
             width: 60%;
             height: 3px;
-            background: #d8b256;
+            background: var(--accent);
             border-radius: 4px;
         }
         .title-center {
             text-align: center;
             margin-bottom: 48px;
         }
-        .title-center .section-title {
-            display: inline-block;
-            text-align: center;
-        }
 
-        /* customer gallery — clickable, no extra text */
+        /* customer gallery */
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -133,34 +191,27 @@
             margin: 32px 0 16px;
         }
         .customer-photo {
-            position: relative;
             border-radius: 28px;
             overflow: hidden;
             aspect-ratio: 1 / 1;
             background: #1f1914;
-            border: 1px solid rgba(216, 178, 86, 0.35);
+            border: 1px solid var(--accent);
             transition: all 0.35s ease;
-            box-shadow: 0 18px 28px -12px rgba(0,0,0,0.6);
+            box-shadow: var(--shadow);
             cursor: pointer;
         }
         .customer-photo:hover {
             transform: scale(1.02);
-            border-color: #e6bc6e;
-            box-shadow: 0 22px 32px -12px rgba(0,0,0,0.8);
+            border-color: var(--accent-dark);
         }
         .customer-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s;
-            pointer-events: none;
-        }
-        .customer-photo:hover img {
-            transform: scale(1.03);
         }
 
-        /* lightbox overlay (fullscreen image) */
+        /* lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -174,7 +225,6 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            flex-direction: column;
         }
         .lightbox.active {
             display: flex;
@@ -184,26 +234,20 @@
             max-height: 85vh;
             object-fit: contain;
             border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            border: 2px solid rgba(216,178,86,0.4);
+            border: 2px solid var(--accent);
         }
         .lightbox .close-lightbox {
             position: absolute;
             top: 28px;
             left: 32px;
             font-size: 2rem;
-            color: #e6bc6e;
+            color: var(--accent);
             background: none;
             border: none;
             cursor: pointer;
-            transition: 0.2s;
-        }
-        .lightbox .close-lightbox:hover {
-            color: white;
-            transform: scale(1.1);
         }
 
-        /* gifts grid — only names, no extra descriptions */
+        /* gifts grid */
         .gifts-grid {
             display: flex;
             flex-wrap: wrap;
@@ -212,42 +256,39 @@
             margin: 40px 0 20px;
         }
         .gift-card {
-            background: rgba(20, 17, 14, 0.7);
-            backdrop-filter: blur(10px);
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
             border-radius: 42px;
             padding: 28px 26px;
             width: 260px;
             text-align: center;
-            border: 1px solid rgba(216, 178, 86, 0.35);
+            border: 1px solid var(--accent);
             transition: all 0.3s;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow);
         }
         .gift-card:hover {
-            background: rgba(30, 24, 20, 0.85);
-            border-color: #e2ba6b;
             transform: translateY(-7px);
+            border-color: var(--accent-dark);
         }
         .gift-icon {
             font-size: 2.8rem;
-            color: #e2bc73;
+            color: var(--accent);
             margin-bottom: 18px;
         }
         .gift-card h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0px;
-            color: #f3e5c0;
+            color: var(--text-primary);
         }
-        /* resort extra info line, for the specific resort gift */
         .resort-info {
             margin-top: 14px;
             font-size: 0.8rem;
-            color: #cfc1a0;
-            border-top: 1px dashed #d8b25660;
+            color: var(--text-secondary);
+            border-top: 1px dashed var(--accent);
             padding-top: 10px;
         }
 
-        /* resort cards - only location name */
+        /* resort gallery */
         .resort-grid {
             display: flex;
             flex-wrap: wrap;
@@ -259,14 +300,12 @@
             width: 300px;
             border-radius: 32px;
             overflow: hidden;
-            background: #17120e;
+            background: var(--bg-card);
             transition: 0.3s;
-            border: 1px solid rgba(216, 178, 86, 0.4);
-            box-shadow: 0 20px 30px -10px black;
+            border: 1px solid var(--accent);
         }
         .resort-card:hover {
             transform: translateY(-6px);
-            border-color: #e6bc6e;
         }
         .resort-img {
             height: 210px;
@@ -277,9 +316,8 @@
             text-align: center;
             padding: 18px;
             font-weight: 600;
-            background: #0e0b09;
-            color: #f5e2b0;
-            letter-spacing: 1px;
+            background: var(--bg-section);
+            color: var(--accent-dark);
         }
 
         /* branches */
@@ -292,37 +330,31 @@
         .branch {
             flex: 1;
             min-width: 280px;
-            background: rgba(0,0,0,0.55);
-            backdrop-filter: blur(8px);
+            background: var(--card-bg);
             border-radius: 36px;
             padding: 28px 26px;
-            border: 1px solid rgba(216, 178, 86, 0.4);
-            transition: 0.25s;
-        }
-        .branch:hover {
-            background: #1e1813cc;
-            border-color: #ddb667;
+            border: 1px solid var(--accent);
         }
         .branch i {
             font-size: 2rem;
-            color: #e2bc73;
+            color: var(--accent);
             margin-bottom: 14px;
         }
         .branch address {
             font-style: normal;
             font-weight: 500;
             line-height: 1.65;
-            color: #eadbbc;
+            color: var(--text-primary);
         }
         .pickup-hours {
             margin-top: 16px;
             font-size: 0.85rem;
-            color: #e2bc73;
-            border-top: 1px dashed #c9a03d50;
+            color: var(--accent);
+            border-top: 1px dashed var(--accent);
             padding-top: 12px;
         }
 
-        /* contact numbers */
+        /* contact */
         .contact-numbers {
             display: flex;
             flex-wrap: wrap;
@@ -331,21 +363,19 @@
             margin: 40px 0 20px;
         }
         .phone-card {
-            background: #191411b3;
-            backdrop-filter: blur(8px);
+            background: var(--card-bg);
             border-radius: 60px;
             padding: 12px 28px;
             display: flex;
             align-items: center;
             gap: 14px;
-            border: 1px solid #dbb35c70;
-            transition: 0.2s;
+            border: 1px solid var(--accent);
         }
         .phone-card a {
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            color: #f5e0b0;
+            color: var(--text-primary);
             direction: ltr;
         }
         .phone-card i {
@@ -355,294 +385,262 @@
         .phone-card .fa-phone-alt {
             color: #4c9aff;
         }
-        .phone-card:hover {
-            background: #2a221b;
-            border-color: #e6bc6e;
-            transform: scale(1.02);
-        }
         .optional-note-badge {
-            background: #1e1914aa;
+            background: var(--card-bg);
             border-radius: 60px;
             padding: 10px 22px;
             display: inline-block;
             margin-top: 20px;
             font-size: 0.85rem;
-            border-right: 3px solid #e6bc6e;
+            border-right: 3px solid var(--accent);
         }
 
         .designer {
             text-align: center;
             padding: 30px 0 20px;
             font-size: 0.85rem;
-            color: #b6975a;
-            border-top: 1px solid rgba(216, 178, 86, 0.25);
-            margin-top: 20px;
+            color: var(--accent-dark);
+            border-top: 1px solid var(--border-light);
         }
-
         footer {
-            background: #050302;
-            color: #aa8f60;
+            background: var(--footer-bg);
+            color: var(--footer-text);
             text-align: center;
             padding: 28px 0;
-            font-size: 0.85rem;
         }
+
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
-            .section { padding: 50px 0; }
             .gift-card { width: 220px; padding: 20px; }
-            .customer-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
-            .resort-card { width: 260px; }
-            .logo-img { max-width: 200px; }
+            .customer-grid { gap: 16px; }
         }
-        .glow-text {
-            color: #eacc8a;
+
+        /* data-aos override */
+        [data-aos] {
+            pointer-events: auto;
         }
-        button, a {
-            transition: all 0.2s;
+        /* language specific */
+        .en-text, .ar-text {
+            transition: display 0.1s;
+        }
+        body[dir="ltr"] {
+            text-align: left;
+        }
+        body[dir="rtl"] {
+            text-align: right;
         }
     </style>
 </head>
-<body>
-
-<div class="hero-logo" data-aos="fade-down" data-aos-duration="900">
-    <div class="logo-wrapper">
-        <img src="IMG_2845.jpeg" alt="هوليدايز - Holidayz" class="logo-img" onerror="this.src='https://placehold.co/400x150/33261c/d4af37?text=Holidays'">
-        <div class="logo-sub">HOLIDAYS · دعاية وإعلان استثنائي</div>
+<body dir="rtl">
+    <div class="top-bar">
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ar">العربية</button>
+            <button class="lang-btn" data-lang="en">English</button>
+        </div>
+        <button id="themeToggle" class="toggle-btn">🌙 Dark / ☀️ Light</button>
     </div>
-    <p class="intro-text" data-aos="fade-up" data-aos-delay="200">
-        شركة <strong class="glow-text">هوليدايز</strong> متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية.<br>
-        استمع لإعلاناتنا لـ <strong>30 دقيقة أو ساعة</strong> في مقرنا، واحصل على هدية مجانية.  
-        التصوير <strong>اختياري وليس إجباري</strong> — نقدّر خصوصيتك.
-    </p>
-</div>
+
+    <div class="hero-logo" data-aos="fade-down">
+        <div class="logo-wrapper">
+            <img src="IMG_2845.jpeg" alt="Holidays Logo" class="logo-img" onerror="this.src='https://placehold.co/400x150/f2e0c0/a67c45?text=Holidays'">
+            <div class="logo-sub" data-ar="دعاية وإعلان استثنائي" data-en="Premium Advertising">دعاية وإعلان استثنائي</div>
+        </div>
+        <p class="intro-text" data-ar="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك." data-en="Holidays company specializes in marketing advertising for commercial, entertainment and tourism venues. Listen to our ads for 30 minutes or an hour at our premises, and receive a free gift. Photography is optional and not mandatory — we respect your privacy.">
+            شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك.
+        </p>
+    </div>
 
 <main>
-    <!-- CUSTOMER PHOTOS SECTION — no persuasive text, only photos and optional photography note without camera icon -->
+    <!-- Customer Gallery with new image IMG_3022.jpeg -->
     <div class="section">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">عملاء استلموا هداياهم</h2>
-                <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.8;">التصوير اختياري وليس إجباري</p>
+                <h2 class="section-title" data-ar="عملاء استلموا هداياهم" data-en="Customers received their gifts">عملاء استلموا هداياهم</h2>
+                <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.8;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</p>
             </div>
-            <div class="customer-grid" data-aos="fade-up" data-aos-delay="100">
-                <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg">
-                    <img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="عميل هوليدايز" loading="lazy">
-                </div>
-                <div class="customer-photo" data-img-src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg">
-                    <img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="عميل هوليدايز" loading="lazy">
-                </div>
-                <div class="customer-photo" data-img-src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg">
-                    <img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="عميل هوليدايز" loading="lazy">
-                </div>
-                <div class="customer-photo" data-img-src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg">
-                    <img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="عميل هوليدايز" loading="lazy">
-                </div>
-                <div class="customer-photo" data-img-src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg">
-                    <img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="عميل هوليدايز" loading="lazy">
-                </div>
+            <div class="customer-grid" data-aos="fade-up">
+                <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="customer"></div>
+                <div class="customer-photo" data-img-src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg"><img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="customer"></div>
+                <div class="customer-photo" data-img-src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg"><img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="customer"></div>
+                <div class="customer-photo" data-img-src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="customer"></div>
+                <div class="customer-photo" data-img-src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="customer"></div>
+                <div class="customer-photo" data-img-src="IMG_3022.jpeg"><img src="IMG_3022.jpeg" alt="customer"></div>
             </div>
-            <!-- note without camera icon, just text -->
-            <div class="optional-note-badge" style="display: block; text-align: center; width: fit-content; margin: 20px auto 0;">
-                التصوير اختياري وليس إجباري
-            </div>
+            <div class="optional-note-badge" style="display: block; text-align: center; width: fit-content; margin: 20px auto 0;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</div>
         </div>
     </div>
 
-    <!-- GIFTS SECTION — only names, no extra details for devices, resort with specific terms -->
-    <div class="section" style="background: linear-gradient(165deg, #0a0806 0%, #050302 100%);">
+    <!-- Gifts section: only names, microwave icon fixed -->
+    <div class="section" style="background: var(--bg-section);">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">هدايا مجانية</h2>
-                <p style="opacity:0.85;">مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)</p>
+                <h2 class="section-title" data-ar="هدايا مجانية" data-en="Free Gifts">هدايا مجانية</h2>
+                <p data-ar="مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)" data-en="In exchange for listening to a short advertising session (half an hour or an hour)">مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)</p>
             </div>
-            <div class="gifts-grid" data-aos="fade-up" data-aos-delay="100">
-                <div class="gift-card">
-                    <div class="gift-icon"><i class="fas fa-tv"></i></div>
-                    <h3>شاشة 32 بوصة</h3>
-                </div>
-                <div class="gift-card">
-                    <div class="gift-icon"><i class="fas fa-micro-wave"></i></div>
-                    <h3>ميكرويف صغير</h3>
-                </div>
-                <div class="gift-card">
-                    <div class="gift-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>موبايل ريلمي</h3>
-                </div>
+            <div class="gifts-grid" data-aos="fade-up">
+                <div class="gift-card"><div class="gift-icon"><i class="fas fa-tv"></i></div><h3 data-ar="شاشة 32 بوصة" data-en="32-inch TV">شاشة 32 بوصة</h3></div>
+                <div class="gift-card"><div class="gift-icon"><i class="fas fa-microchip"></i></div><h3 data-ar="ميكرويف صغير" data-en="Compact Microwave">ميكرويف صغير</h3></div>
+                <div class="gift-card"><div class="gift-icon"><i class="fas fa-mobile-alt"></i></div><h3 data-ar="موبايل ريلمي" data-en="Realme Phone">موبايل ريلمي</h3></div>
                 <div class="gift-card">
                     <div class="gift-icon"><i class="fas fa-umbrella-beach"></i></div>
-                    <h3>أسبوع مصيف</h3>
-                    <div class="resort-info">
-                        3 أيام، 4 ليالي · 4-6 أفراد<br>
-                        العميل يتحمل الوجبات<br>
-                        الهدية تحدد برقم الإيصال (ليست اختيارية)
-                    </div>
+                    <h3 data-ar="أسبوع مصيف" data-en="Resort Week">أسبوع مصيف</h3>
+                    <div class="resort-info" data-ar="3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)" data-en="3 days, 4 nights · 4-6 persons<br>Customer covers meals<br>Gift determined by receipt number (not optional)">3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)</div>
                 </div>
             </div>
-            <div class="optional-note-badge" style="margin: 30px auto 0; background: rgba(0,0,0,0.6); text-align: center;">
-                الهدية مجانية بالكامل، بدون أي رسوم إضافية
-            </div>
+            <div class="optional-note-badge" style="margin: 30px auto 0; text-align: center; display: table;" data-ar="الهدية مجانية بالكامل، بدون أي رسوم إضافية" data-en="The gift is completely free, with no additional fees">الهدية مجانية بالكامل، بدون أي رسوم إضافية</div>
         </div>
     </div>
 
-    <!-- RESORT GALLERY — only location names -->
+    <!-- Resort destinations -->
     <div class="section">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">وجهات المصيف المجانية</h2>
-                <p>استلم هدية رحلة إلى منتجعات سياحية فاخرة</p>
+                <h2 class="section-title" data-ar="وجهات المصيف المجانية" data-en="Free Resort Destinations">وجهات المصيف المجانية</h2>
+                <p data-ar="استلم هدية رحلة إلى منتجعات سياحية فاخرة" data-en="Receive a trip to luxury resorts">استلم هدية رحلة إلى منتجعات سياحية فاخرة</p>
             </div>
-            <div class="resort-grid" data-aos="fade-up" data-aos-delay="100">
-                <div class="resort-card">
-                    <div class="resort-img" style="background-image: url('IMG_3019.jpeg'); background-size: cover; background-position: center;"></div>
-                    <h4>شرم الشيخ</h4>
-                </div>
-                <div class="resort-card">
-                    <div class="resort-img" style="background-image: url('IMG_3020.jpeg'); background-size: cover; background-position: center;"></div>
-                    <h4>الغردقة</h4>
-                </div>
-                <div class="resort-card">
-                    <div class="resort-img" style="background-image: url('IMG_3021.jpeg'); background-size: cover; background-position: center;"></div>
-                    <h4>العين السخنة</h4>
-                </div>
+            <div class="resort-grid" data-aos="fade-up">
+                <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3019.jpeg');"></div><h4>شرم الشيخ</h4></div>
+                <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3020.jpeg');"></div><h4>الغردقة</h4></div>
+                <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3021.jpeg');"></div><h4>العين السخنة</h4></div>
             </div>
         </div>
     </div>
 
-    <!-- BRANCHES SECTION with pickup hours and support hours -->
-    <div class="section" style="background: rgba(5,3,2,0.5);">
+    <!-- Branches -->
+    <div class="section">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">فروع شركة هوليدايز</h2>
-                <p>تفضل بزيارتنا في أي من الفرعين لتسلم هديتك بعد الجلسة</p>
+                <h2 class="section-title" data-ar="فروع شركة هوليدايز" data-en="Holidays Branches">فروع شركة هوليدايز</h2>
             </div>
-            <div class="branches-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="branches-grid" data-aos="fade-up">
                 <div class="branch">
                     <i class="fas fa-building"></i>
-                    <address>
-                        <strong>الفرع الأول - مدينة نصر</strong><br>
-                        38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي،<br>
-                        شركه هوليدايز، الدور الثامن.
-                    </address>
-                    <div class="pickup-hours">
-                        مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
-                    </div>
+                    <address><strong data-ar="الفرع الأول - مدينة نصر" data-en="First Branch - Nasr City">الفرع الأول - مدينة نصر</strong><br>
+                    38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي،<br> شركه هوليدايز، الدور الثامن.</address>
+                    <div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div>
                 </div>
                 <div class="branch">
                     <i class="fas fa-location-dot"></i>
-                    <address>
-                        <strong>الفرع الثاني - عباس العقاد</strong><br>
-                        25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر،<br>
-                        عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.
-                    </address>
-                    <div class="pickup-hours">
-                        مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً
-                    </div>
+                    <address><strong data-ar="الفرع الثاني - عباس العقاد" data-en="Second Branch - Abbas El-Akkad">الفرع الثاني - عباس العقاد</strong><br>
+                    25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر،<br>
+                    عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.</address>
+                    <div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div>
                 </div>
             </div>
-            <div class="optional-note-badge" style="margin: 20px auto 0; display: table;">
-                خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً
-            </div>
+            <div class="optional-note-badge" style="margin: 20px auto 0; display: table;" data-ar="خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً" data-en="Customer support available daily from 3:00 PM to 9:00 PM">خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً</div>
         </div>
     </div>
 
-    <!-- CONTACT NUMBERS + WHATSAPP -->
+    <!-- Contact -->
     <div class="section" style="padding-bottom: 50px;">
         <div class="container">
             <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title">تواصل مع خدمة العملاء</h2>
-                <p>احجز جلستك الدعائية واستعلم عن الهدايا عبر الاتصال أو واتساب</p>
+                <h2 class="section-title" data-ar="تواصل مع خدمة العملاء" data-en="Contact Customer Service">تواصل مع خدمة العملاء</h2>
+                <p data-ar="احجز جلستك الدعائية واستعلم عن الهدايا عبر الاتصال أو واتساب" data-en="Book your advertising session and inquire about gifts via call or WhatsApp">احجز جلستك الدعائية واستعلم عن الهدايا عبر الاتصال أو واتساب</p>
             </div>
-            <div class="contact-numbers" data-aos="fade-up" data-aos-delay="100">
-                <div class="phone-card">
-                    <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/201040782134" target="_blank">01040782134 <span style="font-size:0.7rem;">واتساب</span></a>
-                    <a href="tel:01040782134"><i class="fas fa-phone-alt"></i></a>
-                </div>
-                <div class="phone-card">
-                    <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/201515752259" target="_blank">01515752259 <span style="font-size:0.7rem;">واتساب</span></a>
-                    <a href="tel:01515752259"><i class="fas fa-phone-alt"></i></a>
-                </div>
-                <div class="phone-card">
-                    <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/201040514792" target="_blank">01040514792 <span style="font-size:0.7rem;">واتساب</span></a>
-                    <a href="tel:01040514792"><i class="fas fa-phone-alt"></i></a>
-                </div>
+            <div class="contact-numbers" data-aos="fade-up">
+                <div class="phone-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201040782134" target="_blank">01040782134</a><a href="tel:01040782134"><i class="fas fa-phone-alt"></i></a></div>
+                <div class="phone-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201515752259" target="_blank">01515752259</a><a href="tel:01515752259"><i class="fas fa-phone-alt"></i></a></div>
+                <div class="phone-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201040514792" target="_blank">01040514792</a><a href="tel:01040514792"><i class="fas fa-phone-alt"></i></a></div>
             </div>
         </div>
     </div>
 
     <div class="designer" data-aos="fade-up">
-        <span style="font-weight: 300;">designed by </span><strong style="font-size: 1.1rem; letter-spacing: 1px; color:#e6bc6e;">Amr Khaled</strong>
-        <div style="margin: 10px auto 0; width: 40px; height: 1px; background: #d8b256;"></div>
+        <span>designed by </span><strong>Amr Khaled</strong>
+        <div style="margin: 10px auto 0; width: 40px; height: 1px; background: var(--accent);"></div>
         <span style="font-size: 0.7rem;">تصميم غامض وهادئ • جودة احترافية</span>
     </div>
 </main>
 
 <footer>
     <div class="container">
-        <p>© 2026 شركة هوليدايز – الدعاية الإعلانية الذكية | شاشات، ميكروويف، موبايل ريلمي، أسبوع مصيف مجاني</p>
-        <p style="font-size: 0.75rem; margin-top: 10px;">التصوير اختياري — الهدايا حقيقية وليست وهمية</p>
+        <p data-ar="© 2026 شركة هوليدايز – الدعاية الإعلانية الذكية | شاشات، ميكروويف، موبايل ريلمي، أسبوع مصيف مجاني" data-en="© 2026 Holidays Company – Smart Advertising | TVs, Microwave, Realme Phone, Free Resort Week">© 2026 شركة هوليدايز – الدعاية الإعلانية الذكية | شاشات، ميكروويف، موبايل ريلمي، أسبوع مصيف مجاني</p>
+        <p style="font-size: 0.75rem; margin-top: 10px;" data-ar="التصوير اختياري — الهدايا حقيقية وليست وهمية" data-en="Photography optional — gifts are real not imaginary">التصوير اختياري — الهدايا حقيقية وليست وهمية</p>
     </div>
 </footer>
 
-<!-- Lightbox overlay for customer images -->
 <div id="lightbox" class="lightbox">
     <button class="close-lightbox" id="closeLightboxBtn">✕</button>
-    <img id="lightboxImg" src="" alt="صورة مكبرة">
+    <img id="lightboxImg" src="" alt="Enlarged">
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 800, once: true, easing: 'ease-out-quad' });
-    
-    // Lightbox logic for customer photos
+    AOS.init({ duration: 800, once: true });
+
+    // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const closeBtn = document.getElementById('closeLightboxBtn');
-    
-    function openLightbox(src) {
-        lightboxImg.src = src;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-        lightboxImg.src = '';
-    }
-    
+    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; lightboxImg.src = ''; }
     document.querySelectorAll('.customer-photo').forEach(photo => {
-        photo.addEventListener('click', (e) => {
-            const imgElement = photo.querySelector('img');
-            if (imgElement && imgElement.src) {
-                openLightbox(imgElement.src);
+        photo.addEventListener('click', () => { const img = photo.querySelector('img'); if(img && img.src) openLightbox(img.src); });
+    });
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+    closeBtn.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+
+    // Dark/Light Mode
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.body;
+    if(localStorage.getItem('theme') === 'dark') root.classList.add('dark');
+    themeBtn.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Bilingual system
+    const langButtons = document.querySelectorAll('.lang-btn');
+    let currentLang = 'ar';
+    function updateTexts(lang) {
+        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+            if(lang === 'ar') el.innerText = el.getAttribute('data-ar');
+            else el.innerText = el.getAttribute('data-en');
+        });
+        document.querySelectorAll('.gift-card h3').forEach(el => {
+            if(lang === 'ar') el.innerText = el.getAttribute('data-ar') || el.innerText;
+            else el.innerText = el.getAttribute('data-en') || el.innerText;
+        });
+        document.querySelectorAll('.resort-info').forEach(el => {
+            if(lang === 'ar') el.innerHTML = el.getAttribute('data-ar');
+            else el.innerHTML = el.getAttribute('data-en');
+        });
+        document.querySelectorAll('.pickup-hours, .optional-note-badge, .section p, footer p, .branch address strong, .intro-text, .logo-sub').forEach(el => {
+            if(el.hasAttribute('data-ar') && el.hasAttribute('data-en')) {
+                if(lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else el.innerText = el.getAttribute('data-en');
+            } else if(el.classList && el.classList.contains('pickup-hours') && el.hasAttribute('data-ar')) {
+                if(lang === 'ar') el.innerText = el.getAttribute('data-ar');
+                else el.innerText = el.getAttribute('data-en');
             }
         });
+        document.querySelectorAll('.branch address').forEach(addr => {
+            // keep inner html except the strong
+            if(lang === 'ar') {
+                const strong = addr.querySelector('strong');
+                if(strong && strong.hasAttribute('data-ar')) strong.innerText = strong.getAttribute('data-ar');
+            } else {
+                const strong = addr.querySelector('strong');
+                if(strong && strong.hasAttribute('data-en')) strong.innerText = strong.getAttribute('data-en');
+            }
+        });
+        document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        currentLang = lang;
+        langButtons.forEach(btn => {
+            if(btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => { updateTexts(btn.getAttribute('data-lang')); });
     });
-    
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-    closeBtn.addEventListener('click', closeLightbox);
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
-    });
-    
-    // WhatsApp and call links behavior
+    updateTexts('ar');
+
+    // WhatsApp links target
     document.querySelectorAll('.phone-card a').forEach(link => {
-        if (link.href.includes('wa.me')) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener');
-        }
-    });
-    
-    // subtle hover effect on branch icons
-    const iconsBranch = document.querySelectorAll('.branch i');
-    iconsBranch.forEach(icon => {
-        icon.addEventListener('mouseenter', () => { icon.style.transform = 'scale(1.1)'; icon.style.transition = '0.2s'; });
-        icon.addEventListener('mouseleave', () => { icon.style.transform = 'scale(1)'; });
+        if(link.href.includes('wa.me')) link.setAttribute('target', '_blank');
     });
 </script>
 </body>
