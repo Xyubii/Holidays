@@ -18,7 +18,6 @@
             background: transparent;
             position: relative;
         }
-        /* خلفية ثلاثية الأبعاد */
         #canvas-3d {
             position: fixed;
             top: 0;
@@ -34,7 +33,6 @@
             z-index: 2;
             backdrop-filter: blur(2px);
         }
-        /* متغيرات الألوان */
         :root {
             --bg-hero: rgba(255, 248, 235, 0.75);
             --bg-section: rgba(255, 252, 245, 0.7);
@@ -59,7 +57,6 @@
             --accent-glow: #f5cb5c;
             --card-bg: rgba(18, 15, 12, 0.85);
         }
-        /* شريط علوي 3D */
         .top-bar {
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(16px);
@@ -114,8 +111,8 @@
             perspective: 800px;
         }
         #logoCanvas {
-            width: 210px;
-            height: 210px;
+            width: 220px;
+            height: 220px;
             border-radius: 24px;
             cursor: pointer;
         }
@@ -170,7 +167,7 @@
         .designer strong { color: var(--accent-glow); }
         .designer-line { width: 60px; height: 2px; background: var(--accent-glow); margin: 12px auto; }
         .footer-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.85rem; margin-top: 10px; }
-        /* علامة مائية واتساب ثلاثية الأبعاد عائمة */
+        /* واتساب عائم 3D */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -190,29 +187,14 @@
             transform-style: preserve-3d;
             border: 2px solid rgba(255,255,255,0.4);
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 35px #25D366;
-        }
-        .whatsapp-float i {
-            font-size: 3rem;
-            color: white;
-            text-shadow: 0 0 8px rgba(0,0,0,0.5);
-            animation: iconPulse 1.2s infinite alternate;
-        }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 0 35px #25D366; }
+        .whatsapp-float i { font-size: 3rem; color: white; text-shadow: 0 0 8px rgba(0,0,0,0.5); animation: iconPulse 1.2s infinite alternate; }
         @keyframes float3d {
             0% { transform: translateY(0px) rotateY(0deg); box-shadow: 0 0 15px #25D366;}
             100% { transform: translateY(-12px) rotateY(10deg); box-shadow: 0 0 30px #25D366;}
         }
-        @keyframes rotateGlow {
-            0% { filter: hue-rotate(0deg);}
-            100% { filter: hue-rotate(15deg);}
-        }
-        @keyframes iconPulse {
-            0% { transform: scale(1); text-shadow: 0 0 5px white;}
-            100% { transform: scale(1.05); text-shadow: 0 0 15px white;}
-        }
-        /* مقدمة سينمائية */
+        @keyframes rotateGlow { 0% { filter: hue-rotate(0deg);} 100% { filter: hue-rotate(15deg);} }
+        @keyframes iconPulse { 0% { transform: scale(1); text-shadow: 0 0 5px white;} 100% { transform: scale(1.05); text-shadow: 0 0 15px white;} }
         .intro-overlay {
             position: fixed;
             top: 0;
@@ -242,7 +224,6 @@
 <body>
     <canvas id="canvas-3d"></canvas>
 
-    <!-- Intro سينمائية -->
     <div id="introOverlay" class="intro-overlay">
         <canvas id="introCanvas" class="intro-canvas"></canvas>
         <div class="intro-content">
@@ -343,7 +324,6 @@
         </footer>
     </div>
 
-    <!-- علامة مائية واتساب ثلاثية الأبعاد عائمة -->
     <a href="https://wa.me/201040514792" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -358,7 +338,7 @@
     <script type="module">
         import * as THREE from 'three';
 
-        // === الخلفية الرئيسية ثلاثية الأبعاد ===
+        // === الخلفية الرئيسية (كما هي) ===
         const canvasBg = document.getElementById('canvas-3d');
         const sceneBg = new THREE.Scene();
         sceneBg.background = new THREE.Color(0x0a0a1a);
@@ -461,75 +441,103 @@
             rendererBg.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // === شعار ثلاثي الأبعاد: مكعب شفاف مع صورة اللوجو واسم الشركة ===
+        // === شعار ثلاثي الأبعاد: مكعب بنسيج يجمع اللوجو + اسم الشركة ===
         const logoCanvas = document.getElementById('logoCanvas');
         const logoScene = new THREE.Scene();
         const logoCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
         logoCamera.position.set(0, 0, 2.9);
         const logoRenderer = new THREE.WebGLRenderer({ canvas: logoCanvas, alpha: true });
-        logoRenderer.setSize(210, 210);
+        logoRenderer.setSize(220, 220);
         logoRenderer.setClearColor(0x000000, 0);
         
-        // تحميل صورة اللوجو
-        const textureLoader = new THREE.TextureLoader();
-        const logoTexture = textureLoader.load('IMG_2845.jpeg', undefined, undefined, (err) => console.error('خطأ في تحميل اللوجو', err));
+        // إنشاء نسيج مخصص يجمع صورة اللوجو واسم الشركة بشكل واضح وجميل
+        const createLogoTexture = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024;
+            canvas.height = 1024;
+            const ctx = canvas.getContext('2d');
+            
+            // خلفية ذهبية داكنة فاخرة مع تدرج
+            const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            grad.addColorStop(0, '#1a1208');
+            grad.addColorStop(1, '#2a1e0e');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // إطار ذهبي
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 20;
+            ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+            
+            // تحميل صورة اللوجو (IMG_2845.jpeg) ورسمها في المنتصف
+            const logoImg = new Image();
+            logoImg.crossOrigin = "Anonymous";
+            logoImg.src = "IMG_2845.jpeg";
+            // سنستخدم Promise لانتظار تحميل الصورة، ولكن سنعرض نسيجاً مؤقتاً ثم نحدثه
+            // الحل: نرسم النص أولاً ثم نرسم الصورة عندما تحمل، ونحدث النسيج.
+            // سنقوم برسم صورة نائبة مؤقتاً ثم تحديث النسيج بعد تحميل الصورة.
+            
+            // رسم اسم الشركة بالعربية والإنجليزية بشكل بارز
+            ctx.font = 'Bold 90px "Cairo"';
+            ctx.fillStyle = '#f5cb5c';
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = 'black';
+            ctx.textAlign = 'center';
+            ctx.fillText("هوليدايز", canvas.width/2, canvas.height - 180);
+            ctx.font = '70px "Cairo"';
+            ctx.fillStyle = '#e6bc6e';
+            ctx.fillText("Holidays", canvas.width/2, canvas.height - 80);
+            
+            // رسم شعار ذهبي في المنتصف (دائرة ذهبية)
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.arc(canvas.width/2, canvas.height/2 - 40, 180, 0, 2 * Math.PI);
+            ctx.fillStyle = '#d4af37';
+            ctx.fill();
+            ctx.fillStyle = '#1a1208';
+            ctx.font = '60px "Cairo"';
+            ctx.fillText("H", canvas.width/2, canvas.height/2 - 10);
+            
+            // سنقوم برسم الصورة الفعلية للوجو إذا أمكن
+            logoImg.onload = () => {
+                ctx.drawImage(logoImg, canvas.width/2 - 120, canvas.height/2 - 160, 240, 240);
+                texture.needsUpdate = true;
+            };
+            
+            return new THREE.CanvasTexture(canvas);
+        };
         
-        // إنشاء نسيج يحتوي على اسم الشركة "Holidays هوليدايز" مع اللوجو (سنضيفه كنص على وجه إضافي)
-        // لجعل الاسم واضحاً، سنستخدم CanvasTexture لرسم النص على وجه إضافي أو دمجها. لكن الأفضل: جعل جميع الوجوه تحمل اللوجو مع حدود ذهبية، وإضافة اسم الشركة بشكل بارز على واجهة إضافية.
-        // سنضيف كرة صغيرة تحمل الاسم أو نكتب النص على المكعب نفسه. لتكون واضحة جداً، سنقوم بعمل لوحة إضافية (plane) تحمل اسم الشركة وتدور مع المكعب.
-        
-        const materialsArray = [];
+        let texture = createLogoTexture();
+        const materialArray = [];
         for (let i = 0; i < 6; i++) {
-            materialsArray.push(new THREE.MeshStandardMaterial({ map: logoTexture, roughness: 0.2, metalness: 0.85, color: 0xffffff, emissive: 0x221100, emissiveIntensity: 0.2 }));
+            materialArray.push(new THREE.MeshStandardMaterial({ map: texture, roughness: 0.2, metalness: 0.85, color: 0xffffff, emissive: 0x221100, emissiveIntensity: 0.15 }));
         }
-        const boxGeo = new THREE.BoxGeometry(1.35, 1.35, 1.35);
-        const cube = new THREE.Mesh(boxGeo, materialsArray);
+        const boxGeo = new THREE.BoxGeometry(1.4, 1.4, 1.4);
+        const cube = new THREE.Mesh(boxGeo, materialArray);
         
-        // إضافة إطار ذهبي
+        // إطار ذهبي
         const edgesGeo = new THREE.EdgesGeometry(boxGeo);
         const edgesMat = new THREE.LineBasicMaterial({ color: 0xffcc88 });
         const wireframe = new THREE.LineSegments(edgesGeo, edgesMat);
         cube.add(wireframe);
         
-        // إنشاء نص ثلاثي الأبعاد يحمل اسم الشركة (لوحة عائمة أمام المكعب)
-        const canvasText = document.createElement('canvas');
-        canvasText.width = 512;
-        canvasText.height = 256;
-        const ctx = canvasText.getContext('2d');
-        ctx.fillStyle = '#d4af37';
-        ctx.fillRect(0, 0, canvasText.width, canvasText.height);
-        ctx.font = 'Bold 48px Cairo';
-        ctx.fillStyle = '#ffffff';
-        ctx.textAlign = 'center';
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = 'gold';
-        ctx.fillText('هوليدايز', canvasText.width/2, canvasText.height/2 - 20);
-        ctx.font = '36px Cairo';
-        ctx.fillStyle = '#ffdd99';
-        ctx.fillText('Holidays', canvasText.width/2, canvasText.height/2 + 50);
-        const textTexture = new THREE.CanvasTexture(canvasText);
-        const textPlaneMat = new THREE.MeshStandardMaterial({ map: textTexture, transparent: true, side: THREE.DoubleSide });
-        const textPlane = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.8), textPlaneMat);
-        textPlane.position.z = 0.72;
-        cube.add(textPlane);
-        
-        // جسيمات ذهبية حول المكعب
-        const particleCountLogo = 500;
+        // جسيمات ذهبية
+        const particleCountLogo = 600;
         const particleGeoLogo = new THREE.BufferGeometry();
         const particlePosLogo = new Float32Array(particleCountLogo * 3);
         for (let i = 0; i < particleCountLogo; i++) {
-            particlePosLogo[i*3] = (Math.random() - 0.5) * 2.5;
-            particlePosLogo[i*3+1] = (Math.random() - 0.5) * 2.5;
-            particlePosLogo[i*3+2] = (Math.random() - 0.5) * 2.5;
+            particlePosLogo[i*3] = (Math.random() - 0.5) * 2.6;
+            particlePosLogo[i*3+1] = (Math.random() - 0.5) * 2.6;
+            particlePosLogo[i*3+2] = (Math.random() - 0.5) * 2.6;
         }
         particleGeoLogo.setAttribute('position', new THREE.BufferAttribute(particlePosLogo, 3));
-        const particleMatLogo = new THREE.PointsMaterial({ color: 0xffaa66, size: 0.035, transparent: true, blending: THREE.AdditiveBlending });
+        const particleMatLogo = new THREE.PointsMaterial({ color: 0xffaa66, size: 0.04, transparent: true, blending: THREE.AdditiveBlending });
         const logoParticles = new THREE.Points(particleGeoLogo, particleMatLogo);
         cube.add(logoParticles);
         
         logoScene.add(cube);
         
-        const cubeLight = new THREE.PointLight(0xffaa66, 1);
+        const cubeLight = new THREE.PointLight(0xffaa66, 1.2);
         cubeLight.position.set(1.2, 1.2, 2);
         logoScene.add(cubeLight);
         const cubeAmbient = new THREE.AmbientLight(0x404040);
@@ -548,14 +556,8 @@
             if (scaleVal >= 1.1) scaleDir = -1;
             if (scaleVal <= 0.9) scaleDir = 1;
             cube.scale.set(scaleVal, scaleVal, scaleVal);
-            cubeLight.intensity = 0.8 + Math.sin(logoTime * 3) * 0.4;
+            cubeLight.intensity = 0.9 + Math.sin(logoTime * 3) * 0.3;
             logoParticles.rotation.y += 0.01;
-            // تحديث نسيج النص ليتألق
-            if (Math.sin(logoTime * 5) > 0) {
-                textPlaneMat.emissiveIntensity = 0.3;
-            } else {
-                textPlaneMat.emissiveIntensity = 0.1;
-            }
             logoRenderer.render(logoScene, logoCamera);
         }
         animateLogo();
@@ -630,7 +632,7 @@
 
     <script>
         AOS.init({ duration: 800, once: false, mirror: false });
-        // Lightbox
+        // Lightbox and bilingual (نفس الكود السابق)
         const lb = document.getElementById('lightbox');
         const lbImg = document.getElementById('lightboxImg');
         const closeLb = document.getElementById('closeLightboxBtn');
@@ -641,7 +643,6 @@
         closeLb.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lb.classList.contains('active')) closeLightbox(); });
         
-        // Theme & Bilingual
         const themeBtn = document.getElementById('themeToggle');
         const root = document.body;
         let curLang = 'ar';
