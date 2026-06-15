@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>هوليدايز | Holidayz - دعاية وإعلان - تجربة ثلاثية الأبعاد</title>
+    <title>هوليدايز | Holidayz - دعاية وإعلان - تجربة 3D فائقة</title>
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -17,17 +17,19 @@
             transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* إعدادات الطبقات للـ 3D */
+        /* تحسين الخطوط والوضوح */
         body {
             font-family: 'Cairo', sans-serif;
-            line-height: 1.45;
+            font-weight: 500;
+            line-height: 1.5;
             scroll-behavior: smooth;
             overflow-x: hidden;
-            background: transparent; /* الخلفية شفافة لرؤية المشهد الثلاثي الأبعاد */
+            background: transparent;
             position: relative;
+            font-size: 1rem;
         }
 
-        /* Canvas ثلاثي الأبعاد كطبقة خلفية ثابتة */
+        /* Canvas 3D */
         #canvas-3d {
             position: fixed;
             top: 0;
@@ -35,59 +37,62 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            pointer-events: none; /* يسمح بالتفاعل مع المحتوى العلوي */
+            pointer-events: none;
             display: block;
         }
 
-        /* كل المحتوى الرئيسي يكون فوق الكانفاس */
         .site-content {
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(3px);
         }
 
-        /* تحسين الشفافية و Glassmorphism لإظهار الخلفية 3D */
+        /* متغيرات الألوان المحسّنة للوضوح */
         :root {
             --bg-body: transparent;
-            --bg-hero: rgba(255, 248, 235, 0.65);
-            --bg-section: rgba(255, 252, 245, 0.6);
-            --bg-card: rgba(255, 255, 248, 0.75);
-            --text-primary: #1e2a32;
-            --text-secondary: #3c2a1f;
-            --border-light: rgba(212, 175, 55, 0.35);
-            --accent: #d4af37;
-            --accent-dark: #b8860b;
-            --shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-            --card-bg: rgba(255, 255, 245, 0.8);
-            --footer-bg: rgba(15, 12, 8, 0.85);
+            --bg-hero: rgba(20, 18, 16, 0.75);
+            --bg-section: rgba(15, 13, 11, 0.7);
+            --bg-card: rgba(30, 28, 25, 0.85);
+            --text-primary: #ffffff;
+            --text-secondary: #f5e7d3;
+            --border-light: rgba(212, 175, 55, 0.5);
+            --accent: #e6bc6e;
+            --accent-dark: #d4af37;
+            --shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
+            --card-bg: rgba(0, 0, 0, 0.65);
+            --footer-bg: rgba(0, 0, 0, 0.8);
             --footer-text: #f0e3cd;
             --glass-blur: blur(12px);
+            --text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         body.dark {
-            --bg-hero: rgba(8, 6, 4, 0.7);
-            --bg-section: rgba(3, 2, 1, 0.65);
-            --bg-card: rgba(20, 17, 14, 0.75);
-            --text-primary: #ece3d4;
-            --text-secondary: #dcd0b0;
-            --border-light: rgba(212, 175, 55, 0.4);
-            --accent: #e6bc6e;
-            --accent-dark: #c9a03d;
-            --shadow: 0 20px 32px -12px rgba(0,0,0,0.6);
-            --card-bg: rgba(18, 15, 12, 0.8);
-            --footer-bg: rgba(0, 0, 0, 0.8);
-            --footer-text: #d4b87a;
+            --bg-hero: rgba(0, 0, 0, 0.8);
+            --bg-section: rgba(0, 0, 0, 0.7);
+            --bg-card: rgba(10, 10, 10, 0.85);
+            --text-primary: #fff6e8;
+            --text-secondary: #f0e2cc;
+            --border-light: rgba(212, 175, 55, 0.6);
+            --accent: #f5cb5c;
+            --accent-dark: #e6bc6e;
+            --card-bg: rgba(15, 15, 15, 0.75);
+            --text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
 
-        /* تطبيق الزجاج على الأقسام */
-        .hero-logo, .section, .top-bar, footer, .gift-card, .branch, .phone-card, .designer {
+        /* تطبيقات عامة للوضوح */
+        p, h1, h2, h3, h4, address, .intro-text, .logo-sub, .optional-note-badge, .pickup-hours, .resort-info, .designer span, footer p {
+            text-shadow: var(--text-shadow);
+            letter-spacing: 0.3px;
+        }
+
+        .top-bar, .hero-logo, .section, footer, .gift-card, .branch, .phone-card, .designer {
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
         }
 
         .top-bar {
             background: var(--bg-hero);
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 2px solid var(--accent);
             position: sticky;
             top: 0;
             z-index: 101;
@@ -100,13 +105,13 @@
         .hero-logo {
             background: var(--bg-hero);
             text-align: center;
-            padding: 40px 0 30px;
-            border-bottom: 1px solid var(--border-light);
+            padding: 50px 0 40px;
+            border-bottom: 2px solid var(--accent);
         }
 
         .section {
             background: var(--bg-section);
-            padding: 70px 0;
+            padding: 80px 0;
             border-bottom: 1px solid var(--border-light);
             margin: 0;
         }
@@ -117,34 +122,27 @@
             padding: 0 28px;
         }
 
-        .toggle-btn {
-            background: rgba(0,0,0,0.2);
+        .toggle-btn, .lang-btn {
+            background: rgba(0,0,0,0.45);
             border: 1px solid var(--accent);
             border-radius: 60px;
-            padding: 6px 20px;
+            padding: 8px 24px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-primary);
             backdrop-filter: blur(4px);
             transition: all 0.2s;
+            font-size: 0.95rem;
         }
-        .toggle-btn:hover {
+        .toggle-btn:hover, .lang-btn:hover {
             background: var(--accent);
-            color: #1e1a15;
-            transform: scale(0.97);
-        }
-        .lang-btn {
-            background: transparent;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--text-secondary);
-            padding: 6px 12px;
-            transition: 0.2s;
+            color: #000;
+            transform: scale(0.96);
         }
         .lang-btn.active {
-            color: var(--accent);
-            border-bottom: 2px solid var(--accent);
+            background: var(--accent);
+            color: #000;
+            border-bottom: none;
         }
 
         .logo-wrapper {
@@ -154,65 +152,83 @@
             animation: floatGlow 4s ease-in-out infinite;
         }
         .logo-img {
-            max-width: 280px;
+            max-width: 300px;
             width: 100%;
-            filter: drop-shadow(0 12px 22px rgba(0,0,0,0.25));
+            filter: drop-shadow(0 12px 22px rgba(0,0,0,0.4));
             border-radius: 32px;
             transition: transform 0.4s;
         }
         .logo-img:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
         @keyframes floatGlow {
-            0% { transform: translateY(0px); filter: drop-shadow(0 8px 12px rgba(212,175,55,0.3));}
-            50% { transform: translateY(-8px); filter: drop-shadow(0 18px 28px rgba(212,175,55,0.5));}
+            0% { transform: translateY(0px); filter: drop-shadow(0 8px 12px rgba(212,175,55,0.5));}
+            50% { transform: translateY(-8px); filter: drop-shadow(0 20px 28px rgba(212,175,55,0.8));}
             100% { transform: translateY(0px);}
         }
+        .logo-sub {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 20px;
+            color: var(--accent);
+            border-top: 2px solid var(--accent);
+            padding-top: 14px;
+        }
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 30px auto 0;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             position: relative;
             display: inline-block;
-            color: var(--accent-dark);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--accent);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
         }
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -12px;
+            bottom: -15px;
             right: 20%;
             width: 60%;
-            height: 3px;
+            height: 4px;
             background: var(--accent);
             border-radius: 6px;
         }
         .title-center {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 55px;
         }
 
-        /* شبكات الصور العملاء + تأثيرات ثلاثية */
+        /* شبكة العملاء */
         .customer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 28px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 30px;
+            margin: 45px 0;
         }
         .customer-photo {
-            border-radius: 32px;
+            border-radius: 36px;
             overflow: hidden;
             aspect-ratio: 1/1;
-            border: 2px solid var(--accent);
+            border: 3px solid var(--accent);
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             box-shadow: var(--shadow);
             cursor: pointer;
             transform-style: preserve-3d;
         }
         .customer-photo:hover {
-            transform: translateY(-8px) scale(1.02) rotateY(2deg);
+            transform: translateY(-12px) scale(1.02) rotateY(3deg);
             border-color: var(--accent-dark);
-            box-shadow: 0 25px 35px -10px rgba(0,0,0,0.3);
+            box-shadow: 0 30px 40px -12px rgba(0,0,0,0.6);
         }
         .customer-photo img {
             width: 100%;
@@ -221,7 +237,7 @@
             transition: transform 0.5s;
         }
         .customer-photo:hover img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
 
         /* بطاقات الهدايا */
@@ -229,29 +245,42 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 35px;
+            gap: 40px;
         }
         .gift-card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 48px;
-            padding: 30px 28px;
-            width: 270px;
+            backdrop-filter: blur(14px);
+            border-radius: 56px;
+            padding: 32px 28px;
+            width: 280px;
             text-align: center;
-            border: 1px solid var(--accent);
+            border: 2px solid var(--accent);
             transition: all 0.35s ease;
             box-shadow: var(--shadow);
             transform: translateY(0);
         }
         .gift-card:hover {
-            transform: translateY(-15px) scale(1.02);
+            transform: translateY(-18px) scale(1.02);
             border-color: var(--accent-dark);
-            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.4);
+            box-shadow: 0 35px 45px -15px black;
         }
         .gift-icon {
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+        }
+        .gift-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+        .resort-info {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-secondary);
         }
 
         /* منتجعات */
@@ -259,64 +288,93 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 35px;
+            gap: 40px;
         }
         .resort-card {
-            width: 300px;
-            border-radius: 40px;
+            width: 320px;
+            border-radius: 48px;
             overflow: hidden;
             background: var(--bg-card);
             transition: 0.3s;
-            border: 1px solid var(--accent);
+            border: 2px solid var(--accent);
             transform: translateZ(0);
         }
         .resort-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-15px);
             border-color: var(--accent-dark);
-            box-shadow: 0 28px 30px -12px black;
+            box-shadow: 0 35px 30px -12px black;
         }
         .resort-img {
-            height: 220px;
+            height: 240px;
             background-size: cover;
             background-position: center;
-            transition: transform 0.5s;
+            transition: transform 0.6s;
         }
         .resort-card:hover .resort-img {
-            transform: scale(1.05);
+            transform: scale(1.06);
+        }
+        .resort-card h4 {
+            font-size: 1.6rem;
+            padding: 22px;
+            text-align: center;
+            font-weight: 800;
+            color: var(--accent);
         }
 
         /* الفروع */
         .branches-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 35px;
+            gap: 40px;
         }
         .branch {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 48px;
-            padding: 30px;
-            border: 1px solid var(--accent);
+            backdrop-filter: blur(14px);
+            border-radius: 56px;
+            padding: 35px;
+            border: 2px solid var(--accent);
             transition: 0.3s;
         }
         .branch:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             border-color: var(--accent-dark);
+        }
+        .branch i {
+            font-size: 2.5rem;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .branch address {
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .pickup-hours {
+            margin-top: 20px;
+            font-weight: 700;
+            color: var(--accent);
         }
 
         .phone-card {
             background: var(--card-bg);
             border-radius: 100px;
-            padding: 12px 32px;
+            padding: 14px 35px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            border: 1px solid var(--accent);
+            gap: 20px;
+            border: 2px solid var(--accent);
             transition: 0.2s;
+        }
+        .phone-card a {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
         }
         .phone-card:hover {
             transform: scale(1.02);
-            background: rgba(212,175,55,0.2);
+            background: rgba(212,175,55,0.25);
         }
 
         .lightbox {
@@ -339,8 +397,8 @@
         .lightbox img {
             max-width: 85vw;
             max-height: 85vh;
-            border-radius: 28px;
-            border: 3px solid var(--accent);
+            border-radius: 32px;
+            border: 4px solid var(--accent);
             animation: zoomIn 0.2s ease;
         }
         @keyframes zoomIn {
@@ -351,26 +409,38 @@
             background: var(--footer-bg);
             color: var(--footer-text);
             text-align: center;
-            padding: 28px 0;
+            padding: 32px 0;
+            font-size: 1rem;
+            font-weight: 500;
         }
         .designer {
             background: var(--bg-section);
             text-align: center;
-            padding: 30px 0;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-light);
+            padding: 35px 0;
+            font-size: 1rem;
+            border-top: 2px solid var(--accent);
+        }
+        .optional-note-badge {
+            background: var(--card-bg);
+            border-radius: 60px;
+            padding: 12px 28px;
+            display: inline-block;
+            font-weight: 700;
+            color: var(--accent);
+            border: 1px solid var(--accent);
         }
 
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
-            .gift-card { width: 240px; padding: 20px; }
+            .gift-card { width: 260px; padding: 24px; }
+            .section-title { font-size: 1.9rem; }
+            .intro-text { font-size: 1rem; }
         }
         body[dir="ltr"] { text-align: left; }
         body[dir="rtl"] { text-align: right; }
     </style>
 </head>
 <body>
-    <!-- Canvas 3D الخلفية التفاعلية -->
     <canvas id="canvas-3d"></canvas>
 
     <div class="site-content">
@@ -384,8 +454,8 @@
 
         <div class="hero-logo" data-aos="fade-down">
             <div class="logo-wrapper">
-                <img src="IMG_2845.jpeg" alt="Holidays Logo" class="logo-img" onerror="this.src='https://placehold.co/450x150/d4af37/1e2a32?text=Holidayz'">
-                <div class="logo-sub" data-ar="دعاية وإعلان استثنائي - تجربة 3D" data-en="Premium Advertising - 3D Experience">دعاية وإعلان استثنائي</div>
+                <img src="IMG_2845.jpeg" alt="Holidays Logo" class="logo-img" onerror="this.src='https://placehold.co/500x160/d4af37/1e2a32?text=Holidayz'">
+                <div class="logo-sub" data-ar="دعاية وإعلان استثنائي - تجربة 3D فائقة" data-en="Premium Advertising - Ultra 3D Experience">دعاية وإعلان استثنائي</div>
             </div>
             <p class="intro-text" data-ar="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك." data-en="Holidays company specializes in marketing advertising for commercial, entertainment and tourism venues. Listen to our ads for 30 minutes or an hour at our premises, and receive a free gift. Photography is optional and not mandatory — we respect your privacy.">
                 شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك.
@@ -393,12 +463,11 @@
         </div>
 
         <main>
-            <!-- عملاء استلموا الهدايا -->
             <div class="section">
                 <div class="container">
                     <div class="title-center" data-aos="fade-up">
                         <h2 class="section-title" data-ar="عملاء استلموا هداياهم" data-en="Customers received their gifts">عملاء استلموا هداياهم</h2>
-                        <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.9;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</p>
+                        <p style="font-size: 1rem; margin-top: 15px; opacity:0.95; font-weight:500;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</p>
                     </div>
                     <div class="customer-grid" data-aos="fade-up">
                         <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="customer"></div>
@@ -407,11 +476,10 @@
                         <div class="customer-photo" data-img-src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="customer"></div>
                         <div class="customer-photo" data-img-src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="customer"></div>
                     </div>
-                    <div class="optional-note-badge" style="display: block; text-align: center; width: fit-content; margin: 20px auto 0;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</div>
+                    <div class="optional-note-badge" style="display: table; margin: 20px auto 0;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</div>
                 </div>
             </div>
 
-            <!-- الهدايا المجانية -->
             <div class="section">
                 <div class="container">
                     <div class="title-center" data-aos="fade-up">
@@ -428,16 +496,13 @@
                             <div class="resort-info" data-ar="3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)" data-en="3 days, 4 nights · 4-6 persons<br>Customer covers meals<br>Gift determined by receipt number (not optional)">3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)</div>
                         </div>
                     </div>
-                    <div class="optional-note-badge" style="margin: 30px auto 0; text-align: center; display: table;" data-ar="الهدية مجانية بالكامل، بدون أي رسوم إضافية" data-en="The gift is completely free, with no additional fees">الهدية مجانية بالكامل، بدون أي رسوم إضافية</div>
+                    <div class="optional-note-badge" style="margin: 40px auto 0; display: table;" data-ar="الهدية مجانية بالكامل، بدون أي رسوم إضافية" data-en="The gift is completely free, with no additional fees">الهدية مجانية بالكامل، بدون أي رسوم إضافية</div>
                 </div>
             </div>
 
-            <!-- وجهات المصيف -->
             <div class="section">
                 <div class="container">
-                    <div class="title-center" data-aos="fade-up">
-                        <h2 class="section-title" data-ar="وجهات المصيف المجانية" data-en="Free Resort Destinations">وجهات المصيف المجانية</h2>
-                    </div>
+                    <div class="title-center" data-aos="fade-up"><h2 class="section-title" data-ar="وجهات المصيف المجانية" data-en="Free Resort Destinations">وجهات المصيف المجانية</h2></div>
                     <div class="resort-grid" data-aos="fade-up">
                         <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3019.jpeg');"></div><h4>شرم الشيخ</h4></div>
                         <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3020.jpeg');"></div><h4>الغردقة</h4></div>
@@ -446,7 +511,6 @@
                 </div>
             </div>
 
-            <!-- الفروع -->
             <div class="section">
                 <div class="container">
                     <div class="title-center" data-aos="fade-up"><h2 class="section-title" data-ar="فروع شركة هوليدايز" data-en="Holidays Branches">فروع شركة هوليدايز</h2></div>
@@ -465,20 +529,19 @@
                 </div>
             </div>
 
-            <!-- أرقام الاتصال -->
-            <div class="section" style="padding-bottom: 50px;">
+            <div class="section" style="padding-bottom: 60px;">
                 <div class="container">
                     <div class="title-center" data-aos="fade-up"><h2 class="section-title" data-ar="تواصل مع خدمة العملاء" data-en="Contact Customer Service">تواصل مع خدمة العملاء</h2></div>
-                    <div class="contact-numbers" data-aos="fade-up">
+                    <div class="contact-numbers" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;" data-aos="fade-up">
                         <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01040782134">01040782134</a></div>
                         <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01515752259">01515752259</a></div>
                         <div class="phone-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201040514792" target="_blank">01040514792</a><a href="tel:01040514792"><i class="fas fa-phone-alt"></i></a></div>
                     </div>
                 </div>
             </div>
-            <div class="designer" data-aos="fade-up"><span>designed by </span><strong>Amr Khaled</strong><div style="margin: 10px auto 0; width: 40px; height: 1px; background: var(--accent);"></div><span>شركة هوليدايز – دعاية وإعلان تفاعلي 3D</span></div>
+            <div class="designer" data-aos="fade-up"><span>designed by </span><strong>Amr Khaled</strong><div style="margin: 10px auto 0; width: 50px; height: 2px; background: var(--accent);"></div><span>شركة هوليدايز – دعاية وإعلان بتقنية 3D</span></div>
         </main>
-        <footer><div class="container"><p data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</p><p style="font-size: 0.75rem; margin-top: 10px;" data-ar="التصوير اختياري — الهدايا حقيقية وليست وهمية" data-en="Photography optional — gifts are real not imaginary">التصوير اختياري — الهدايا حقيقية وليست وهمية</p></div></footer>
+        <footer><div class="container"><p data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</p><p style="margin-top: 12px;" data-ar="التصوير اختياري — الهدايا حقيقية وليست وهمية" data-en="Photography optional — gifts are real not imaginary">التصوير اختياري — الهدايا حقيقية وليست وهمية</p></div></footer>
     </div>
 
     <div id="lightbox" class="lightbox"><button class="close-lightbox" id="closeLightboxBtn">✕</button><img id="lightboxImg" src="" alt="Enlarged"></div>
@@ -495,81 +558,78 @@
     <script type="module">
         import * as THREE from 'three';
 
-        // تهيئة المشهد ثلاثي الأبعاد المتقدم
         const canvas = document.getElementById('canvas-3d');
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x050b1a); // لون عميق في البداية
-        scene.fog = new THREE.FogExp2(0x050b1a, 0.008);
+        scene.background = new THREE.Color(0x050b1a);
+        scene.fog = new THREE.FogExp2(0x050b1a, 0.006);
 
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 1.5, 9);
+        const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 1.2, 8.5);
         camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGLRenderer({ canvas, alpha: false, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
 
-        // إضاءة ساحرة
+        // Lighting
         const ambientLight = new THREE.AmbientLight(0x404060);
         scene.add(ambientLight);
-        const mainLight = new THREE.DirectionalLight(0xffeebb, 1.2);
-        mainLight.position.set(3, 5, 2);
+        const mainLight = new THREE.DirectionalLight(0xffeebb, 1.3);
+        mainLight.position.set(3, 6, 2);
         scene.add(mainLight);
-        const backLight = new THREE.PointLight(0xaa8866, 0.8);
+        const backLight = new THREE.PointLight(0xccaa77, 0.9);
         backLight.position.set(-2, 1, -4);
         scene.add(backLight);
-        const fillLight = new THREE.PointLight(0xccaaff, 0.5);
+        const fillLight = new THREE.PointLight(0xccaaff, 0.7);
         fillLight.position.set(1, 2, 3);
         scene.add(fillLight);
         
-        // كائن ثلاثي الأبعاد رئيسي: TorusKnot ذهبي متحرك
-        const knotGeometry = new THREE.TorusKnotGeometry(1.1, 0.32, 180, 24, 3, 4);
-        const knotMaterial = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0x442200, roughness: 0.3, metalness: 0.85, emissiveIntensity: 0.5 });
+        // Main 3D Object: Golden TorusKnot
+        const knotGeometry = new THREE.TorusKnotGeometry(1.15, 0.34, 200, 28, 3, 4);
+        const knotMaterial = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0x442200, roughness: 0.25, metalness: 0.9, emissiveIntensity: 0.55 });
         const torusKnot = new THREE.Mesh(knotGeometry, knotMaterial);
         scene.add(torusKnot);
         
-        // حلقة من الكرات الصغيرة (جزيئات ذهبية)
+        // Particle Ring
         const particleRingGeometry = new THREE.BufferGeometry();
-        const particleCount = 800;
+        const particleCount = 1000;
         const positions = new Float32Array(particleCount * 3);
         for (let i = 0; i < particleCount; i++) {
             const angle = (i / particleCount) * Math.PI * 2;
-            const radius = 1.9;
+            const radius = 2.05;
             const x = Math.cos(angle) * radius;
             const z = Math.sin(angle) * radius;
-            const y = Math.sin(angle * 3) * 0.5;
+            const y = Math.sin(angle * 4) * 0.55;
             positions[i*3] = x;
             positions[i*3+1] = y;
             positions[i*3+2] = z;
         }
         particleRingGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particleMat = new THREE.PointsMaterial({ color: 0xffaa55, size: 0.05, transparent: true, blending: THREE.AdditiveBlending });
+        const particleMat = new THREE.PointsMaterial({ color: 0xffaa66, size: 0.06, transparent: true, blending: THREE.AdditiveBlending });
         const ringPoints = new THREE.Points(particleRingGeometry, particleMat);
         scene.add(ringPoints);
         
-        // جزيئات نجمية عائمة في الخلفية
+        // Starfield
         const starGeometry = new THREE.BufferGeometry();
-        const starCount = 1400;
+        const starCount = 2000;
         const starPositions = new Float32Array(starCount * 3);
         for (let i = 0; i < starCount; i++) {
-            starPositions[i*3] = (Math.random() - 0.5) * 200;
-            starPositions[i*3+1] = (Math.random() - 0.5) * 100;
-            starPositions[i*3+2] = (Math.random() - 0.5) * 80 - 40;
+            starPositions[i*3] = (Math.random() - 0.5) * 220;
+            starPositions[i*3+1] = (Math.random() - 0.5) * 110;
+            starPositions[i*3+2] = (Math.random() - 0.5) * 90 - 45;
         }
         starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-        const starMaterial = new THREE.PointsMaterial({ color: 0xcbaa6e, size: 0.08, transparent: true, opacity: 0.7 });
+        const starMaterial = new THREE.PointsMaterial({ color: 0xd4aa6a, size: 0.08, transparent: true, opacity: 0.8 });
         const starField = new THREE.Points(starGeometry, starMaterial);
         scene.add(starField);
         
-        // إضافة هالة ضوئية باستخدام Sphere
-        const glowGeometry = new THREE.SphereGeometry(1.55, 32, 32);
-        const glowMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.07, side: THREE.BackSide });
+        // Glow Sphere
+        const glowGeometry = new THREE.SphereGeometry(1.65, 32, 32);
+        const glowMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.09, side: THREE.BackSide });
         const glowSphere = new THREE.Mesh(glowGeometry, glowMat);
         scene.add(glowSphere);
         
         let time = 0;
-        
-        // دالة لتحديث ألوان الثري دي حسب الثيم
         function update3DColors(isDarkMode) {
             const mainColor = isDarkMode ? 0xe6bc6e : 0xd4af37;
             const emissiveColor = isDarkMode ? 0x552200 : 0x442200;
@@ -581,11 +641,9 @@
             scene.fog.color.setHex(isDarkMode ? 0x020617 : 0x0e1a2b);
         }
         
-        // مراقبة تغيير الثيم
         const bodyEl = document.body;
         let currentTheme = bodyEl.classList.contains('dark');
         update3DColors(currentTheme);
-        
         const themeObserver = new MutationObserver(() => {
             const isDark = bodyEl.classList.contains('dark');
             if (isDark !== currentTheme) {
@@ -595,63 +653,38 @@
         });
         themeObserver.observe(bodyEl, { attributes: true, attributeFilter: ['class'] });
         
-        // حركة الكاميرا و التفاعل الخفيف مع الماوس
         let mouseX = 0, mouseY = 0;
         document.addEventListener('mousemove', (event) => {
             mouseX = (event.clientX / window.innerWidth) * 2 - 1;
             mouseY = (event.clientY / window.innerHeight) * 2 - 1;
         });
         
-        // animation loop
         function animate() {
             requestAnimationFrame(animate);
-            time += 0.008;
-            
-            // دوران العقدة الرئيسية
-            torusKnot.rotation.x = Math.sin(time * 0.5) * 0.2;
-            torusKnot.rotation.y = time * 0.6;
-            torusKnot.rotation.z = Math.sin(time * 0.3) * 0.15;
-            
-            ringPoints.rotation.y = time * 0.3;
-            ringPoints.rotation.x = Math.sin(time * 0.4) * 0.2;
-            
-            starField.rotation.y += 0.0005;
-            starField.rotation.x += 0.0003;
-            
-            glowSphere.rotation.y += 0.003;
-            
-            // تفاعل بسيط للكاميرا مع الماوس
-            camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY * 0.3 - camera.position.y) * 0.05;
+            time += 0.009;
+            torusKnot.rotation.x = Math.sin(time * 0.5) * 0.25;
+            torusKnot.rotation.y = time * 0.7;
+            torusKnot.rotation.z = Math.sin(time * 0.4) * 0.2;
+            ringPoints.rotation.y = time * 0.35;
+            ringPoints.rotation.x = Math.sin(time * 0.45) * 0.25;
+            starField.rotation.y += 0.0006;
+            starField.rotation.x += 0.0004;
+            glowSphere.rotation.y += 0.004;
+            camera.position.x += (mouseX * 0.6 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 0.4 - camera.position.y) * 0.05;
             camera.lookAt(0, 0.2, 0);
-            
             renderer.render(scene, camera);
         }
-        
         animate();
-        
-        window.addEventListener('resize', onWindowResize, false);
-        function onWindowResize() {
+        window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-        
-        // إضافة تأثيرات إضافية: تغيير لون الخلفية حسب التمرير (اختياري لمسة حيوية)
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const intensity = Math.min(0.2, scrollY / 2000);
-            if (!currentTheme) scene.background.setHex(0x0e1a2b);
-            else scene.background.setHex(0x020617);
         });
-        
-        console.log('3D World Activated | Holidayz');
     </script>
 
     <script>
-        // AOS and standard functionalities (lightbox, bilingual, theme toggle)
         AOS.init({ duration: 800, once: false, mirror: false });
-        
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const closeBtn = document.getElementById('closeLightboxBtn');
@@ -664,7 +697,6 @@
         closeBtn.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
         
-        // Theme toggle
         const themeBtn = document.getElementById('themeToggle');
         const rootBody = document.body;
         let currentLang = 'ar';
@@ -682,7 +714,6 @@
             updateThemeButtonText();
         });
         
-        // Bilingual
         const langButtons = document.querySelectorAll('.lang-btn');
         function updateTexts(lang) {
             currentLang = lang;
