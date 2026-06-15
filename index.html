@@ -72,9 +72,9 @@
             --card-bg: rgba(18, 15, 12, 0.85);
         }
 
-        /* تذييل أسود كاحل بتأثير زجاجي */
+        /* تذييل أسود كاحل بتأثير زجاجي فاخر */
         footer, .designer {
-            background: rgba(0, 0, 0, 0.95) !important;
+            background: rgba(0, 0, 0, 0.96) !important;
             backdrop-filter: blur(16px);
             border-top: 1px solid rgba(212, 175, 55, 0.5);
             color: #f5e7d3;
@@ -82,8 +82,105 @@
         body.dark footer, body.dark .designer {
             background: rgba(0, 0, 0, 0.98) !important;
         }
-        .designer strong { color: #d4af37; }
+        .designer {
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .designer strong {
+            color: var(--accent-glow);
+            font-weight: 800;
+        }
+        .designer span {
+            opacity: 0.8;
+        }
+        .designer .designer-line {
+            width: 60px;
+            height: 2px;
+            background: var(--accent-glow);
+            margin: 12px auto;
+            border-radius: 4px;
+        }
 
+        /* تحسين بطاقات الاتصال (أرقام الهاتف) */
+        .contact-section {
+            padding-bottom: 60px;
+        }
+        .contact-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .phone-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            border-radius: 80px;
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            border: 1px solid var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: var(--shadow);
+        }
+        .phone-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.4);
+            background: rgba(212, 175, 55, 0.15);
+        }
+        .phone-card i {
+            font-size: 2rem;
+            color: var(--accent-glow);
+            transition: transform 0.2s;
+        }
+        .phone-card:hover i {
+            transform: scale(1.1);
+        }
+        .phone-card a {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            direction: ltr;
+            display: inline-block;
+        }
+        .phone-card .fa-phone-alt {
+            color: #4c9aff;
+        }
+        .phone-card .fa-whatsapp {
+            color: #25D366;
+        }
+        /* تحسين منطقة "designed by" والمعلومات السفلية */
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        .footer-info span {
+            padding: 0 10px;
+            border-right: 1px solid rgba(212, 175, 55, 0.4);
+        }
+        .footer-info span:first-child {
+            border-right: none;
+        }
+        @media (max-width: 600px) {
+            .footer-info span {
+                border-right: none;
+                display: block;
+                margin: 5px 0;
+            }
+        }
+
+        /* باقي الأنماط الأساسية (محسنة للوضوح) */
         .top-bar {
             background: var(--bg-hero);
             backdrop-filter: var(--glass-blur);
@@ -118,7 +215,6 @@
             padding: 0 28px;
         }
 
-        /* أزرار فاخرة */
         .toggle-btn, .lang-btn {
             background: rgba(0,0,0,0.5);
             border: 1px solid var(--accent-glow);
@@ -195,7 +291,7 @@
         }
         .title-center { text-align: center; margin-bottom: 55px; }
 
-        /* معرض العملاء بتأثير 3D */
+        /* معرض العملاء */
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -219,7 +315,7 @@
         .customer-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .customer-photo:hover img { transform: scale(1.08); }
 
-        /* بطاقات الهدايا ثلاثية الأبعاد */
+        /* بطاقات الهدايا */
         .gifts-grid {
             display: flex;
             flex-wrap: wrap;
@@ -292,18 +388,6 @@
         .branch i { font-size: 2.5rem; margin-bottom: 18px; color: var(--accent-glow); }
         .branch address { font-size: 1rem; line-height: 1.7; font-weight: 500; color: var(--text-primary); }
         .pickup-hours { margin-top: 20px; font-weight: 700; color: var(--accent); }
-        .phone-card {
-            background: var(--card-bg);
-            border-radius: 100px;
-            padding: 14px 35px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            border: 2px solid var(--accent-glow);
-            transition: 0.2s;
-        }
-        .phone-card a { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
-        .phone-card:hover { transform: scale(1.02); background: rgba(212,175,55,0.25); }
         .optional-note-badge {
             background: var(--card-bg);
             border-radius: 60px;
@@ -392,6 +476,8 @@
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             .section-title { font-size: 1.9rem; }
+            .phone-card { padding: 12px 22px; }
+            .phone-card a { font-size: 1rem; }
         }
     </style>
 </head>
@@ -471,15 +557,47 @@
                 </div></div>
             </div>
 
-            <div class="section"><div class="container"><div class="title-center" data-aos="fade-up"><h2 class="section-title" data-ar="تواصل مع خدمة العملاء" data-en="Contact Customer Service">تواصل مع خدمة العملاء</h2></div>
-            <div class="contact-numbers" style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px;" data-aos="fade-up">
-                <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01040782134">01040782134</a></div>
-                <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01515752259">01515752259</a></div>
-                <div class="phone-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201040514792" target="_blank">01040514792</a><a href="tel:01040514792"><i class="fas fa-phone-alt"></i></a></div>
-            </div></div></div>
-            <div class="designer" data-aos="fade-up"><span>designed by </span><strong>Amr Khaled</strong><div style="margin:10px auto 0; width:50px; height:2px; background:#d4af37;"></div><span>شركة هوليدايز – دعاية وإعلان بتقنية 3D</span></div>
+            <!-- تحسين منطقة الاتصال بشكل احترافي -->
+            <div class="section contact-section">
+                <div class="container">
+                    <div class="title-center" data-aos="fade-up">
+                        <h2 class="section-title" data-ar="تواصل مع خدمة العملاء" data-en="Contact Customer Service">تواصل مع خدمة العملاء</h2>
+                    </div>
+                    <div class="contact-cards" data-aos="fade-up">
+                        <div class="phone-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:01040782134">01040782134</a>
+                        </div>
+                        <div class="phone-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:01515752259">01515752259</a>
+                        </div>
+                        <div class="phone-card">
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/201040514792" target="_blank">01040514792</a>
+                            <a href="tel:01040514792" style="margin-right: 10px;"><i class="fas fa-phone-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تحسين قسم "designed by" والمعلومات السفلية -->
+            <div class="designer" data-aos="fade-up">
+                <span>designed by </span><strong>Amr Khaled</strong>
+                <div class="designer-line"></div>
+                <div class="footer-info">
+                    <span>شركة هوليدايز – دعاية وإعلان بتقنية 3D</span>
+                    <span>شركة هوليدايز – للدعاية الإعلانية</span>
+                    <span>التصوير اختياري – الهدايا حقيقية</span>
+                </div>
+            </div>
         </main>
-        <footer><div class="container"><p data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</p><p style="margin-top:12px;" data-ar="التصوير اختياري — الهدايا حقيقية" data-en="Photography optional — gifts are real">التصوير اختياري — الهدايا حقيقية</p></div></footer>
+        <footer>
+            <div class="container">
+                <p data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</p>
+                <p style="margin-top: 8px; font-size: 0.75rem; opacity: 0.7;">xyubii.github.io</p>
+            </div>
+        </footer>
     </div>
 
     <div id="lightbox" class="lightbox"><button class="close-lightbox" id="closeLightboxBtn">✕</button><img id="lightboxImg" src=""></div>
@@ -605,7 +723,7 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
         
-        // === Intro سينمائية 3D (نتفلكس ستايل) ===
+        // === Intro سينمائية 3D ===
         const introCanvas = document.getElementById('introCanvas');
         const introScene = new THREE.Scene();
         introScene.background = new THREE.Color(0x000000);
@@ -615,13 +733,11 @@
         introRenderer.setSize(window.innerWidth, window.innerHeight);
         
         const introGroup = new THREE.Group();
-        // أيقونة ثلاثية الأبعاد للشعار (حلقة معقدة)
         const introLogoGeo = new THREE.TorusKnotGeometry(1.0, 0.28, 160, 24, 3, 4);
         const introLogoMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0x552200, metalness: 0.95, roughness: 0.2 });
         const introLogoMesh = new THREE.Mesh(introLogoGeo, introLogoMat);
         introGroup.add(introLogoMesh);
         
-        // جسيمات متطايرة حول الشعار
         const introParticleCount = 800;
         const introParticleGeo = new THREE.BufferGeometry();
         const introPositions = new Float32Array(introParticleCount * 3);
@@ -705,7 +821,7 @@
             curLang = lang;
             document.querySelectorAll('[data-ar][data-en]').forEach(el => { el.innerText = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en'); });
             document.querySelectorAll('.gift-card h3').forEach(el => { if(el.hasAttribute('data-ar')) el.innerText = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en'); });
-            document.querySelectorAll('.resort-info, .pickup-hours, .optional-note-badge, footer p, .logo-sub, .intro-text').forEach(el => { if(el.hasAttribute('data-ar')) el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en'); });
+            document.querySelectorAll('.resort-info, .pickup-hours, .optional-note-badge, footer p, .logo-sub, .intro-text, .footer-info span').forEach(el => { if(el.hasAttribute('data-ar')) el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en'); });
             document.querySelectorAll('.branch address strong').forEach(s => { s.innerText = lang === 'ar' ? s.getAttribute('data-ar') : s.getAttribute('data-en'); });
             document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
             updateThemeText();
