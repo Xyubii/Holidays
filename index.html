@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>هوليدايز | Holidayz - دعاية وإعلان</title>
-    <!-- Fonts -->
+    <title>هوليدايز | Holidayz - دعاية وإعلان - تجربة ثلاثية الأبعاد</title>
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- AOS -->
@@ -17,46 +17,98 @@
             transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* Light mode (default) */
-        :root {
-            --bg-body: #fefcf5;
-            --bg-hero: #fff8ed;
-            --bg-section: #ffffff;
-            --bg-card: #ffffff;
-            --text-primary: #1e2a32;
-            --text-secondary: #3c2a1f;
-            --border-light: #ede3d2;
-            --accent: #d4af37;
-            --accent-dark: #b8860b;
-            --shadow: 0 12px 28px rgba(0,0,0,0.05);
-            --card-bg: rgba(255,255,255,0.9);
-            --footer-bg: #1e2a24;
-            --footer-text: #ddd2c0;
-        }
-
-        body.dark {
-            --bg-body: #0b0a0a;
-            --bg-hero: #0c0907;
-            --bg-section: #050302;
-            --bg-card: #1f1b16e6;
-            --text-primary: #ece3d4;
-            --text-secondary: #dcd0b0;
-            --border-light: rgba(216, 178, 86, 0.2);
-            --accent: #e6bc6e;
-            --accent-dark: #c9a03d;
-            --shadow: 0 18px 28px -12px rgba(0,0,0,0.6);
-            --card-bg: rgba(20, 17, 14, 0.7);
-            --footer-bg: #050302;
-            --footer-text: #aa8f60;
-        }
-
+        /* إعدادات الطبقات للـ 3D */
         body {
             font-family: 'Cairo', sans-serif;
-            background: var(--bg-body);
-            color: var(--text-primary);
             line-height: 1.45;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            background: transparent; /* الخلفية شفافة لرؤية المشهد الثلاثي الأبعاد */
+            position: relative;
+        }
+
+        /* Canvas ثلاثي الأبعاد كطبقة خلفية ثابتة */
+        #canvas-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none; /* يسمح بالتفاعل مع المحتوى العلوي */
+            display: block;
+        }
+
+        /* كل المحتوى الرئيسي يكون فوق الكانفاس */
+        .site-content {
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(2px);
+        }
+
+        /* تحسين الشفافية و Glassmorphism لإظهار الخلفية 3D */
+        :root {
+            --bg-body: transparent;
+            --bg-hero: rgba(255, 248, 235, 0.65);
+            --bg-section: rgba(255, 252, 245, 0.6);
+            --bg-card: rgba(255, 255, 248, 0.75);
+            --text-primary: #1e2a32;
+            --text-secondary: #3c2a1f;
+            --border-light: rgba(212, 175, 55, 0.35);
+            --accent: #d4af37;
+            --accent-dark: #b8860b;
+            --shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+            --card-bg: rgba(255, 255, 245, 0.8);
+            --footer-bg: rgba(15, 12, 8, 0.85);
+            --footer-text: #f0e3cd;
+            --glass-blur: blur(12px);
+        }
+
+        body.dark {
+            --bg-hero: rgba(8, 6, 4, 0.7);
+            --bg-section: rgba(3, 2, 1, 0.65);
+            --bg-card: rgba(20, 17, 14, 0.75);
+            --text-primary: #ece3d4;
+            --text-secondary: #dcd0b0;
+            --border-light: rgba(212, 175, 55, 0.4);
+            --accent: #e6bc6e;
+            --accent-dark: #c9a03d;
+            --shadow: 0 20px 32px -12px rgba(0,0,0,0.6);
+            --card-bg: rgba(18, 15, 12, 0.8);
+            --footer-bg: rgba(0, 0, 0, 0.8);
+            --footer-text: #d4b87a;
+        }
+
+        /* تطبيق الزجاج على الأقسام */
+        .hero-logo, .section, .top-bar, footer, .gift-card, .branch, .phone-card, .designer {
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+        }
+
+        .top-bar {
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 101;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            padding: 16px 32px;
+        }
+
+        .hero-logo {
+            background: var(--bg-hero);
+            text-align: center;
+            padding: 40px 0 30px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section {
+            background: var(--bg-section);
+            padding: 70px 0;
+            border-bottom: 1px solid var(--border-light);
+            margin: 0;
         }
 
         .container {
@@ -65,38 +117,21 @@
             padding: 0 28px;
         }
 
-        /* Header with toggles */
-        .top-bar {
-            display: flex;
-            justify-content: flex-end;
-            gap: 16px;
-            padding: 16px 28px;
-            background: var(--bg-hero);
-            border-bottom: 1px solid var(--border-light);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
         .toggle-btn {
-            background: var(--bg-card);
+            background: rgba(0,0,0,0.2);
             border: 1px solid var(--accent);
-            border-radius: 40px;
-            padding: 6px 18px;
+            border-radius: 60px;
+            padding: 6px 20px;
             cursor: pointer;
-            font-family: inherit;
             font-weight: 600;
             color: var(--text-primary);
-            transition: 0.2s;
-            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
         }
         .toggle-btn:hover {
             background: var(--accent);
             color: #1e1a15;
-        }
-        .lang-switch {
-            display: flex;
-            gap: 8px;
+            transform: scale(0.97);
         }
         .lang-btn {
             background: transparent;
@@ -104,70 +139,43 @@
             font-weight: 600;
             cursor: pointer;
             color: var(--text-secondary);
-            padding: 0 4px;
+            padding: 6px 12px;
+            transition: 0.2s;
         }
         .lang-btn.active {
             color: var(--accent);
             border-bottom: 2px solid var(--accent);
         }
 
-        /* Hero logo */
-        .hero-logo {
-            text-align: center;
-            padding: 40px 0 30px;
-            background: var(--bg-hero);
-            border-bottom: 1px solid var(--border-light);
-        }
         .logo-wrapper {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
-            animation: floatGlow 3s ease-in-out infinite;
+            animation: floatGlow 4s ease-in-out infinite;
         }
         .logo-img {
-            max-width: 260px;
+            max-width: 280px;
             width: 100%;
-            height: auto;
-            filter: drop-shadow(0 8px 18px rgba(0,0,0,0.12));
-            border-radius: 24px;
-            background: #15100b10;
-            padding: 6px 12px;
+            filter: drop-shadow(0 12px 22px rgba(0,0,0,0.25));
+            border-radius: 32px;
+            transition: transform 0.4s;
+        }
+        .logo-img:hover {
+            transform: scale(1.02);
         }
         @keyframes floatGlow {
-            0% { transform: translateY(0px);}
-            50% { transform: translateY(-6px);}
+            0% { transform: translateY(0px); filter: drop-shadow(0 8px 12px rgba(212,175,55,0.3));}
+            50% { transform: translateY(-8px); filter: drop-shadow(0 18px 28px rgba(212,175,55,0.5));}
             100% { transform: translateY(0px);}
-        }
-        .logo-sub {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--accent-dark);
-            letter-spacing: 2px;
-            border-top: 1px solid var(--accent);
-            padding-top: 12px;
-            margin-top: 16px;
-        }
-        .intro-text {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            max-width: 720px;
-            margin: 24px auto 0;
-            color: var(--text-secondary);
-        }
-
-        .section {
-            padding: 70px 0;
-            border-bottom: 1px solid var(--border-light);
-            background: var(--bg-section);
         }
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            font-weight: 800;
             position: relative;
             display: inline-block;
             color: var(--accent-dark);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .section-title::after {
             content: '';
@@ -177,42 +185,140 @@
             width: 60%;
             height: 3px;
             background: var(--accent);
-            border-radius: 4px;
+            border-radius: 6px;
         }
         .title-center {
             text-align: center;
             margin-bottom: 48px;
         }
 
-        /* customer gallery */
+        /* شبكات الصور العملاء + تأثيرات ثلاثية */
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 24px;
-            margin: 32px 0 16px;
+            gap: 28px;
+            margin: 40px 0;
         }
         .customer-photo {
-            border-radius: 28px;
+            border-radius: 32px;
             overflow: hidden;
-            aspect-ratio: 1 / 1;
-            background: #1f1914;
-            border: 1px solid var(--accent);
-            transition: all 0.35s ease;
+            aspect-ratio: 1/1;
+            border: 2px solid var(--accent);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             box-shadow: var(--shadow);
             cursor: pointer;
+            transform-style: preserve-3d;
         }
         .customer-photo:hover {
-            transform: scale(1.02);
+            transform: translateY(-8px) scale(1.02) rotateY(2deg);
             border-color: var(--accent-dark);
+            box-shadow: 0 25px 35px -10px rgba(0,0,0,0.3);
         }
         .customer-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            transition: transform 0.5s;
+        }
+        .customer-photo:hover img {
+            transform: scale(1.08);
         }
 
-        /* lightbox */
+        /* بطاقات الهدايا */
+        .gifts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+        }
+        .gift-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 30px 28px;
+            width: 270px;
+            text-align: center;
+            border: 1px solid var(--accent);
+            transition: all 0.35s ease;
+            box-shadow: var(--shadow);
+            transform: translateY(0);
+        }
+        .gift-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--accent-dark);
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.4);
+        }
+        .gift-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* منتجعات */
+        .resort-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+        }
+        .resort-card {
+            width: 300px;
+            border-radius: 40px;
+            overflow: hidden;
+            background: var(--bg-card);
+            transition: 0.3s;
+            border: 1px solid var(--accent);
+            transform: translateZ(0);
+        }
+        .resort-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent-dark);
+            box-shadow: 0 28px 30px -12px black;
+        }
+        .resort-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s;
+        }
+        .resort-card:hover .resort-img {
+            transform: scale(1.05);
+        }
+
+        /* الفروع */
+        .branches-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+        }
+        .branch {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 30px;
+            border: 1px solid var(--accent);
+            transition: 0.3s;
+        }
+        .branch:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-dark);
+        }
+
+        .phone-card {
+            background: var(--card-bg);
+            border-radius: 100px;
+            padding: 12px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid var(--accent);
+            transition: 0.2s;
+        }
+        .phone-card:hover {
+            transform: scale(1.02);
+            background: rgba(212,175,55,0.2);
+        }
+
         .lightbox {
             display: none;
             position: fixed;
@@ -221,7 +327,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -231,177 +337,15 @@
             display: flex;
         }
         .lightbox img {
-            max-width: 90vw;
+            max-width: 85vw;
             max-height: 85vh;
-            object-fit: contain;
-            border-radius: 24px;
-            border: 2px solid var(--accent);
+            border-radius: 28px;
+            border: 3px solid var(--accent);
+            animation: zoomIn 0.2s ease;
         }
-        .lightbox .close-lightbox {
-            position: absolute;
-            top: 28px;
-            left: 32px;
-            font-size: 2rem;
-            color: var(--accent);
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* gifts grid */
-        .gifts-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 28px;
-            margin: 40px 0 20px;
-        }
-        .gift-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
-            border-radius: 42px;
-            padding: 28px 26px;
-            width: 260px;
-            text-align: center;
-            border: 1px solid var(--accent);
-            transition: all 0.3s;
-            box-shadow: var(--shadow);
-        }
-        .gift-card:hover {
-            transform: translateY(-7px);
-            border-color: var(--accent-dark);
-        }
-        .gift-icon {
-            font-size: 2.8rem;
-            color: var(--accent);
-            margin-bottom: 18px;
-        }
-        .gift-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-        .resort-info {
-            margin-top: 14px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            border-top: 1px dashed var(--accent);
-            padding-top: 10px;
-        }
-
-        /* resort gallery */
-        .resort-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 40px;
-        }
-        .resort-card {
-            width: 300px;
-            border-radius: 32px;
-            overflow: hidden;
-            background: var(--bg-card);
-            transition: 0.3s;
-            border: 1px solid var(--accent);
-        }
-        .resort-card:hover {
-            transform: translateY(-6px);
-        }
-        .resort-img {
-            height: 210px;
-            background-size: cover;
-            background-position: center;
-        }
-        .resort-card h4 {
-            text-align: center;
-            padding: 18px;
-            font-weight: 600;
-            background: var(--bg-section);
-            color: var(--accent-dark);
-        }
-
-        /* branches */
-        .branches-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            margin: 40px 0;
-        }
-        .branch {
-            flex: 1;
-            min-width: 280px;
-            background: var(--card-bg);
-            border-radius: 36px;
-            padding: 28px 26px;
-            border: 1px solid var(--accent);
-        }
-        .branch i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 14px;
-        }
-        .branch address {
-            font-style: normal;
-            font-weight: 500;
-            line-height: 1.65;
-            color: var(--text-primary);
-        }
-        .pickup-hours {
-            margin-top: 16px;
-            font-size: 0.85rem;
-            color: var(--accent);
-            border-top: 1px dashed var(--accent);
-            padding-top: 12px;
-        }
-
-        /* contact */
-        .contact-numbers {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 40px 0 20px;
-        }
-        .phone-card {
-            background: var(--card-bg);
-            border-radius: 60px;
-            padding: 12px 28px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border: 1px solid var(--accent);
-        }
-        .phone-card a {
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            direction: ltr;
-        }
-        .phone-card i {
-            font-size: 1.4rem;
-            color: #25D366;
-        }
-        .phone-card .fa-phone-alt {
-            color: #4c9aff;
-        }
-        .optional-note-badge {
-            background: var(--card-bg);
-            border-radius: 60px;
-            padding: 10px 22px;
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 0.85rem;
-            border-right: 3px solid var(--accent);
-        }
-
-        .designer {
-            text-align: center;
-            padding: 30px 0 20px;
-            font-size: 0.85rem;
-            color: var(--accent-dark);
-            border-top: 1px solid var(--border-light);
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
         footer {
             background: var(--footer-bg);
@@ -409,259 +353,350 @@
             text-align: center;
             padding: 28px 0;
         }
+        .designer {
+            background: var(--bg-section);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-light);
+        }
 
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
-            .gift-card { width: 220px; padding: 20px; }
-            .customer-grid { gap: 16px; }
+            .gift-card { width: 240px; padding: 20px; }
         }
-
-        /* data-aos override */
-        [data-aos] {
-            pointer-events: auto;
-        }
-        body[dir="ltr"] {
-            text-align: left;
-        }
-        body[dir="rtl"] {
-            text-align: right;
-        }
+        body[dir="ltr"] { text-align: left; }
+        body[dir="rtl"] { text-align: right; }
     </style>
 </head>
-<body dir="rtl">
-    <div class="top-bar">
-        <div class="lang-switch">
-            <button class="lang-btn active" data-lang="ar">العربية</button>
-            <button class="lang-btn" data-lang="en">English</button>
-        </div>
-        <button id="themeToggle" class="toggle-btn" data-ar-light="الوضع الداكن" data-ar-dark="الوضع الفاتح" data-en-light="Dark Mode" data-en-dark="Light Mode">الوضع الداكن</button>
-    </div>
+<body>
+    <!-- Canvas 3D الخلفية التفاعلية -->
+    <canvas id="canvas-3d"></canvas>
 
-    <div class="hero-logo" data-aos="fade-down">
-        <div class="logo-wrapper">
-            <img src="IMG_2845.jpeg" alt="Holidays Logo" class="logo-img" onerror="this.src='https://placehold.co/400x150/f2e0c0/a67c45?text=Holidays'">
-            <div class="logo-sub" data-ar="دعاية وإعلان استثنائي" data-en="Premium Advertising">دعاية وإعلان استثنائي</div>
+    <div class="site-content">
+        <div class="top-bar">
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="ar">العربية</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+            <button id="themeToggle" class="toggle-btn" data-ar-light="الوضع الداكن" data-ar-dark="الوضع الفاتح" data-en-light="Dark Mode" data-en-dark="Light Mode">الوضع الداكن</button>
         </div>
-        <p class="intro-text" data-ar="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك." data-en="Holidays company specializes in marketing advertising for commercial, entertainment and tourism venues. Listen to our ads for 30 minutes or an hour at our premises, and receive a free gift. Photography is optional and not mandatory — we respect your privacy.">
-            شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك.
-        </p>
-    </div>
 
-<main>
-    <!-- Customer Gallery (without IMG_3022.jpeg) -->
-    <div class="section">
-        <div class="container">
-            <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title" data-ar="عملاء استلموا هداياهم" data-en="Customers received their gifts">عملاء استلموا هداياهم</h2>
-                <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.8;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</p>
+        <div class="hero-logo" data-aos="fade-down">
+            <div class="logo-wrapper">
+                <img src="IMG_2845.jpeg" alt="Holidays Logo" class="logo-img" onerror="this.src='https://placehold.co/450x150/d4af37/1e2a32?text=Holidayz'">
+                <div class="logo-sub" data-ar="دعاية وإعلان استثنائي - تجربة 3D" data-en="Premium Advertising - 3D Experience">دعاية وإعلان استثنائي</div>
             </div>
-            <div class="customer-grid" data-aos="fade-up">
-                <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="customer"></div>
-                <div class="customer-photo" data-img-src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg"><img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="customer"></div>
-                <div class="customer-photo" data-img-src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg"><img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="customer"></div>
-                <div class="customer-photo" data-img-src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="customer"></div>
-                <div class="customer-photo" data-img-src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="customer"></div>
-            </div>
-            <div class="optional-note-badge" style="display: block; text-align: center; width: fit-content; margin: 20px auto 0;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</div>
+            <p class="intro-text" data-ar="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك." data-en="Holidays company specializes in marketing advertising for commercial, entertainment and tourism venues. Listen to our ads for 30 minutes or an hour at our premises, and receive a free gift. Photography is optional and not mandatory — we respect your privacy.">
+                شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك.
+            </p>
         </div>
-    </div>
 
-    <!-- Gifts section: mobile without brand -->
-    <div class="section" style="background: var(--bg-section);">
-        <div class="container">
-            <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title" data-ar="هدايا مجانية" data-en="Free Gifts">هدايا مجانية</h2>
-                <p data-ar="مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)" data-en="In exchange for listening to a short advertising session (half an hour or an hour)">مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)</p>
-            </div>
-            <div class="gifts-grid" data-aos="fade-up">
-                <div class="gift-card"><div class="gift-icon"><i class="fas fa-tv"></i></div><h3 data-ar="شاشة 32 بوصة" data-en="32-inch TV">شاشة 32 بوصة</h3></div>
-                <div class="gift-card"><div class="gift-icon"><i class="fas fa-microchip"></i></div><h3 data-ar="ميكرويف صغير" data-en="Compact Microwave">ميكرويف صغير</h3></div>
-                <div class="gift-card"><div class="gift-icon"><i class="fas fa-mobile-alt"></i></div><h3 data-ar="موبايل" data-en="Mobile Phone">موبايل</h3></div>
-                <div class="gift-card">
-                    <div class="gift-icon"><i class="fas fa-umbrella-beach"></i></div>
-                    <h3 data-ar="أسبوع مصيف" data-en="Resort Week">أسبوع مصيف</h3>
-                    <div class="resort-info" data-ar="3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)" data-en="3 days, 4 nights · 4-6 persons<br>Customer covers meals<br>Gift determined by receipt number (not optional)">3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)</div>
+        <main>
+            <!-- عملاء استلموا الهدايا -->
+            <div class="section">
+                <div class="container">
+                    <div class="title-center" data-aos="fade-up">
+                        <h2 class="section-title" data-ar="عملاء استلموا هداياهم" data-en="Customers received their gifts">عملاء استلموا هداياهم</h2>
+                        <p style="font-size: 0.9rem; margin-top: 12px; opacity:0.9;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</p>
+                    </div>
+                    <div class="customer-grid" data-aos="fade-up">
+                        <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="customer"></div>
+                        <div class="customer-photo" data-img-src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg"><img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="customer"></div>
+                        <div class="customer-photo" data-img-src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg"><img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="customer"></div>
+                        <div class="customer-photo" data-img-src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="customer"></div>
+                        <div class="customer-photo" data-img-src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="customer"></div>
+                    </div>
+                    <div class="optional-note-badge" style="display: block; text-align: center; width: fit-content; margin: 20px auto 0;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</div>
                 </div>
             </div>
-            <div class="optional-note-badge" style="margin: 30px auto 0; text-align: center; display: table;" data-ar="الهدية مجانية بالكامل، بدون أي رسوم إضافية" data-en="The gift is completely free, with no additional fees">الهدية مجانية بالكامل، بدون أي رسوم إضافية</div>
-        </div>
-    </div>
 
-    <!-- Resort destinations -->
-    <div class="section">
-        <div class="container">
-            <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title" data-ar="وجهات المصيف المجانية" data-en="Free Resort Destinations">وجهات المصيف المجانية</h2>
-                <p data-ar="استلم هدية رحلة إلى منتجعات سياحية فاخرة" data-en="Receive a trip to luxury resorts">استلم هدية رحلة إلى منتجعات سياحية فاخرة</p>
-            </div>
-            <div class="resort-grid" data-aos="fade-up">
-                <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3019.jpeg');"></div><h4>شرم الشيخ</h4></div>
-                <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3020.jpeg');"></div><h4>الغردقة</h4></div>
-                <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3021.jpeg');"></div><h4>العين السخنة</h4></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Branches -->
-    <div class="section">
-        <div class="container">
-            <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title" data-ar="فروع شركة هوليدايز" data-en="Holidays Branches">فروع شركة هوليدايز</h2>
-            </div>
-            <div class="branches-grid" data-aos="fade-up">
-                <div class="branch">
-                    <i class="fas fa-building"></i>
-                    <address><strong data-ar="الفرع الأول - مدينة نصر" data-en="First Branch - Nasr City">الفرع الأول - مدينة نصر</strong><br>
-                    38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي،<br> شركه هوليدايز، الدور الثامن.</address>
-                    <div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div>
-                </div>
-                <div class="branch">
-                    <i class="fas fa-location-dot"></i>
-                    <address><strong data-ar="الفرع الثاني - عباس العقاد" data-en="Second Branch - Abbas El-Akkad">الفرع الثاني - عباس العقاد</strong><br>
-                    25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر،<br>
-                    عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.</address>
-                    <div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div>
+            <!-- الهدايا المجانية -->
+            <div class="section">
+                <div class="container">
+                    <div class="title-center" data-aos="fade-up">
+                        <h2 class="section-title" data-ar="هدايا مجانية" data-en="Free Gifts">هدايا مجانية</h2>
+                        <p data-ar="مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)" data-en="In exchange for listening to a short advertising session (half an hour or an hour)">مقابل الاستماع لجلسة دعائية قصيرة (نصف ساعة أو ساعة)</p>
+                    </div>
+                    <div class="gifts-grid" data-aos="fade-up">
+                        <div class="gift-card"><div class="gift-icon"><i class="fas fa-tv"></i></div><h3 data-ar="شاشة 32 بوصة" data-en="32-inch TV">شاشة 32 بوصة</h3></div>
+                        <div class="gift-card"><div class="gift-icon"><i class="fas fa-microchip"></i></div><h3 data-ar="ميكرويف صغير" data-en="Compact Microwave">ميكرويف صغير</h3></div>
+                        <div class="gift-card"><div class="gift-icon"><i class="fas fa-mobile-alt"></i></div><h3 data-ar="موبايل" data-en="Mobile Phone">موبايل</h3></div>
+                        <div class="gift-card">
+                            <div class="gift-icon"><i class="fas fa-umbrella-beach"></i></div>
+                            <h3 data-ar="أسبوع مصيف" data-en="Resort Week">أسبوع مصيف</h3>
+                            <div class="resort-info" data-ar="3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)" data-en="3 days, 4 nights · 4-6 persons<br>Customer covers meals<br>Gift determined by receipt number (not optional)">3 أيام، 4 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات<br>الهدية تحدد برقم الإيصال (ليست اختيارية)</div>
+                        </div>
+                    </div>
+                    <div class="optional-note-badge" style="margin: 30px auto 0; text-align: center; display: table;" data-ar="الهدية مجانية بالكامل، بدون أي رسوم إضافية" data-en="The gift is completely free, with no additional fees">الهدية مجانية بالكامل، بدون أي رسوم إضافية</div>
                 </div>
             </div>
-            <div class="optional-note-badge" style="margin: 20px auto 0; display: table;" data-ar="خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً" data-en="Customer support available daily from 3:00 PM to 9:00 PM">خدمة العملاء متاحة يومياً من 3:00 عصراً إلى 9:00 مساءً</div>
-        </div>
-    </div>
 
-    <!-- Contact numbers: only phone calls except the one ending with 92 (WhatsApp + call) -->
-    <div class="section" style="padding-bottom: 50px;">
-        <div class="container">
-            <div class="title-center" data-aos="fade-up">
-                <h2 class="section-title" data-ar="تواصل مع خدمة العملاء" data-en="Contact Customer Service">تواصل مع خدمة العملاء</h2>
-                <p data-ar="احجز جلستك الدعائية واستعلم عن الهدايا عبر الاتصال" data-en="Book your advertising session and inquire about gifts via call">احجز جلستك الدعائية واستعلم عن الهدايا عبر الاتصال</p>
-            </div>
-            <div class="contact-numbers" data-aos="fade-up">
-                <div class="phone-card">
-                    <i class="fas fa-phone-alt"></i>
-                    <a href="tel:01040782134">01040782134</a>
-                </div>
-                <div class="phone-card">
-                    <i class="fas fa-phone-alt"></i>
-                    <a href="tel:01515752259">01515752259</a>
-                </div>
-                <div class="phone-card">
-                    <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/201040514792" target="_blank">01040514792</a>
-                    <a href="tel:01040514792"><i class="fas fa-phone-alt"></i></a>
+            <!-- وجهات المصيف -->
+            <div class="section">
+                <div class="container">
+                    <div class="title-center" data-aos="fade-up">
+                        <h2 class="section-title" data-ar="وجهات المصيف المجانية" data-en="Free Resort Destinations">وجهات المصيف المجانية</h2>
+                    </div>
+                    <div class="resort-grid" data-aos="fade-up">
+                        <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3019.jpeg');"></div><h4>شرم الشيخ</h4></div>
+                        <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3020.jpeg');"></div><h4>الغردقة</h4></div>
+                        <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3021.jpeg');"></div><h4>العين السخنة</h4></div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <!-- الفروع -->
+            <div class="section">
+                <div class="container">
+                    <div class="title-center" data-aos="fade-up"><h2 class="section-title" data-ar="فروع شركة هوليدايز" data-en="Holidays Branches">فروع شركة هوليدايز</h2></div>
+                    <div class="branches-grid" data-aos="fade-up">
+                        <div class="branch">
+                            <i class="fas fa-building"></i>
+                            <address><strong data-ar="الفرع الأول - مدينة نصر" data-en="First Branch - Nasr City">الفرع الأول - مدينة نصر</strong><br>38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي، شركه هوليدايز، الدور الثامن.</address>
+                            <div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div>
+                        </div>
+                        <div class="branch">
+                            <i class="fas fa-location-dot"></i>
+                            <address><strong data-ar="الفرع الثاني - عباس العقاد" data-en="Second Branch - Abbas El-Akkad">الفرع الثاني - عباس العقاد</strong><br>25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر، عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.</address>
+                            <div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- أرقام الاتصال -->
+            <div class="section" style="padding-bottom: 50px;">
+                <div class="container">
+                    <div class="title-center" data-aos="fade-up"><h2 class="section-title" data-ar="تواصل مع خدمة العملاء" data-en="Contact Customer Service">تواصل مع خدمة العملاء</h2></div>
+                    <div class="contact-numbers" data-aos="fade-up">
+                        <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01040782134">01040782134</a></div>
+                        <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01515752259">01515752259</a></div>
+                        <div class="phone-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201040514792" target="_blank">01040514792</a><a href="tel:01040514792"><i class="fas fa-phone-alt"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="designer" data-aos="fade-up"><span>designed by </span><strong>Amr Khaled</strong><div style="margin: 10px auto 0; width: 40px; height: 1px; background: var(--accent);"></div><span>شركة هوليدايز – دعاية وإعلان تفاعلي 3D</span></div>
+        </main>
+        <footer><div class="container"><p data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</p><p style="font-size: 0.75rem; margin-top: 10px;" data-ar="التصوير اختياري — الهدايا حقيقية وليست وهمية" data-en="Photography optional — gifts are real not imaginary">التصوير اختياري — الهدايا حقيقية وليست وهمية</p></div></footer>
     </div>
 
-    <div class="designer" data-aos="fade-up">
-        <span>designed by </span><strong>Amr Khaled</strong>
-        <div style="margin: 10px auto 0; width: 40px; height: 1px; background: var(--accent);"></div>
-        <span style="font-size: 0.7rem;">شركة هوليدايز – للدعاية الإعلانية</span>
-    </div>
-</main>
+    <div id="lightbox" class="lightbox"><button class="close-lightbox" id="closeLightboxBtn">✕</button><img id="lightboxImg" src="" alt="Enlarged"></div>
 
-<footer>
-    <div class="container">
-        <p data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</p>
-        <p style="font-size: 0.75rem; margin-top: 10px;" data-ar="التصوير اختياري — الهدايا حقيقية وليست وهمية" data-en="Photography optional — gifts are real not imaginary">التصوير اختياري — الهدايا حقيقية وليست وهمية</p>
-    </div>
-</footer>
-
-<div id="lightbox" class="lightbox">
-    <button class="close-lightbox" id="closeLightboxBtn">✕</button>
-    <img id="lightboxImg" src="" alt="Enlarged">
-</div>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 800, once: true });
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const closeBtn = document.getElementById('closeLightboxBtn');
-    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; lightboxImg.src = ''; }
-    document.querySelectorAll('.customer-photo').forEach(photo => {
-        photo.addEventListener('click', () => { const img = photo.querySelector('img'); if(img && img.src) openLightbox(img.src); });
-    });
-    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
-    closeBtn.addEventListener('click', closeLightbox);
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
-
-    // Dark/Light Mode with smooth animation (no emojis)
-    const themeBtn = document.getElementById('themeToggle');
-    const root = document.body;
-    let currentLangState = 'ar';
-
-    function updateThemeButtonText() {
-        const isDark = root.classList.contains('dark');
-        const lang = currentLangState;
-        if (lang === 'ar') {
-            themeBtn.textContent = isDark ? themeBtn.getAttribute('data-ar-dark') : themeBtn.getAttribute('data-ar-light');
-        } else {
-            themeBtn.textContent = isDark ? themeBtn.getAttribute('data-en-dark') : themeBtn.getAttribute('data-en-light');
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
         }
-    }
+    </script>
 
-    if(localStorage.getItem('theme') === 'dark') root.classList.add('dark');
-    updateThemeButtonText();
+    <script type="module">
+        import * as THREE from 'three';
 
-    themeBtn.addEventListener('click', () => {
-        root.classList.toggle('dark');
-        localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-        updateThemeButtonText();
-    });
+        // تهيئة المشهد ثلاثي الأبعاد المتقدم
+        const canvas = document.getElementById('canvas-3d');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050b1a); // لون عميق في البداية
+        scene.fog = new THREE.FogExp2(0x050b1a, 0.008);
 
-    // Bilingual system
-    const langButtons = document.querySelectorAll('.lang-btn');
-    function updateTexts(lang) {
-        currentLangState = lang;
-        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
-            if(lang === 'ar') el.innerText = el.getAttribute('data-ar');
-            else el.innerText = el.getAttribute('data-en');
-        });
-        document.querySelectorAll('.gift-card h3').forEach(el => {
-            if(lang === 'ar') el.innerText = el.getAttribute('data-ar') || el.innerText;
-            else el.innerText = el.getAttribute('data-en') || el.innerText;
-        });
-        document.querySelectorAll('.resort-info').forEach(el => {
-            if(lang === 'ar') el.innerHTML = el.getAttribute('data-ar');
-            else el.innerHTML = el.getAttribute('data-en');
-        });
-        document.querySelectorAll('.pickup-hours, .optional-note-badge, .section p, footer p, .branch address strong, .intro-text, .logo-sub').forEach(el => {
-            if(el.hasAttribute('data-ar') && el.hasAttribute('data-en')) {
-                if(lang === 'ar') el.innerText = el.getAttribute('data-ar');
-                else el.innerText = el.getAttribute('data-en');
-            } else if(el.classList && el.classList.contains('pickup-hours') && el.hasAttribute('data-ar')) {
-                if(lang === 'ar') el.innerText = el.getAttribute('data-ar');
-                else el.innerText = el.getAttribute('data-en');
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 1.5, 9);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: false, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // إضاءة ساحرة
+        const ambientLight = new THREE.AmbientLight(0x404060);
+        scene.add(ambientLight);
+        const mainLight = new THREE.DirectionalLight(0xffeebb, 1.2);
+        mainLight.position.set(3, 5, 2);
+        scene.add(mainLight);
+        const backLight = new THREE.PointLight(0xaa8866, 0.8);
+        backLight.position.set(-2, 1, -4);
+        scene.add(backLight);
+        const fillLight = new THREE.PointLight(0xccaaff, 0.5);
+        fillLight.position.set(1, 2, 3);
+        scene.add(fillLight);
+        
+        // كائن ثلاثي الأبعاد رئيسي: TorusKnot ذهبي متحرك
+        const knotGeometry = new THREE.TorusKnotGeometry(1.1, 0.32, 180, 24, 3, 4);
+        const knotMaterial = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0x442200, roughness: 0.3, metalness: 0.85, emissiveIntensity: 0.5 });
+        const torusKnot = new THREE.Mesh(knotGeometry, knotMaterial);
+        scene.add(torusKnot);
+        
+        // حلقة من الكرات الصغيرة (جزيئات ذهبية)
+        const particleRingGeometry = new THREE.BufferGeometry();
+        const particleCount = 800;
+        const positions = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount; i++) {
+            const angle = (i / particleCount) * Math.PI * 2;
+            const radius = 1.9;
+            const x = Math.cos(angle) * radius;
+            const z = Math.sin(angle) * radius;
+            const y = Math.sin(angle * 3) * 0.5;
+            positions[i*3] = x;
+            positions[i*3+1] = y;
+            positions[i*3+2] = z;
+        }
+        particleRingGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particleMat = new THREE.PointsMaterial({ color: 0xffaa55, size: 0.05, transparent: true, blending: THREE.AdditiveBlending });
+        const ringPoints = new THREE.Points(particleRingGeometry, particleMat);
+        scene.add(ringPoints);
+        
+        // جزيئات نجمية عائمة في الخلفية
+        const starGeometry = new THREE.BufferGeometry();
+        const starCount = 1400;
+        const starPositions = new Float32Array(starCount * 3);
+        for (let i = 0; i < starCount; i++) {
+            starPositions[i*3] = (Math.random() - 0.5) * 200;
+            starPositions[i*3+1] = (Math.random() - 0.5) * 100;
+            starPositions[i*3+2] = (Math.random() - 0.5) * 80 - 40;
+        }
+        starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        const starMaterial = new THREE.PointsMaterial({ color: 0xcbaa6e, size: 0.08, transparent: true, opacity: 0.7 });
+        const starField = new THREE.Points(starGeometry, starMaterial);
+        scene.add(starField);
+        
+        // إضافة هالة ضوئية باستخدام Sphere
+        const glowGeometry = new THREE.SphereGeometry(1.55, 32, 32);
+        const glowMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.07, side: THREE.BackSide });
+        const glowSphere = new THREE.Mesh(glowGeometry, glowMat);
+        scene.add(glowSphere);
+        
+        let time = 0;
+        
+        // دالة لتحديث ألوان الثري دي حسب الثيم
+        function update3DColors(isDarkMode) {
+            const mainColor = isDarkMode ? 0xe6bc6e : 0xd4af37;
+            const emissiveColor = isDarkMode ? 0x552200 : 0x442200;
+            knotMaterial.color.setHex(mainColor);
+            knotMaterial.emissive.setHex(emissiveColor);
+            particleMat.color.setHex(isDarkMode ? 0xffcc77 : 0xdd9944);
+            starMaterial.color.setHex(isDarkMode ? 0xd4aa6a : 0xc29544);
+            scene.background.setHex(isDarkMode ? 0x020617 : 0x0e1a2b);
+            scene.fog.color.setHex(isDarkMode ? 0x020617 : 0x0e1a2b);
+        }
+        
+        // مراقبة تغيير الثيم
+        const bodyEl = document.body;
+        let currentTheme = bodyEl.classList.contains('dark');
+        update3DColors(currentTheme);
+        
+        const themeObserver = new MutationObserver(() => {
+            const isDark = bodyEl.classList.contains('dark');
+            if (isDark !== currentTheme) {
+                currentTheme = isDark;
+                update3DColors(currentTheme);
             }
         });
-        document.querySelectorAll('.branch address').forEach(addr => {
-            if(lang === 'ar') {
-                const strong = addr.querySelector('strong');
-                if(strong && strong.hasAttribute('data-ar')) strong.innerText = strong.getAttribute('data-ar');
-            } else {
-                const strong = addr.querySelector('strong');
-                if(strong && strong.hasAttribute('data-en')) strong.innerText = strong.getAttribute('data-en');
-            }
+        themeObserver.observe(bodyEl, { attributes: true, attributeFilter: ['class'] });
+        
+        // حركة الكاميرا و التفاعل الخفيف مع الماوس
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = (event.clientY / window.innerHeight) * 2 - 1;
         });
-        document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        updateThemeButtonText();
-        langButtons.forEach(btn => {
-            if(btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-            else btn.classList.remove('active');
+        
+        // animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.008;
+            
+            // دوران العقدة الرئيسية
+            torusKnot.rotation.x = Math.sin(time * 0.5) * 0.2;
+            torusKnot.rotation.y = time * 0.6;
+            torusKnot.rotation.z = Math.sin(time * 0.3) * 0.15;
+            
+            ringPoints.rotation.y = time * 0.3;
+            ringPoints.rotation.x = Math.sin(time * 0.4) * 0.2;
+            
+            starField.rotation.y += 0.0005;
+            starField.rotation.x += 0.0003;
+            
+            glowSphere.rotation.y += 0.003;
+            
+            // تفاعل بسيط للكاميرا مع الماوس
+            camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 0.3 - camera.position.y) * 0.05;
+            camera.lookAt(0, 0.2, 0);
+            
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+        
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // إضافة تأثيرات إضافية: تغيير لون الخلفية حسب التمرير (اختياري لمسة حيوية)
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const intensity = Math.min(0.2, scrollY / 2000);
+            if (!currentTheme) scene.background.setHex(0x0e1a2b);
+            else scene.background.setHex(0x020617);
         });
-    }
-    langButtons.forEach(btn => {
-        btn.addEventListener('click', () => { updateTexts(btn.getAttribute('data-lang')); });
-    });
-    updateTexts('ar');
+        
+        console.log('3D World Activated | Holidayz');
+    </script>
 
-    // WhatsApp links target
-    document.querySelectorAll('.phone-card a').forEach(link => {
-        if(link.href.includes('wa.me')) link.setAttribute('target', '_blank');
-    });
-</script>
+    <script>
+        // AOS and standard functionalities (lightbox, bilingual, theme toggle)
+        AOS.init({ duration: 800, once: false, mirror: false });
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeLightboxBtn');
+        function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+        document.querySelectorAll('.customer-photo').forEach(photo => {
+            photo.addEventListener('click', () => { const img = photo.querySelector('img'); if(img && img.src) openLightbox(img.src); });
+        });
+        lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+        closeBtn.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+        
+        // Theme toggle
+        const themeBtn = document.getElementById('themeToggle');
+        const rootBody = document.body;
+        let currentLang = 'ar';
+        function updateThemeButtonText() {
+            const isDark = rootBody.classList.contains('dark');
+            const lang = currentLang;
+            if (lang === 'ar') themeBtn.textContent = isDark ? themeBtn.getAttribute('data-ar-dark') : themeBtn.getAttribute('data-ar-light');
+            else themeBtn.textContent = isDark ? themeBtn.getAttribute('data-en-dark') : themeBtn.getAttribute('data-en-light');
+        }
+        if(localStorage.getItem('theme') === 'dark') rootBody.classList.add('dark');
+        updateThemeButtonText();
+        themeBtn.addEventListener('click', () => {
+            rootBody.classList.toggle('dark');
+            localStorage.setItem('theme', rootBody.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeButtonText();
+        });
+        
+        // Bilingual
+        const langButtons = document.querySelectorAll('.lang-btn');
+        function updateTexts(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-ar][data-en]').forEach(el => { if(lang === 'ar') el.innerText = el.getAttribute('data-ar'); else el.innerText = el.getAttribute('data-en'); });
+            document.querySelectorAll('.gift-card h3').forEach(el => { if(lang === 'ar') el.innerText = el.getAttribute('data-ar') || el.innerText; else el.innerText = el.getAttribute('data-en') || el.innerText; });
+            document.querySelectorAll('.resort-info, .pickup-hours, .optional-note-badge, footer p, .logo-sub, .intro-text').forEach(el => { if(el.hasAttribute('data-ar')) { if(lang === 'ar') el.innerHTML = el.getAttribute('data-ar'); else el.innerHTML = el.getAttribute('data-en'); } });
+            document.querySelectorAll('.branch address strong').forEach(strong => { if(lang === 'ar') strong.innerText = strong.getAttribute('data-ar'); else strong.innerText = strong.getAttribute('data-en'); });
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            updateThemeButtonText();
+            langButtons.forEach(btn => { if(btn.getAttribute('data-lang') === lang) btn.classList.add('active'); else btn.classList.remove('active'); });
+        }
+        langButtons.forEach(btn => { btn.addEventListener('click', () => { updateTexts(btn.getAttribute('data-lang')); }); });
+        updateTexts('ar');
+        document.querySelectorAll('.phone-card a').forEach(link => { if(link.href.includes('wa.me')) link.setAttribute('target', '_blank'); });
+    </script>
 </body>
 </html>
