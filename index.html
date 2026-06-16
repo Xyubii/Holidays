@@ -18,6 +18,7 @@
             background: transparent;
             position: relative;
         }
+        /* Canvas 3D */
         #canvas-3d {
             position: fixed;
             top: 0;
@@ -33,6 +34,8 @@
             z-index: 2;
             backdrop-filter: blur(2px);
         }
+
+        /* ========== LIGHT MODE (الإعدادات الأساسية) ========== */
         :root {
             --bg-hero: rgba(255, 248, 235, 0.75);
             --bg-section: rgba(255, 252, 245, 0.7);
@@ -45,9 +48,14 @@
             --shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
             --card-bg: rgba(255, 250, 240, 0.85);
             --glass-blur: blur(12px);
-            --topbar-bg: rgba(0, 0, 0, 0.4);
-            --footer-bg: rgba(0, 0, 0, 0.96);
+            /* ألوان الأشرطة في الوضع الفاتح */
+            --topbar-bg: rgba(0, 0, 0, 0.45);
+            --topbar-text: #fef3e2;
+            --footer-bg: rgba(0, 0, 0, 0.85);
+            --footer-text: #f5e7d3;
         }
+
+        /* ========== DARK MODE ========== */
         body.dark {
             --bg-hero: rgba(8, 6, 4, 0.85);
             --bg-section: rgba(3, 2, 1, 0.8);
@@ -58,12 +66,16 @@
             --accent: #e6bc6e;
             --accent-glow: #f5cb5c;
             --card-bg: rgba(18, 15, 12, 0.85);
-            --topbar-bg: rgba(0, 0, 0, 0.7);
-            --footer-bg: rgba(0, 0, 0, 0.98);
+            /* ألوان الأشرطة في الوضع المظلم - أسود كاحل */
+            --topbar-bg: rgba(0, 0, 0, 0.9);
+            --topbar-text: #ffffff;
+            --footer-bg: rgba(0, 0, 0, 0.95);
+            --footer-text: #e6d5b8;
         }
-        /* شريط علوي */
+
+        /* تطبيق ألوان الأشرطة */
         .top-bar {
-            background: var(--topbar-bg);
+            background: var(--topbar-bg) !important;
             backdrop-filter: blur(16px);
             border-bottom: 2px solid var(--accent-glow);
             position: sticky;
@@ -74,7 +86,19 @@
             gap: 20px;
             padding: 14px 32px;
             animation: barGlow 3s infinite alternate, barFloat 4s ease-in-out infinite;
+            color: var(--topbar-text);
         }
+
+        .designer, footer {
+            background: var(--footer-bg) !important;
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(212, 175, 55, 0.5);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* باقي الأنماط مع تحسينات */
         @keyframes barGlow {
             0% { border-bottom-color: rgba(212,175,55,0.6); box-shadow: 0 4px 15px rgba(212,175,55,0.2);}
             100% { border-bottom-color: rgba(255,215,0,0.9); box-shadow: 0 4px 30px rgba(255,215,0,0.5);}
@@ -82,32 +106,18 @@
         @keyframes barFloat { 0% { transform: translateY(0px);} 50% { transform: translateY(2px);} 100% { transform: translateY(0px);} }
         
         .toggle-btn, .lang-btn {
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.5);
             border: 1px solid var(--accent-glow);
             border-radius: 60px;
             padding: 8px 24px;
             cursor: pointer;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #ffffff;
             backdrop-filter: blur(4px);
             transition: all 0.3s;
         }
         .toggle-btn:hover, .lang-btn:hover { background: var(--accent-glow); color: #000; transform: scale(0.96); box-shadow: 0 0 15px var(--accent-glow); }
         
-        /* تذييل أسفل الصفحة */
-        .designer, footer {
-            background: var(--footer-bg) !important;
-            backdrop-filter: blur(16px);
-            border-top: 1px solid rgba(212, 175, 55, 0.5);
-            color: #f5e7d3;
-            text-align: center;
-            padding: 30px 0;
-        }
-        .designer strong { color: var(--accent-glow); }
-        .designer-line { width: 60px; height: 2px; background: var(--accent-glow); margin: 12px auto; }
-        .footer-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.85rem; margin-top: 10px; }
-        
-        /* باقي الأنماط (كما هي مع الحفاظ على الوضوح) */
         .hero-logo { background: var(--bg-hero); backdrop-filter: var(--glass-blur); text-align: center; padding: 50px 0 40px; border-bottom: 2px solid var(--accent-glow); }
         .logo-3d-container { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; perspective: 800px; }
         #logoCanvas { width: 230px; height: 230px; border-radius: 24px; cursor: pointer; }
@@ -145,6 +155,9 @@
         .phone-card a { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); text-decoration: none; direction: ltr; }
         .optional-note-badge { background: var(--card-bg); border-radius: 60px; padding: 12px 28px; display: inline-block; font-weight: 700; color: var(--accent); border: 1px solid var(--accent-glow); }
         .contact-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; }
+        .designer strong { color: var(--accent-glow); }
+        .designer-line { width: 60px; height: 2px; background: var(--accent-glow); margin: 12px auto; }
+        .footer-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.85rem; margin-top: 10px; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; z-index: 1000; width: 70px; height: 70px; background: linear-gradient(145deg, #25D366, #128C7E); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(37,211,102,0.6); cursor: pointer; transition: all 0.3s; animation: float3d 2s infinite alternate, rotateGlow 4s infinite; transform-style: preserve-3d; border: 2px solid rgba(255,255,255,0.4); }
         .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 0 35px #25D366; }
         .whatsapp-float i { font-size: 3rem; color: white; text-shadow: 0 0 8px rgba(0,0,0,0.5); animation: iconPulse 1.2s infinite alternate; }
@@ -280,7 +293,7 @@
     <script type="module">
         import * as THREE from 'three';
 
-        // === الخلفية الرئيسية (تحسينات الإضاءة) ===
+        // === الخلفية الرئيسية ثلاثية الأبعاد ===
         const canvasBg = document.getElementById('canvas-3d');
         const sceneBg = new THREE.Scene();
         sceneBg.background = new THREE.Color(0x0a0a1a);
@@ -561,7 +574,7 @@
         closeLb.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lb.classList.contains('active')) closeLightbox(); });
         
-        // Theme Toggle (Dark/Light Mode) with English text
+        // Theme Toggle (Dark/Light Mode) - English text only
         const themeBtn = document.getElementById('themeToggle');
         const root = document.body;
         let curLang = 'ar';
@@ -577,7 +590,7 @@
             updateThemeButtonText();
         });
         
-        // Bilingual system (Arabic/English)
+        // Bilingual system
         const langBtns = document.querySelectorAll('.lang-btn');
         function updateTexts(lang) {
             curLang = lang;
@@ -586,7 +599,6 @@
             document.querySelectorAll('.resort-info, .pickup-hours, .optional-note-badge, footer p, .logo-sub, .intro-text, .footer-info span').forEach(el => { if(el.hasAttribute('data-ar')) el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en'); });
             document.querySelectorAll('.branch address strong').forEach(s => { s.innerText = lang === 'ar' ? s.getAttribute('data-ar') : s.getAttribute('data-en'); });
             document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            // Keep theme button text independent of language
             langBtns.forEach(btn => { if(btn.getAttribute('data-lang') === lang) btn.classList.add('active'); else btn.classList.remove('active'); });
         }
         langBtns.forEach(btn => { btn.addEventListener('click', () => { updateTexts(btn.getAttribute('data-lang')); }); });
