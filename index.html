@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>هوليدايز | Holidayz - تجربة دعائية فائقة</title>
-    <!-- Open Graph / Social Sharing -->
     <meta property="og:title" content="هوليدايز | Holidayz - تجربة دعائية فائقة" />
     <meta property="og:description" content="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا واحصل على هدايا مجانية." />
     <meta property="og:image" content="IMG_2845.jpeg" />
@@ -25,9 +24,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-               CSS VARIABLES (Light / Dark)
-            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         :root {
             --bg-body: #0b0a0a;
             --text-primary: #f0ece4;
@@ -42,7 +38,6 @@
             --topbar-bg: rgba(0, 0, 0, 0.65);
             --footer-bg: rgba(0, 0, 0, 0.8);
         }
-
         body.light-mode {
             --bg-body: #f5efe8;
             --text-primary: #1e2a32;
@@ -57,7 +52,6 @@
             --topbar-bg: rgba(255, 248, 235, 0.75);
             --footer-bg: rgba(30, 34, 28, 0.85);
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -73,8 +67,6 @@
             color: var(--text-primary);
             transition: background 0.4s ease, color 0.3s ease;
         }
-
-        /* ───────────── 3D CANVAS (Background) ───────────── */
         #three-canvas {
             position: fixed;
             top: 0;
@@ -84,8 +76,6 @@
             z-index: 0;
             pointer-events: none;
         }
-
-        /* ───────────── Content ───────────── */
         .content {
             position: relative;
             z-index: 2;
@@ -99,8 +89,6 @@
             margin: 0 auto;
             padding: 0 28px;
         }
-
-        /* ───────────── Glass ───────────── */
         .glass {
             background: var(--glass-bg);
             backdrop-filter: blur(14px);
@@ -110,8 +98,6 @@
             box-shadow: var(--glass-shadow);
             transition: background 0.3s, border 0.3s;
         }
-
-        /* ───────────── Top Bar ───────────── */
         .top-bar {
             position: sticky;
             top: 0;
@@ -159,8 +145,6 @@
             background: var(--accent-gold);
             color: #0b0a0a;
         }
-
-        /* ───────────── Hero Logo ───────────── */
         .hero-logo {
             text-align: center;
             padding: 50px 0 40px;
@@ -175,7 +159,7 @@
             align-items: center;
             margin-bottom: 20px;
             width: 100%;
-            height: 260px; /* لتثبيت المساحة */
+            height: 260px;
         }
         #logoCanvas3d {
             width: 260px;
@@ -204,8 +188,6 @@
             font-weight: 500;
             transition: color 0.3s;
         }
-
-        /* ───────────── باقي الأقسام (كما هي) ───────────── */
         .section {
             padding: 80px 0;
             background: var(--glass-bg);
@@ -571,7 +553,6 @@
             border: 3px solid var(--accent-gold);
             border-radius: 28px;
         }
-
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
@@ -641,11 +622,9 @@
 </head>
 <body>
 
-    <!-- ─── BACKGROUND 3D CANVAS ─── -->
     <canvas id="three-canvas"></canvas>
 
     <div class="content">
-        <!-- ─── TOP BAR ─── -->
         <div class="top-bar">
             <div class="lang-switch">
                 <button class="lang-btn active" data-lang="ar">العربية</button>
@@ -654,7 +633,6 @@
             <button id="themeToggle" class="toggle-btn">Light Mode</button>
         </div>
 
-        <!-- ─── HERO LOGO ─── -->
         <div class="hero-logo" data-gsap="fade-up">
             <div class="logo-3d-container">
                 <canvas id="logoCanvas3d"></canvas>
@@ -665,7 +643,6 @@
             </p>
         </div>
 
-        <!-- ─── MAIN ─── -->
         <main>
             <!-- العملاء -->
             <div class="section" data-gsap="fade-up">
@@ -750,7 +727,7 @@
         </footer>
     </div>
 
-    <!-- ─── WHATSAPP FLOATING ─── -->
+    <!-- WhatsApp -->
     <a href="https://wa.me/201040514792" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="waGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#25D366"/><stop offset="100%" stop-color="#128C7E"/></linearGradient></defs>
@@ -760,7 +737,7 @@
         </svg>
     </a>
 
-    <!-- ─── WATERMARK (Instagram) ─── -->
+    <!-- Watermark -->
     <a href="https://instagram.com/chilldiavolo" target="_blank" class="watermark-3d" aria-label="Instagram Developer">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs><radialGradient id="igGrad" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
@@ -770,10 +747,9 @@
         </svg>
     </a>
 
-    <!-- ─── LIGHTBOX ─── -->
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox"><button class="close-lightbox" id="closeLightboxBtn" style="position:absolute;top:30px;left:30px;background:none;border:none;color:var(--accent-gold);font-size:2.4rem;cursor:pointer;">✕</button><img id="lightboxImg" src=""></div>
 
-    <!-- ─── SCRIPTS ─── -->
     <script>
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         // 1. GSAP + ScrollTrigger
@@ -837,7 +813,6 @@
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1.2;
 
-            // Lights
             const ambient = new THREE.AmbientLight(0x404060, 0.6);
             scene.add(ambient);
             const key = new THREE.DirectionalLight(0xffeebb, 1.8);
@@ -1005,12 +980,12 @@
 
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        // 3. LOGO 3D — THREE.JS (دوران 360° بدون انعكاس)
+        // 3. LOGO 3D — THREE.JS (دوران 360° بدون انعكاس مع وجه خلفي معكوس)
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         (function initLogo3D() {
             const canvas = document.getElementById('logoCanvas3d');
             const scene = new THREE.Scene();
-            scene.background = null; // شفاف
+            scene.background = null;
 
             const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
             camera.position.set(0, 0, 3.5);
@@ -1019,25 +994,42 @@
             const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
             renderer.setSize(canvas.clientWidth || 260, canvas.clientHeight || 260);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setClearColor(0x000000, 0); // شفاف
+            renderer.setClearColor(0x000000, 0);
 
             // إضاءة
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
             scene.add(ambientLight);
-            const dirLight = new THREE.DirectionalLight(0xffeebb, 1.2);
+            const dirLight = new THREE.DirectionalLight(0xffeebb, 1.5);
             dirLight.position.set(2, 3, 4);
             scene.add(dirLight);
-            const backLight = new THREE.DirectionalLight(0x8899cc, 0.6);
+            const backLight = new THREE.DirectionalLight(0x8899cc, 0.8);
             backLight.position.set(-2, -1, -3);
             scene.add(backLight);
 
-            // تحميل صورة اللوجو
+            // تحميل الصورة
             const textureLoader = new THREE.TextureLoader();
             const logoTexture = textureLoader.load('IMG_2845.jpeg');
-            logoTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 
-            // إنشاء وجهين (أمامي وخلفي) معكوسين
-            // الوجه الأمامي: نسيج عادي
+            // إنشاء نسخة معكوسة باستخدام Canvas
+            const createMirroredTexture = (texture, callback) => {
+                const img = texture.image;
+                if (!img) {
+                    // إذا لم تكن الصورة محملة بعد، نعيد المحاولة
+                    setTimeout(() => createMirroredTexture(texture, callback), 100);
+                    return;
+                }
+                const canvasMirror = document.createElement('canvas');
+                canvasMirror.width = img.width || 1024;
+                canvasMirror.height = img.height || 1024;
+                const ctxMirror = canvasMirror.getContext('2d');
+                ctxMirror.scale(-1, 1);
+                ctxMirror.drawImage(img, -canvasMirror.width, 0);
+                const mirroredTex = new THREE.CanvasTexture(canvasMirror);
+                mirroredTex.needsUpdate = true;
+                callback(mirroredTex);
+            };
+
+            // الوجه الأمامي (طبيعي)
             const frontMat = new THREE.MeshStandardMaterial({
                 map: logoTexture,
                 metalness: 0.3,
@@ -1045,33 +1037,29 @@
                 transparent: true,
                 side: THREE.FrontSide,
             });
-            // الوجه الخلفي: نسيج معكوس أفقياً
-            const backTexture = logoTexture.clone();
-            backTexture.repeat.x = -1;
-            backTexture.needsUpdate = true;
+
+            // الوجه الخلفي (معكوس) – سننشئه بعد تحميل الصورة
             const backMat = new THREE.MeshStandardMaterial({
-                map: backTexture,
+                map: logoTexture.clone(),
                 metalness: 0.3,
                 roughness: 0.4,
                 transparent: true,
-                side: THREE.FrontSide, // نضعه على الجانب الخلفي بالدوران
+                side: THREE.FrontSide,
             });
 
-            // طائرتان
             const planeGeo = new THREE.PlaneGeometry(1.8, 1.8);
             const frontPlane = new THREE.Mesh(planeGeo, frontMat);
             frontPlane.position.z = 0.01;
 
             const backPlane = new THREE.Mesh(planeGeo, backMat);
-            backPlane.rotation.y = Math.PI; // لمواجهة الخلف
+            backPlane.rotation.y = Math.PI;
             backPlane.position.z = -0.01;
 
-            // مجموعة
             const group = new THREE.Group();
             group.add(frontPlane);
             group.add(backPlane);
 
-            // إضافة إطار ذهبي حول الصورة (اختياري)
+            // إطار
             const edgeGeo = new THREE.EdgesGeometry(new THREE.PlaneGeometry(1.82, 1.82));
             const edgeMat = new THREE.LineBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.3 });
             const edgeLine = new THREE.LineSegments(edgeGeo, edgeMat);
@@ -1080,7 +1068,25 @@
 
             scene.add(group);
 
-            // دوران مستمر 360°
+            // تحديث النسيج المعكوس عند تحميل الصورة
+            logoTexture.image = new Image();
+            logoTexture.image.crossOrigin = 'Anonymous';
+            logoTexture.image.src = 'IMG_2845.jpeg';
+            logoTexture.image.onload = () => {
+                const img = logoTexture.image;
+                const canvasMirror = document.createElement('canvas');
+                canvasMirror.width = img.width || 1024;
+                canvasMirror.height = img.height || 1024;
+                const ctxMirror = canvasMirror.getContext('2d');
+                ctxMirror.scale(-1, 1);
+                ctxMirror.drawImage(img, -canvasMirror.width, 0);
+                const mirroredTex = new THREE.CanvasTexture(canvasMirror);
+                mirroredTex.needsUpdate = true;
+                backPlane.material.map = mirroredTex;
+                backPlane.material.needsUpdate = true;
+            };
+
+            // دوران
             let time = 0;
             let scale = 1;
             let scaleDir = 1;
@@ -1088,22 +1094,19 @@
             function animateLogo() {
                 requestAnimationFrame(animateLogo);
                 time += 0.015;
-                group.rotation.y = time * 1.2; // دوران 360° مستمر
+                group.rotation.y = time * 1.2;
 
-                // نبض بسيط
                 scale += 0.002 * scaleDir;
                 if (scale > 1.05) scaleDir = -1;
                 if (scale < 0.95) scaleDir = 1;
                 group.scale.set(scale, scale, scale);
 
-                // تغيير لون الإطار بشكل ديناميكي
                 edgeMat.color.setHSL(0.10 + Math.sin(time * 0.5) * 0.02, 0.8, 0.6);
 
                 renderer.render(scene, camera);
             }
             animateLogo();
 
-            // تحديث الحجم عند تغيير حجم النافذة
             function resizeLogo() {
                 const w = canvas.clientWidth || 260;
                 const h = canvas.clientHeight || 260;
@@ -1112,8 +1115,6 @@
                 camera.updateProjectionMatrix();
             }
             window.addEventListener('resize', resizeLogo);
-            // تعديل عند تغيير الثيم (إعادة تحميل النسيج؟ لا داعي)
-            // يمكننا تحديث الألوان إذا أردنا، لكن ليس ضرورياً.
         })();
 
 
