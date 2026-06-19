@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>هوليدايز | Holidayz - تجربة دعائية فائقة</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>هوليدايز | Holidayz — تجربة دعائية فائقة</title>
     <meta property="og:title" content="هوليدايز | Holidayz - تجربة دعائية فائقة" />
     <meta property="og:description" content="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا واحصل على هدايا مجانية." />
     <meta property="og:image" content="IMG_2845.jpeg" />
@@ -17,56 +17,85 @@
     <meta name="twitter:description" content="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية." />
     <meta name="twitter:image" content="IMG_2845.jpeg" />
 
-    <link href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+    </script>
 
     <style>
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   ROOT VARIABLES
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         :root {
             --bg-body: #0b0a0a;
             --text-primary: #f0ece4;
-            --text-secondary: rgba(240, 236, 228, 0.75);
-            --text-muted: rgba(240, 236, 228, 0.5);
-            --glass-bg: rgba(20, 18, 16, 0.55);
-            --glass-border: rgba(212, 175, 55, 0.2);
-            --glass-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
-            --card-bg: rgba(20, 18, 16, 0.5);
+            --text-secondary: rgba(240, 236, 228, 0.78);
+            --text-muted: rgba(240, 236, 228, 0.45);
+            --glass-bg: rgba(12, 11, 10, 0.55);
+            --glass-border: rgba(212, 175, 55, 0.18);
+            --glass-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+            --card-bg: rgba(18, 16, 14, 0.6);
             --accent-gold: #d4af37;
-            --accent-glow: rgba(212, 175, 55, 0.3);
-            --topbar-bg: rgba(0, 0, 0, 0.65);
-            --footer-bg: rgba(0, 0, 0, 0.8);
+            --accent-glow: rgba(212, 175, 55, 0.25);
+            --accent-dark-gold: #b8860b;
+            --topbar-bg: rgba(0, 0, 0, 0.7);
+            --footer-bg: rgba(0, 0, 0, 0.85);
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --radius-sm: 14px;
+            --transition: 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Inter', 'Cairo', sans-serif;
         }
+
         body.light-mode {
             --bg-body: #f5efe8;
             --text-primary: #1e2a32;
             --text-secondary: #2c3a48;
-            --text-muted: rgba(30, 42, 50, 0.55);
-            --glass-bg: rgba(255, 250, 240, 0.65);
-            --glass-border: rgba(184, 134, 11, 0.25);
-            --glass-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
-            --card-bg: rgba(255, 250, 240, 0.6);
+            --text-muted: rgba(30, 42, 50, 0.5);
+            --glass-bg: rgba(255, 250, 240, 0.7);
+            --glass-border: rgba(184, 134, 11, 0.22);
+            --glass-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.12);
+            --card-bg: rgba(255, 250, 240, 0.65);
             --accent-gold: #b8860b;
-            --accent-glow: rgba(184, 134, 11, 0.25);
-            --topbar-bg: rgba(255, 248, 235, 0.75);
-            --footer-bg: rgba(30, 34, 28, 0.85);
+            --accent-glow: rgba(184, 134, 11, 0.2);
+            --topbar-bg: rgba(255, 248, 235, 0.8);
+            --footer-bg: rgba(30, 34, 28, 0.9);
         }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   RESET & BASE
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-            font-family: 'Cairo', sans-serif;
-            font-weight: 500;
-            line-height: 1.6;
+        html {
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            font-family: var(--font-ar);
+            font-weight: 500;
+            line-height: 1.7;
             overflow-x: hidden;
             background: var(--bg-body);
             color: var(--text-primary);
-            transition: background 0.4s ease, color 0.3s ease;
+            transition: background 0.5s ease, color 0.4s ease;
         }
+        ::selection {
+            background: var(--accent-gold);
+            color: #0b0a0a;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   CANVAS (3D BG)
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #three-canvas {
             position: fixed;
             top: 0;
@@ -76,6 +105,10 @@
             z-index: 0;
             pointer-events: none;
         }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   CONTENT WRAPPER
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .content {
             position: relative;
             z-index: 2;
@@ -84,6 +117,10 @@
         .content * {
             pointer-events: auto;
         }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   UTILITY
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .container {
             max-width: 1280px;
             margin: 0 auto;
@@ -91,115 +128,24 @@
         }
         .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            border-radius: var(--radius-lg);
             box-shadow: var(--glass-shadow);
-            transition: background 0.3s, border 0.3s;
+            transition: background 0.4s, border 0.4s;
         }
-        .top-bar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            padding: 14px 32px;
-            background: var(--topbar-bg);
-            backdrop-filter: blur(16px);
-            border-bottom: 2px solid var(--glass-border);
-            animation: barGlow 3s infinite alternate;
-            transition: background 0.3s, border 0.3s;
+        .section-pad {
+            padding: 100px 0 80px;
         }
-        @keyframes barGlow {
-            0% {
-                border-bottom-color: var(--glass-border);
-                box-shadow: 0 4px 15px var(--accent-glow);
-            }
-            100% {
-                border-bottom-color: var(--accent-gold);
-                box-shadow: 0 4px 30px var(--accent-glow);
-            }
-        }
-        .toggle-btn,
-        .lang-btn {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--glass-border);
-            border-radius: 60px;
-            padding: 8px 24px;
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--text-primary);
-            backdrop-filter: blur(4px);
-            transition: all 0.3s;
-            font-size: 0.85rem;
-        }
-        .toggle-btn:hover,
-        .lang-btn:hover {
-            background: var(--accent-gold);
-            color: #0b0a0a;
-            transform: scale(0.96);
-        }
-        .lang-btn.active {
-            background: var(--accent-gold);
-            color: #0b0a0a;
-        }
-        .hero-logo {
-            text-align: center;
-            padding: 50px 0 40px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: background 0.3s, border 0.3s;
-        }
-        .logo-3d-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            width: 100%;
-            height: 260px;
-        }
-        #logoCanvas3d {
-            width: 260px;
-            height: 260px;
-            border-radius: 24px;
-            cursor: pointer;
-            display: block;
-            background: transparent;
-        }
-        .logo-sub {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-top: 20px;
-            color: var(--accent-gold);
-            border-top: 2px solid var(--accent-gold);
-            padding-top: 14px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: color 0.3s, border 0.3s;
-        }
-        .intro-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 24px auto 0;
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .section {
-            padding: 80px 0;
-            background: var(--glass-bg);
-            backdrop-filter: blur(4px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: background 0.3s, border 0.3s;
+        .section-pad-sm {
+            padding: 70px 0 50px;
         }
         .section-title {
-            text-align: center;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             font-weight: 800;
             color: var(--accent-gold);
+            letter-spacing: -0.02em;
             position: relative;
             display: inline-block;
             transition: color 0.3s;
@@ -207,8 +153,8 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -12px;
-            right: 20%;
+            bottom: -10px;
+            right: 10%;
             width: 60%;
             height: 3px;
             background: var(--accent-gold);
@@ -217,329 +163,859 @@
         }
         .title-center {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 52px;
         }
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 28px;
-            margin: 40px 0;
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 16px auto 0;
+            text-align: center;
+            transition: color 0.3s;
         }
-        .customer-photo {
-            border-radius: 28px;
-            overflow: hidden;
-            aspect-ratio: 1/1;
-            border: 2px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   TOP BAR
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 32px;
+            background: var(--topbar-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: background 0.4s, border 0.4s;
+        }
+        .top-bar .lang-switch {
+            display: flex;
+            gap: 6px;
+        }
+        .top-bar .lang-btn,
+        .top-bar .toggle-btn {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--glass-border);
+            border-radius: 60px;
+            padding: 6px 20px;
             cursor: pointer;
-            background: var(--card-bg);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s;
+            font-family: var(--font-ar);
         }
-        .customer-photo:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: var(--accent-gold);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+        .top-bar .lang-btn:hover,
+        .top-bar .toggle-btn:hover {
+            background: var(--accent-gold);
+            color: #0b0a0a;
+            transform: scale(0.96);
         }
-        .customer-photo img {
+        .top-bar .lang-btn.active {
+            background: var(--accent-gold);
+            color: #0b0a0a;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   HERO
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 28px 80px;
+        }
+        .hero-glass {
+            max-width: 820px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+            padding: 48px 52px 52px;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--glass-shadow), 0 0 80px -30px var(--accent-glow);
+            transition: background 0.4s, border 0.4s;
+            position: relative;
+            overflow: hidden;
         }
-        .customer-photo:hover img {
-            transform: scale(1.06);
+        .hero-glass::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: var(--radius-lg);
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent-gold), transparent 50%, var(--accent-gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.3;
+            pointer-events: none;
         }
-        .gifts-grid {
+
+        .hero-logo-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            width: 100%;
+            height: 200px;
+        }
+        #logoCanvas3d {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: block;
+            background: transparent;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 60px;
+            padding: 4px 22px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            letter-spacing: 0.04em;
+            margin-bottom: 18px;
+            backdrop-filter: blur(4px);
+            transition: background 0.3s, border 0.3s;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #f5e6a3 50%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto 28px;
+            line-height: 1.8;
+            transition: color 0.3s;
+        }
+        .hero-actions {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
+            gap: 16px;
         }
-        .gift-card {
+        .hero-actions .btn-primary {
+            background: var(--accent-gold);
+            color: #0b0a0a;
+            padding: 14px 44px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: var(--font-ar);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        .hero-actions .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 50px var(--accent-glow);
+        }
+        .hero-actions .btn-ghost {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: var(--font-ar);
+            backdrop-filter: blur(4px);
+        }
+        .hero-actions .btn-ghost:hover {
+            border-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            animation: bobDown 2.4s infinite ease-in-out;
+            transition: color 0.3s;
+        }
+        .hero-scroll-hint .line {
+            width: 1px;
+            height: 32px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+        }
+        @keyframes bobDown {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   STATS BAR
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: -36px auto 0;
+            padding: 20px 32px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--glass-shadow);
+            transition: background 0.4s, border 0.4s;
+            position: relative;
+            z-index: 3;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-item .num {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1.2;
+            transition: color 0.3s;
+        }
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: color 0.3s;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   BENTO GRID — Features
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 12px;
+        }
+        .bento-item {
             background: var(--card-bg);
             backdrop-filter: blur(14px);
-            border-radius: 48px;
-            padding: 32px 28px;
-            width: 260px;
-            text-align: center;
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--glass-border);
-            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            transition: all var(--transition);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
         }
-        .gift-card:hover {
-            transform: translateY(-14px) scale(1.02);
+        .bento-item:hover {
+            transform: translateY(-8px);
             border-color: var(--accent-gold);
-            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.3);
         }
-        .gift-icon {
-            font-size: 3rem;
+        .bento-item .icon {
+            font-size: 2.2rem;
             color: var(--accent-gold);
-            margin-bottom: 18px;
-            transition: color 0.3s;
+            margin-bottom: 16px;
+            display: block;
+            transition: color 0.3s, transform 0.3s;
         }
-        .gift-card h3 {
-            font-size: 1.4rem;
+        .bento-item:hover .icon {
+            transform: scale(1.08) rotate(-3deg);
+        }
+        .bento-item h3 {
+            font-size: 1.2rem;
             font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             transition: color 0.3s;
         }
-        .resort-info {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 10px;
+        .bento-item p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
             line-height: 1.6;
             transition: color 0.3s;
         }
-        .resort-grid {
+        .bento-item .glow-dot {
+            position: absolute;
+            top: -40%;
+            right: -40%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+            border-radius: 50%;
+            opacity: 0.3;
+            transition: opacity 0.6s;
+            pointer-events: none;
+        }
+        .bento-item:hover .glow-dot {
+            opacity: 0.7;
+        }
+
+        .bento-item.colspan-2 {
+            grid-column: span 2;
+        }
+        .bento-item.rowspan-2 {
+            grid-row: span 2;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-item.colspan-2 {
+                grid-column: span 1;
+            }
+        }
+        @media (max-width: 600px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   STICKY SCROLL CARDS — How It Works
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .sticky-wrap {
+            position: relative;
+            padding: 20px 0;
+        }
+        .sticky-cards {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
+            flex-direction: column;
+            gap: 120px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
         }
-        .resort-card {
-            width: 300px;
-            border-radius: 40px;
-            overflow: hidden;
+        .sticky-card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
-            transition: all 0.4s;
+            border-radius: var(--radius-lg);
+            padding: 40px 44px;
+            box-shadow: var(--glass-shadow);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-        .resort-card:hover {
-            transform: translateY(-12px);
+        .sticky-card:hover {
             border-color: var(--accent-gold);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
         }
-        .resort-img {
-            height: 220px;
-            background-size: cover;
-            background-position: center;
+        .sticky-card .step-num {
+            font-size: 3.6rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            opacity: 0.15;
+            position: absolute;
+            top: 12px;
+            left: 24px;
+            line-height: 1;
+            transition: opacity 0.4s, color 0.3s;
+            font-family: var(--font-en);
+        }
+        .sticky-card:hover .step-num {
+            opacity: 0.3;
+        }
+        .sticky-card .step-icon {
+            font-size: 2.4rem;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            display: block;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .sticky-card:hover .step-icon {
+            transform: scale(1.06) rotate(-4deg);
+        }
+        .sticky-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .sticky-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            transition: color 0.3s;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   GIFTS — Premium Cards
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .gifts-premium {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+        }
+        .gift-premium-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 32px 20px 28px;
+            text-align: center;
+            transition: all var(--transition);
+            position: relative;
+        }
+        .gift-premium-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow: 0 25px 50px -18px rgba(0, 0, 0, 0.3);
+        }
+        .gift-premium-card .icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 14px;
+            display: block;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .gift-premium-card:hover .icon {
+            transform: scale(1.1) rotate(-4deg);
+        }
+        .gift-premium-card h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .gift-premium-card .sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            transition: color 0.3s;
+        }
+        .gift-premium-card .glow-ring {
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius-md);
+            padding: 1px;
+            background: linear-gradient(135deg, var(--accent-gold), transparent 60%, var(--accent-gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .gift-premium-card:hover .glow-ring {
+            opacity: 0.6;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   CUSTOMER GALLERY — Bento Style
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .gallery-bento {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .gallery-bento .photo {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            border: 1px solid var(--glass-border);
+            transition: all var(--transition);
+            cursor: pointer;
+            background: var(--card-bg);
+            position: relative;
+        }
+        .gallery-bento .photo:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.3);
+        }
+        .gallery-bento .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.6s;
         }
-        .resort-card:hover .resort-img {
-            transform: scale(1.05);
+        .gallery-bento .photo:hover img {
+            transform: scale(1.06);
         }
-        .resort-card h4 {
-            font-size: 1.4rem;
-            padding: 20px;
+        .gallery-bento .photo.colspan-2 {
+            grid-column: span 2;
+        }
+        .gallery-bento .photo.rowspan-2 {
+            grid-row: span 2;
+        }
+        .gallery-bento .photo .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .gallery-bento .photo:hover .overlay {
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-bento {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-bento .photo.colspan-2 {
+                grid-column: span 1;
+            }
+            .gallery-bento .photo.rowspan-2 {
+                grid-row: span 1;
+            }
+        }
+        @media (max-width: 500px) {
+            .gallery-bento {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   RESORTS
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .resorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+        .resort-premium {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            transition: all var(--transition);
+            position: relative;
+        }
+        .resort-premium:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.3);
+        }
+        .resort-premium .img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.7s;
+        }
+        .resort-premium:hover .img {
+            transform: scale(1.04);
+        }
+        .resort-premium .body {
+            padding: 20px 24px 24px;
             text-align: center;
+        }
+        .resort-premium .body h4 {
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--accent-gold);
             transition: color 0.3s;
         }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   BRANCHES
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .branches-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
         }
-        .branch {
+        .branch-premium {
             background: var(--card-bg);
             backdrop-filter: blur(14px);
-            border-radius: 48px;
-            padding: 32px;
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--glass-border);
-            transition: all 0.3s;
-            flex: 1;
-            min-width: 280px;
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            transition: all var(--transition);
         }
-        .branch:hover {
+        .branch-premium:hover {
             transform: translateY(-6px);
             border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.2);
         }
-        .branch i {
-            font-size: 2.2rem;
+        .branch-premium .icon {
+            font-size: 2rem;
             color: var(--accent-gold);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             display: block;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
-        .branch address {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
+        .branch-premium:hover .icon {
+            transform: scale(1.06) rotate(-3deg);
+        }
+        .branch-premium h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .branch-premium address {
             font-style: normal;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
             transition: color 0.3s;
         }
-        .pickup-hours {
-            margin-top: 16px;
+        .branch-premium .hours {
+            margin-top: 14px;
             font-weight: 700;
             color: var(--accent-gold);
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
-        .contact-cards {
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   CONTACT
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .contact-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 24px;
-            margin-top: 30px;
+            gap: 18px;
+            margin-top: 10px;
         }
-        .phone-card {
+        .contact-card {
             background: var(--card-bg);
             backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
             border-radius: 80px;
-            padding: 16px 28px;
+            padding: 14px 28px 14px 32px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s;
+            gap: 14px;
+            transition: all var(--transition);
         }
-        .phone-card:hover {
+        .contact-card:hover {
             transform: translateY(-4px) scale(1.02);
             border-color: var(--accent-gold);
-            background: rgba(212, 175, 55, 0.06);
+            background: rgba(212, 175, 55, 0.04);
         }
-        .phone-card a {
-            font-size: 1.1rem;
+        .contact-card .icon {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            transition: color 0.3s, transform 0.3s;
+        }
+        .contact-card:hover .icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+        .contact-card .icon.whatsapp {
+            color: #25D366;
+        }
+        .contact-card a {
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
             direction: ltr;
             transition: color 0.3s;
         }
-        .phone-card i {
-            font-size: 1.6rem;
+        .contact-card a:hover {
             color: var(--accent-gold);
-            transition: transform 0.2s, color 0.3s;
         }
-        .phone-card:hover i {
-            transform: scale(1.1);
-        }
-        .phone-card .fa-whatsapp {
-            color: #25D366;
-        }
-        .optional-note-badge {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 60px;
-            padding: 10px 24px;
-            display: inline-block;
-            font-weight: 700;
-            color: var(--accent-gold);
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s;
-        }
-        .designer,
-        footer {
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   FOOTER
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .footer-premium {
             background: var(--footer-bg);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            text-align: center;
-            padding: 30px 0;
-            transition: background 0.3s, color 0.3s, border 0.3s;
+            padding: 44px 0 32px;
+            transition: background 0.4s, border 0.4s, color 0.3s;
         }
-        .designer strong {
+        .footer-premium .inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-premium .brand {
+            font-weight: 800;
+            font-size: 1.1rem;
             color: var(--accent-gold);
             transition: color 0.3s;
         }
-        .designer-line {
-            width: 50px;
-            height: 2px;
-            background: var(--accent-gold);
-            margin: 12px auto;
-            transition: background 0.3s;
+        .footer-premium .brand small {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: block;
+            transition: color 0.3s;
         }
-        .footer-info {
+        .footer-premium .links {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 20px;
             font-size: 0.85rem;
-            margin-top: 10px;
+            color: var(--text-muted);
+            transition: color 0.3s;
         }
+        .footer-premium .links span {
+            transition: color 0.3s;
+        }
+        .footer-premium .links span:hover {
+            color: var(--accent-gold);
+        }
+        .footer-premium .credit {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+        .footer-premium .credit strong {
+            color: var(--accent-gold);
+            transition: color 0.3s;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   FLOATING BUTTONS
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 28px;
+            left: 28px;
             z-index: 1000;
-            width: 70px;
-            height: 70px;
+            width: 68px;
+            height: 68px;
             background: linear-gradient(145deg, #25D366, #128C7E);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 0 28px rgba(37, 211, 102, 0.4);
             cursor: pointer;
             transition: all 0.3s;
-            animation: float3d 2.5s infinite alternate;
+            animation: floatPulse 2.8s infinite alternate;
             border: none;
             outline: none;
+            text-decoration: none;
         }
         .whatsapp-float:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 35px #25D366;
+            transform: scale(1.12) rotate(6deg);
+            box-shadow: 0 0 48px #25D366;
         }
         .whatsapp-float svg {
-            width: 44px;
-            height: 44px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            width: 42px;
+            height: 42px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
-        @keyframes float3d {
+        @keyframes floatPulse {
             0% {
                 transform: translateY(0px) rotateY(0deg);
-                box-shadow: 0 0 15px #25D366;
+                box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
             }
             100% {
-                transform: translateY(-10px) rotateY(8deg);
-                box-shadow: 0 0 30px #25D366;
+                transform: translateY(-10px) rotateY(6deg);
+                box-shadow: 0 0 40px rgba(37, 211, 102, 0.5);
             }
         }
+
         .watermark-3d {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 28px;
+            right: 28px;
             z-index: 1000;
-            width: 70px;
-            height: 70px;
+            width: 64px;
+            height: 64px;
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 24px var(--accent-glow);
             transition: all 0.3s;
-            animation: watermarkFloat 3s infinite ease-in-out;
+            animation: watermarkFloat 3.2s infinite ease-in-out;
             cursor: pointer;
             text-decoration: none;
         }
         .watermark-3d:hover {
-            transform: scale(1.1) translateY(-4px) rotateY(8deg);
-            box-shadow: 0 0 30px var(--accent-glow);
+            transform: scale(1.12) translateY(-6px) rotateY(8deg);
+            box-shadow: 0 0 40px var(--accent-glow);
             border-color: var(--accent-gold);
         }
         .watermark-3d svg {
-            width: 40px;
-            height: 40px;
-            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
-            transition: transform 0.2s;
+            width: 38px;
+            height: 38px;
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
+            transition: transform 0.3s;
         }
         .watermark-3d:hover svg {
-            transform: scale(1.05) rotate(3deg);
+            transform: scale(1.06) rotate(4deg);
         }
         @keyframes watermarkFloat {
             0% {
                 transform: translateY(0px) rotateY(0deg);
             }
             50% {
-                transform: translateY(-6px) rotateY(4deg);
+                transform: translateY(-8px) rotateY(4deg);
             }
             100% {
                 transform: translateY(0px) rotateY(0deg);
             }
         }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   LIGHTBOX
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .lightbox {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(20px);
-            z-index: 2000;
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            z-index: 3000;
             justify-content: center;
             align-items: center;
             cursor: pointer;
@@ -548,28 +1024,152 @@
             display: flex;
         }
         .lightbox img {
-            max-width: 85vw;
-            max-height: 85vh;
-            border: 3px solid var(--accent-gold);
-            border-radius: 28px;
+            max-width: 86vw;
+            max-height: 86vh;
+            border: 2px solid var(--accent-gold);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 0 60px -20px var(--accent-glow);
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
+        .lightbox .close {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            font-size: 2.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            line-height: 1;
+        }
+        .lightbox .close:hover {
+            transform: rotate(90deg);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   RESPONSIVE
+                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero-glass {
+                padding: 36px 28px 40px;
             }
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            .section-pad {
+                padding: 70px 0 50px;
+            }
+            .sticky-cards {
+                gap: 80px;
+                padding: 20px 0;
+            }
+            .sticky-card {
+                padding: 32px 28px;
             }
             #logoCanvas3d {
-                width: 180px;
-                height: 180px;
+                width: 160px;
+                height: 160px;
             }
-            .logo-3d-container {
-                height: 190px;
+            .hero-logo-wrap {
+                height: 160px;
+            }
+        }
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 10px 16px;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .top-bar .lang-btn,
+            .top-bar .toggle-btn {
+                padding: 4px 14px;
+                font-size: 0.7rem;
+            }
+            .hero {
+                padding: 100px 16px 60px;
+                min-height: 90vh;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero-glass {
+                padding: 28px 18px 32px;
+            }
+            .hero-actions .btn-primary,
+            .hero-actions .btn-ghost {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 16px 20px;
+                margin-top: -24px;
+            }
+            .stat-item .num {
+                font-size: 1.5rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .section-pad {
+                padding: 50px 0 36px;
+            }
+            .section-pad-sm {
+                padding: 40px 0 30px;
+            }
+            .sticky-cards {
+                gap: 50px;
+            }
+            .sticky-card {
+                padding: 24px 20px;
+            }
+            .sticky-card .step-num {
+                font-size: 2.6rem;
+                top: 6px;
+                left: 16px;
+            }
+            .gifts-premium {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .gift-premium-card {
+                padding: 24px 14px 20px;
+            }
+            .gift-premium-card .icon {
+                font-size: 2.2rem;
+            }
+            .resorts-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .branches-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-card {
+                padding: 10px 18px 10px 22px;
+                border-radius: 60px;
+                gap: 10px;
+            }
+            .contact-card a {
+                font-size: 0.9rem;
+            }
+            .footer-premium .inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-premium .links {
+                justify-content: center;
             }
             .whatsapp-float {
-                width: 55px;
-                height: 55px;
+                width: 56px;
+                height: 56px;
                 bottom: 20px;
                 left: 20px;
             }
@@ -578,156 +1178,381 @@
                 height: 34px;
             }
             .watermark-3d {
-                width: 55px;
-                height: 55px;
+                width: 52px;
+                height: 52px;
                 bottom: 20px;
                 right: 20px;
             }
             .watermark-3d svg {
-                width: 32px;
-                height: 32px;
+                width: 30px;
+                height: 30px;
             }
-            .gift-card {
-                width: 220px;
-                padding: 24px 20px;
+            #logoCanvas3d {
+                width: 130px;
+                height: 130px;
             }
-            .top-bar {
-                padding: 10px 16px;
-                gap: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .toggle-btn,
-            .lang-btn {
-                padding: 6px 16px;
-                font-size: 0.75rem;
+            .hero-logo-wrap {
+                height: 130px;
             }
         }
         @media (max-width: 480px) {
-            .hero-logo {
-                padding: 30px 0;
+            .hero h1 {
+                font-size: 1.5rem;
             }
-            .intro-text {
-                font-size: 1rem;
+            .hero-glass {
+                padding: 20px 14px 24px;
             }
-            #logoCanvas3d {
-                width: 140px;
-                height: 140px;
+            .stats-bar {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 14px 14px;
             }
-            .logo-3d-container {
-                height: 150px;
+            .stat-item .num {
+                font-size: 1.3rem;
+            }
+            .gifts-premium {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .resorts-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-bento {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .section-title::after {
+                bottom: -6px;
+            }
+            .title-center {
+                margin-bottom: 28px;
+            }
+            .contact-grid {
+                gap: 12px;
+            }
+            .contact-card {
+                padding: 8px 14px 8px 18px;
+                border-radius: 40px;
+            }
+            .contact-card a {
+                font-size: 0.8rem;
+            }
+            .contact-card .icon {
+                font-size: 1.2rem;
+            }
+            .sticky-card {
+                padding: 18px 14px;
+            }
+            .sticky-card h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- ━━━━━━━━━━ 3D BG ━━━━━━━━━━ -->
     <canvas id="three-canvas"></canvas>
 
+    <!-- ━━━━━━━━━━ CONTENT ━━━━━━━━━━ -->
     <div class="content">
-        <div class="top-bar">
+
+        <!-- ─── TOP BAR ─── -->
+        <header class="top-bar">
             <div class="lang-switch">
                 <button class="lang-btn active" data-lang="ar">العربية</button>
                 <button class="lang-btn" data-lang="en">English</button>
             </div>
             <button id="themeToggle" class="toggle-btn">Light Mode</button>
+        </header>
+
+        <!-- ─── HERO ─── -->
+        <section class="hero" id="hero">
+            <div class="hero-glass" data-gsap="fade-up">
+                <div class="hero-badge" data-ar="✦ دعاية استثنائية" data-en="✦ Premium Advertising">✦ دعاية استثنائية</div>
+
+                <div class="hero-logo-wrap">
+                    <canvas id="logoCanvas3d"></canvas>
+                </div>
+
+                <h1 data-ar="هوليدايز" data-en="Holidayz">هوليدايز</h1>
+                <p data-ar="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك." data-en="Holidays specializes in marketing advertising for commercial, entertainment &amp; tourism venues. Listen to our ads for 30 min or an hour at our premises, and receive a free gift. Photography is optional — we respect your privacy.">
+                    شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#gifts" class="btn-primary" data-ar="استكشف الهدايا" data-en="Explore Gifts">استكشف الهدايا</a>
+                    <a href="#contact" class="btn-ghost" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+                </div>
+            </div>
+
+            <div class="hero-scroll-hint">
+                <span data-ar="مرر لأسفل" data-en="Scroll down">مرر لأسفل</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!-- ─── STATS ─── -->
+        <div class="stats-bar" data-gsap="fade-up" data-delay="0.2">
+            <div class="stat-item"><span class="num" data-count="150">0</span><span class="label" data-ar="عميل سعيد" data-en="Happy Clients">عميل سعيد</span></div>
+            <div class="stat-item"><span class="num" data-count="12">0</span><span class="label" data-ar="هدية متنوعة" data-en="Gift Types">هدية متنوعة</span></div>
+            <div class="stat-item"><span class="num" data-count="4">0</span><span class="label" data-ar="فروع" data-en="Branches">فروع</span></div>
+            <div class="stat-item"><span class="num" data-count="3">0</span><span class="label" data-ar="وجهات سياحية" data-en="Destinations">وجهات سياحية</span></div>
         </div>
 
-        <div class="hero-logo" data-gsap="fade-up">
-            <div class="logo-3d-container">
-                <canvas id="logoCanvas3d"></canvas>
-            </div>
-            <div class="logo-sub" data-ar="دعاية وإعلان استثنائي" data-en="Premium Advertising">دعاية وإعلان استثنائي</div>
-            <p class="intro-text" data-ar="شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك." data-en="Holidays company specializes in marketing advertising for commercial, entertainment and tourism venues. Listen to our ads for 30 minutes or an hour at our premises, and receive a free gift. Photography is optional and not mandatory — we respect your privacy.">
-                شركة هوليدايز متخصصة في الدعاية التسويقية للمنشآت التجارية والترفيهية والسياحية. استمع لإعلاناتنا لـ 30 دقيقة أو ساعة في مقرنا، واحصل على هدية مجانية. التصوير اختياري وليس إجباري — نقدّر خصوصيتك.
-            </p>
-        </div>
-
-        <main>
-            <!-- العملاء -->
-            <div class="section" data-gsap="fade-up">
-                <div class="container">
-                    <div class="title-center"><h2 class="section-title" data-ar="عملاء استلموا هداياهم" data-en="Customers received their gifts">عملاء استلموا هداياهم</h2></div>
-                    <div class="card-grid" data-gsap="fade-up" data-stagger="0.08">
-                        <div class="customer-photo" data-img-src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg"><img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="customer"></div>
-                        <div class="customer-photo" data-img-src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg"><img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="customer"></div>
-                        <div class="customer-photo" data-img-src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg"><img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="customer"></div>
-                        <div class="customer-photo" data-img-src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg"><img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="customer"></div>
-                        <div class="customer-photo" data-img-src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg"><img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="customer"></div>
-                    </div>
-                    <div class="optional-note-badge" style="display:table; margin:20px auto 0;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</div>
-                </div>
-            </div>
-
-            <!-- الهدايا -->
-            <div class="section" data-gsap="fade-up">
-                <div class="container">
-                    <div class="title-center"><h2 class="section-title" data-ar="الهدايا المتاحة حالياً برعاية هوليدايز" data-en="Current Gifts Sponsored by Holidays">الهدايا المتاحة حالياً برعاية هوليدايز</h2></div>
-                    <div class="gifts-grid" data-gsap="fade-up" data-stagger="0.1">
-                        <div class="gift-card"><div class="gift-icon"><i class="fas fa-tv"></i></div><h3 data-ar="شاشة 32 بوصة" data-en="32-inch TV">شاشة 32 بوصة</h3></div>
-                        <div class="gift-card"><div class="gift-icon"><i class="fas fa-microchip"></i></div><h3 data-ar="ميكرويف" data-en="Microwave">ميكرويف</h3></div>
-                        <div class="gift-card"><div class="gift-icon"><i class="fas fa-mobile-alt"></i></div><h3 data-ar="موبايل" data-en="Mobile Phone">موبايل</h3></div>
-                        <div class="gift-card"><div class="gift-icon"><i class="fas fa-umbrella-beach"></i></div><h3 data-ar="أسبوع مصيف" data-en="Resort Week">أسبوع مصيف</h3><div class="resort-info" data-ar="4 أيام، 3 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات" data-en="4 days, 3 nights · 4-6 persons<br>Customer covers meals">4 أيام، 3 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات</div></div>
-                    </div>
-                    <div class="optional-note-badge" style="margin: 40px auto 0; display: table;" data-ar="الهدية مجانية بالكامل، بدون أي رسوم إضافية" data-en="The gift is completely free, with no additional fees">الهدية مجانية بالكامل، بدون أي رسوم إضافية</div>
-                </div>
-            </div>
-
-            <!-- المنتجعات -->
-            <div class="section" data-gsap="fade-up">
-                <div class="container">
-                    <div class="title-center"><h2 class="section-title" data-ar="وجهات المصيف المجانية" data-en="Free Resort Destinations">وجهات المصيف المجانية</h2></div>
-                    <div class="resort-grid" data-gsap="fade-up" data-stagger="0.08">
-                        <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3019.jpeg');"></div><h4>شرم الشيخ</h4></div>
-                        <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3020.jpeg');"></div><h4>الغردقة</h4></div>
-                        <div class="resort-card"><div class="resort-img" style="background-image: url('IMG_3021.jpeg');"></div><h4>العين السخنة</h4></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- الفروع -->
-            <div class="section" data-gsap="fade-up">
-                <div class="container">
-                    <div class="title-center"><h2 class="section-title" data-ar="فروع شركة هوليدايز" data-en="Holidays Branches">فروع شركة هوليدايز</h2></div>
-                    <div class="branches-grid" data-gsap="fade-up" data-stagger="0.08">
-                        <div class="branch"><i class="fas fa-building"></i><address><strong data-ar="الفرع الأول - مدينة نصر" data-en="First Branch - Nasr City">الفرع الأول - مدينة نصر</strong><br>38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي، شركه هوليدايز، الدور الثامن.</address><div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div></div>
-                        <div class="branch"><i class="fas fa-location-dot"></i><address><strong data-ar="الفرع الثاني - عباس العقاد" data-en="Second Branch - Abbas El-Akkad">الفرع الثاني - عباس العقاد</strong><br>25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر، عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.</address><div class="pickup-hours" data-ar="مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً" data-en="Gift pickup daily: 6:30 PM – 8:30 PM">مواعيد استلام الهدايا يومياً: 6:30 مساءً – 8:30 مساءً</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- الاتصال -->
-            <div class="section" data-gsap="fade-up">
-                <div class="container">
-                    <div class="title-center"><h2 class="section-title" data-ar="تواصل مع خدمة العملاء" data-en="Contact Customer Service">تواصل مع خدمة العملاء</h2></div>
-                    <div class="contact-cards" data-gsap="fade-up" data-stagger="0.06">
-                        <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01040782134">01040782134</a></div>
-                        <div class="phone-card"><i class="fas fa-phone-alt"></i><a href="tel:01515752259">01515752259</a></div>
-                        <div class="phone-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201040514792" target="_blank">01040514792</a><a href="tel:01040514792" style="margin-right:10px;"><i class="fas fa-phone-alt"></i></a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="designer" data-gsap="fade-up">
-                <span>designed by </span><strong>Amr Khaled</strong>
-                <div class="designer-line"></div>
-                <div class="footer-info">
-                    <span data-ar="شركة هوليدايز – دعاية وإعلان" data-en="Holidays - Advertising">شركة هوليدايز – دعاية وإعلان</span>
-                    <span data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</span>
-                    <span data-ar="التصوير اختياري – الهدايا حقيقية" data-en="Photography optional – gifts are real">التصوير اختياري – الهدايا حقيقية</span>
-                </div>
-            </div>
-        </main>
-
-        <footer>
+        <!-- ─── BENTO FEATURES ─── -->
+        <section class="section-pad" id="features">
             <div class="container">
-                <p data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</p>
-                <p style="margin-top:8px; font-size:0.75rem;">xyubii.github.io</p>
+                <div class="title-center">
+                    <h2 class="section-title" data-ar="لماذا هوليدايز؟" data-en="Why Holidayz?">لماذا هوليدايز؟</h2>
+                    <p class="section-sub" data-ar="نقدم تجربة دعائية فريدة تجمع بين الجودة والهدايا القيّمة" data-en="A unique advertising experience combining quality &amp; valuable gifts.">نقدم تجربة دعائية فريدة تجمع بين الجودة والهدايا القيّمة</p>
+                </div>
+
+                <div class="bento-grid" data-gsap="fade-up" data-stagger="0.08">
+                    <div class="bento-item">
+                        <div class="glow-dot"></div>
+                        <span class="icon"><i class="fas fa-gift"></i></span>
+                        <h3 data-ar="هدايا مجانية" data-en="Free Gifts">هدايا مجانية</h3>
+                        <p data-ar="احصل على هدايا قيمة بدون أي رسوم إضافية، فقط استمع لإعلاناتنا." data-en="Get valuable gifts with no extra fees, just listen to our ads.">احصل على هدايا قيمة بدون أي رسوم إضافية، فقط استمع لإعلاناتنا.</p>
+                    </div>
+                    <div class="bento-item">
+                        <div class="glow-dot"></div>
+                        <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                        <h3 data-ar="خصوصية تامة" data-en="Full Privacy">خصوصية تامة</h3>
+                        <p data-ar="التصوير اختياري بالكامل. نقدّر خصوصيتك ونحترم راحتك." data-en="Photography is entirely optional. We respect your privacy.">التصوير اختياري بالكامل. نقدّر خصوصيتك ونحترم راحتك.</p>
+                    </div>
+                    <div class="bento-item">
+                        <div class="glow-dot"></div>
+                        <span class="icon"><i class="fas fa-map-pin"></i></span>
+                        <h3 data-ar="فروع متعددة" data-en="Multiple Branches">فروع متعددة</h3>
+                        <p data-ar="مواقع مريحة في مدينة نصر لتكون قريباً من خدماتنا." data-en="Convenient locations in Nasr City to be close to our services.">مواقع مريحة في مدينة نصر لتكون قريباً من خدماتنا.</p>
+                    </div>
+                    <div class="bento-item">
+                        <div class="glow-dot"></div>
+                        <span class="icon"><i class="fas fa-umbrella-beach"></i></span>
+                        <h3 data-ar="وجهات سياحية" data-en="Tourist Destinations">وجهات سياحية</h3>
+                        <p data-ar="أسبوع مجاني في منتجعات شرم الشيخ والغردقة والعين السخنة." data-en="Free week at resorts in Sharm, Hurghada &amp; Ain Sokhna.">أسبوع مجاني في منتجعات شرم الشيخ والغردقة والعين السخنة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── STICKY SCROLL CARDS — How It Works ─── -->
+        <section class="section-pad-sm" id="process">
+            <div class="container">
+                <div class="title-center">
+                    <h2 class="section-title" data-ar="كيف تحصل على هديتك" data-en="How to Get Your Gift">كيف تحصل على هديتك</h2>
+                    <p class="section-sub" data-ar="ثلاث خطوات بسيطة لتحصل على هديتك المجانية" data-en="Three simple steps to claim your free gift.">ثلاث خطوات بسيطة لتحصل على هديتك المجانية</p>
+                </div>
+
+                <div class="sticky-wrap" data-gsap="fade-up">
+                    <div class="sticky-cards">
+                        <div class="sticky-card" data-step="1">
+                            <span class="step-num">01</span>
+                            <span class="step-icon"><i class="fas fa-headphones"></i></span>
+                            <h3 data-ar="استمع للإعلانات" data-en="Listen to Ads">استمع للإعلانات</h3>
+                            <p data-ar="قم بزيارة أحد فروعنا واستمع لإعلاناتنا لمدة 30 دقيقة أو ساعة." data-en="Visit one of our branches and listen to our ads for 30 min or an hour.">قم بزيارة أحد فروعنا واستمع لإعلاناتنا لمدة 30 دقيقة أو ساعة.</p>
+                        </div>
+
+                        <div class="sticky-card" data-step="2">
+                            <span class="step-num">02</span>
+                            <span class="step-icon"><i class="fas fa-camera"></i></span>
+                            <h3 data-ar="اختر التصوير (اختياري)" data-en="Choose Photography (Optional)">اختر التصوير (اختياري)</h3>
+                            <p data-ar="التصوير ليس إجباري — يمكنك الاستلام بدون تصوير. نقدّر خصوصيتك." data-en="Photography is not mandatory — you can receive without it. We respect your privacy.">التصوير ليس إجباري — يمكنك الاستلام بدون تصوير. نقدّر خصوصيتك.</p>
+                        </div>
+
+                        <div class="sticky-card" data-step="3">
+                            <span class="step-num">03</span>
+                            <span class="step-icon"><i class="fas fa-gift"></i></span>
+                            <h3 data-ar="استلم هديتك مجاناً" data-en="Receive Your Gift Free">استلم هديتك مجاناً</h3>
+                            <p data-ar="احصل على هديتك القيّمة بدون أي رسوم إضافية — هدايا حقيقية وجودة عالية." data-en="Get your valuable gift with no extra fees — real gifts, top quality.">احصل على هديتك القيّمة بدون أي رسوم إضافية — هدايا حقيقية وجودة عالية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── GIFTS ─── -->
+        <section class="section-pad" id="gifts">
+            <div class="container">
+                <div class="title-center">
+                    <h2 class="section-title" data-ar="الهدايا المتاحة" data-en="Available Gifts">الهدايا المتاحة</h2>
+                    <p class="section-sub" data-ar="برعاية هوليدايز — هدايا حقيقية بجودة عالية" data-en="Sponsored by Holidays — real gifts, premium quality.">برعاية هوليدايز — هدايا حقيقية بجودة عالية</p>
+                </div>
+
+                <div class="gifts-premium" data-gsap="fade-up" data-stagger="0.08">
+                    <div class="gift-premium-card">
+                        <div class="glow-ring"></div>
+                        <span class="icon"><i class="fas fa-tv"></i></span>
+                        <h4 data-ar="شاشة 32 بوصة" data-en="32-inch TV">شاشة 32 بوصة</h4>
+                    </div>
+                    <div class="gift-premium-card">
+                        <div class="glow-ring"></div>
+                        <span class="icon"><i class="fas fa-microchip"></i></span>
+                        <h4 data-ar="ميكرويف" data-en="Microwave">ميكرويف</h4>
+                    </div>
+                    <div class="gift-premium-card">
+                        <div class="glow-ring"></div>
+                        <span class="icon"><i class="fas fa-mobile-alt"></i></span>
+                        <h4 data-ar="موبايل" data-en="Mobile Phone">موبايل</h4>
+                    </div>
+                    <div class="gift-premium-card">
+                        <div class="glow-ring"></div>
+                        <span class="icon"><i class="fas fa-umbrella-beach"></i></span>
+                        <h4 data-ar="أسبوع مصيف" data-en="Resort Week">أسبوع مصيف</h4>
+                        <div class="sub" data-ar="4 أيام / 3 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات" data-en="4 days / 3 nights · 4-6 persons<br>Customer covers meals">4 أيام / 3 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات</div>
+                    </div>
+                </div>
+
+                <div style="text-align:center;margin-top:36px;">
+                    <span class="hero-badge" style="font-size:0.9rem;padding:8px 30px;" data-ar="✓ الهدية مجانية بالكامل — بدون أي رسوم إضافية" data-en="✓ The gift is completely free — no additional fees">✓ الهدية مجانية بالكامل — بدون أي رسوم إضافية</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── CUSTOMER GALLERY ─── -->
+        <section class="section-pad-sm" id="gallery">
+            <div class="container">
+                <div class="title-center">
+                    <h2 class="section-title" data-ar="عملاؤنا" data-en="Our Clients">عملاؤنا</h2>
+                    <p class="section-sub" data-ar="ناس حقيقية استلمت هداياها — التصوير اختياري" data-en="Real people who received their gifts — photography is optional.">ناس حقيقية استلمت هداياها — التصوير اختياري</p>
+                </div>
+
+                <div class="gallery-bento" data-gsap="fade-up" data-stagger="0.06">
+                    <div class="photo" data-img="31288508-5ef4-4f6b-9d99-118af667e451.jpeg">
+                        <img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="client" />
+                        <div class="overlay">✨</div>
+                    </div>
+                    <div class="photo" data-img="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg">
+                        <img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="client" />
+                        <div class="overlay">✨</div>
+                    </div>
+                    <div class="photo" data-img="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg">
+                        <img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="client" />
+                        <div class="overlay">✨</div>
+                    </div>
+                    <div class="photo" data-img="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg">
+                        <img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="client" />
+                        <div class="overlay">✨</div>
+                    </div>
+                    <div class="photo" data-img="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg">
+                        <img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="client" />
+                        <div class="overlay">✨</div>
+                    </div>
+                </div>
+
+                <div style="text-align:center;margin-top:24px;">
+                    <span class="hero-badge" style="font-size:0.85rem;" data-ar="📸 التصوير اختياري وليس إجباري" data-en="📸 Photography is optional and not mandatory">📸 التصوير اختياري وليس إجباري</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── RESORTS ─── -->
+        <section class="section-pad" id="resorts">
+            <div class="container">
+                <div class="title-center">
+                    <h2 class="section-title" data-ar="وجهات المصيف المجانية" data-en="Free Resort Destinations">وجهات المصيف المجانية</h2>
+                    <p class="section-sub" data-ar="أسبوع كامل في أفضل المنتجعات المصرية" data-en="A full week at Egypt's finest resorts.">أسبوع كامل في أفضل المنتجعات المصرية</p>
+                </div>
+
+                <div class="resorts-grid" data-gsap="fade-up" data-stagger="0.08">
+                    <div class="resort-premium">
+                        <div class="img" style="background-image:url('IMG_3019.jpeg');"></div>
+                        <div class="body"><h4>شرم الشيخ</h4></div>
+                    </div>
+                    <div class="resort-premium">
+                        <div class="img" style="background-image:url('IMG_3020.jpeg');"></div>
+                        <div class="body"><h4>الغردقة</h4></div>
+                    </div>
+                    <div class="resort-premium">
+                        <div class="img" style="background-image:url('IMG_3021.jpeg');"></div>
+                        <div class="body"><h4>العين السخنة</h4></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── BRANCHES ─── -->
+        <section class="section-pad-sm" id="branches">
+            <div class="container">
+                <div class="title-center">
+                    <h2 class="section-title" data-ar="فروعنا" data-en="Our Branches">فروعنا</h2>
+                    <p class="section-sub" data-ar="زور أقرب فرع لك في مدينة نصر" data-en="Visit the nearest branch in Nasr City.">زور أقرب فرع لك في مدينة نصر</p>
+                </div>
+
+                <div class="branches-grid" data-gsap="fade-up" data-stagger="0.08">
+                    <div class="branch-premium">
+                        <span class="icon"><i class="fas fa-building"></i></span>
+                        <h4 data-ar="الفرع الأول - مدينة نصر" data-en="First Branch - Nasr City">الفرع الأول - مدينة نصر</h4>
+                        <address data-ar="38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي، شركه هوليدايز، الدور الثامن." data-en="38 Al-Tayaran St., above the National Bank, first health insurance bridge, Holidays Co., 8th floor.">
+                            38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي، شركه هوليدايز، الدور الثامن.
+                        </address>
+                        <div class="hours" data-ar="🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً" data-en="🕒 Gift pickup: 6:30 – 8:30 PM daily">🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً</div>
+                    </div>
+
+                    <div class="branch-premium">
+                        <span class="icon"><i class="fas fa-location-dot"></i></span>
+                        <h4 data-ar="الفرع الثاني - عباس العقاد" data-en="Second Branch - Abbas El-Akkad">الفرع الثاني - عباس العقاد</h4>
+                        <address data-ar="25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر، عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز." data-en="25 Naser Khosro, second intersection of Military Records St., after the International Park, Abbas El-Akkad, Nasr City, next to Al-Haram Al-Sharif pharmacy &amp; Sond Sobhy car showroom, building 25, 2nd floor, Holidays Co.">
+                            25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر، عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.
+                        </address>
+                        <div class="hours" data-ar="🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً" data-en="🕒 Gift pickup: 6:30 – 8:30 PM daily">🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── CONTACT ─── -->
+        <section class="section-pad" id="contact">
+            <div class="container">
+                <div class="title-center">
+                    <h2 class="section-title" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
+                    <p class="section-sub" data-ar="خدمة العملاء على مدار الساعة" data-en="Customer service 24/7.">خدمة العملاء على مدار الساعة</p>
+                </div>
+
+                <div class="contact-grid" data-gsap="fade-up" data-stagger="0.06">
+                    <div class="contact-card">
+                        <span class="icon"><i class="fas fa-phone-alt"></i></span>
+                        <a href="tel:01040782134">01040782134</a>
+                    </div>
+                    <div class="contact-card">
+                        <span class="icon"><i class="fas fa-phone-alt"></i></span>
+                        <a href="tel:01515752259">01515752259</a>
+                    </div>
+                    <div class="contact-card">
+                        <span class="icon whatsapp"><i class="fab fa-whatsapp"></i></span>
+                        <a href="https://wa.me/201040514792" target="_blank">01040514792</a>
+                        <a href="tel:01040514792" style="margin-right:6px;font-size:1.1rem;"><i class="fas fa-phone-alt" style="color:var(--accent-gold);"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER ─── -->
+        <footer class="footer-premium">
+            <div class="container">
+                <div class="inner">
+                    <div class="brand">
+                        <span data-ar="هوليدايز" data-en="Holidayz">هوليدايز</span>
+                        <small data-ar="دعاية وإعلان" data-en="Premium Advertising">دعاية وإعلان</small>
+                    </div>
+                    <div class="links">
+                        <span data-ar="شركة هوليدايز – للدعاية الإعلانية" data-en="Holidays Company – For Advertising">شركة هوليدايز – للدعاية الإعلانية</span>
+                        <span data-ar="التصوير اختياري – الهدايا حقيقية" data-en="Photography optional – gifts are real">التصوير اختياري – الهدايا حقيقية</span>
+                    </div>
+                    <div class="credit">
+                        designed by <strong>Amr Khaled</strong> &nbsp;·&nbsp; <span style="direction:ltr;display:inline-block;">xyubii.github.io</span>
+                    </div>
+                </div>
             </div>
         </footer>
-    </div>
 
-    <!-- WhatsApp -->
+    </div><!-- /.content -->
+
+    <!-- ━━━━━━━━━━ FLOATING BUTTONS ━━━━━━━━━━ -->
     <a href="https://wa.me/201040514792" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="waGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#25D366"/><stop offset="100%" stop-color="#128C7E"/></linearGradient></defs>
@@ -737,7 +1562,6 @@
         </svg>
     </a>
 
-    <!-- Watermark -->
     <a href="https://instagram.com/chilldiavolo" target="_blank" class="watermark-3d" aria-label="Instagram Developer">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs><radialGradient id="igGrad" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
@@ -747,9 +1571,13 @@
         </svg>
     </a>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox"><button class="close-lightbox" id="closeLightboxBtn" style="position:absolute;top:30px;left:30px;background:none;border:none;color:var(--accent-gold);font-size:2.4rem;cursor:pointer;">✕</button><img id="lightboxImg" src=""></div>
+    <!-- ━━━━━━━━━━ LIGHTBOX ━━━━━━━━━━ -->
+    <div id="lightbox" class="lightbox">
+        <button class="close" id="closeLightboxBtn">✕</button>
+        <img id="lightboxImg" src="" alt="" />
+    </div>
 
+    <!-- ━━━━━━━━━━ SCRIPTS ━━━━━━━━━━ -->
     <script>
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         // 1. GSAP + ScrollTrigger
@@ -757,15 +1585,15 @@
         gsap.registerPlugin(ScrollTrigger);
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Fade-up with stagger
             document.querySelectorAll('[data-gsap="fade-up"]').forEach(el => {
                 const delay = parseFloat(el.dataset.delay) || 0;
-                const stagger = parseFloat(el.dataset.stagger) || 0;
                 if (el.dataset.stagger && el.children.length > 0) {
                     const children = Array.from(el.children);
-                    gsap.fromTo(children, { opacity: 0, y: 40 }, {
+                    gsap.fromTo(children, { opacity: 0, y: 50 }, {
                         opacity: 1,
                         y: 0,
-                        duration: 0.8,
+                        duration: 0.9,
                         ease: 'power3.out',
                         stagger: parseFloat(el.dataset.stagger),
                         scrollTrigger: {
@@ -776,10 +1604,10 @@
                     });
                     return;
                 }
-                gsap.fromTo(el, { opacity: 0, y: 40 }, {
+                gsap.fromTo(el, { opacity: 0, y: 50 }, {
                     opacity: 1,
                     y: 0,
-                    duration: 0.8,
+                    duration: 0.9,
                     delay: delay,
                     ease: 'power3.out',
                     scrollTrigger: {
@@ -789,10 +1617,48 @@
                     },
                 });
             });
+
+            // Sticky cards – subtle parallax on scroll
+            const stickyCards = document.querySelectorAll('.sticky-card');
+            stickyCards.forEach((card, i) => {
+                gsap.fromTo(card, { opacity: 0, y: 80, scale: 0.96 }, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 78%',
+                        end: 'top 20%',
+                        scrub: 1.2,
+                        toggleActions: 'play none none reverse',
+                    },
+                });
+            });
+
+            // Stats counter
+            document.querySelectorAll('.stat-item .num').forEach(el => {
+                const target = parseInt(el.dataset.count, 10);
+                gsap.fromTo(el, { innerText: 0 }, {
+                    innerText: target,
+                    duration: 2.2,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        toggleActions: 'play none none reverse',
+                    },
+                    snap: { innerText: 1 },
+                    onUpdate: () => {
+                        el.innerText = Math.floor(parseFloat(el.innerText)) + (target > 0 ? '+' : '');
+                    },
+                });
+            });
         });
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        // 2. BACKGROUND THREE.JS (Holidays 3D text)
+        // 2. BACKGROUND THREE.JS (enhanced)
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         (function initBackground() {
             const canvas = document.getElementById('three-canvas');
@@ -813,6 +1679,7 @@
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1.2;
 
+            // Lights
             const ambient = new THREE.AmbientLight(0x404060, 0.6);
             scene.add(ambient);
             const key = new THREE.DirectionalLight(0xffeebb, 1.8);
@@ -980,7 +1847,7 @@
 
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        // 3. LOGO 3D — THREE.JS (دوران 360° بدون انعكاس مع وجه خلفي معكوس)
+        // 3. LOGO 3D — THREE.JS (360° with mirrored back)
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         (function initLogo3D() {
             const canvas = document.getElementById('logoCanvas3d');
@@ -992,11 +1859,10 @@
             camera.lookAt(0, 0, 0);
 
             const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-            renderer.setSize(canvas.clientWidth || 260, canvas.clientHeight || 260);
+            renderer.setSize(canvas.clientWidth || 200, canvas.clientHeight || 200);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.setClearColor(0x000000, 0);
 
-            // إضاءة
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
             scene.add(ambientLight);
             const dirLight = new THREE.DirectionalLight(0xffeebb, 1.5);
@@ -1006,30 +1872,9 @@
             backLight.position.set(-2, -1, -3);
             scene.add(backLight);
 
-            // تحميل الصورة
             const textureLoader = new THREE.TextureLoader();
             const logoTexture = textureLoader.load('IMG_2845.jpeg');
 
-            // إنشاء نسخة معكوسة باستخدام Canvas
-            const createMirroredTexture = (texture, callback) => {
-                const img = texture.image;
-                if (!img) {
-                    // إذا لم تكن الصورة محملة بعد، نعيد المحاولة
-                    setTimeout(() => createMirroredTexture(texture, callback), 100);
-                    return;
-                }
-                const canvasMirror = document.createElement('canvas');
-                canvasMirror.width = img.width || 1024;
-                canvasMirror.height = img.height || 1024;
-                const ctxMirror = canvasMirror.getContext('2d');
-                ctxMirror.scale(-1, 1);
-                ctxMirror.drawImage(img, -canvasMirror.width, 0);
-                const mirroredTex = new THREE.CanvasTexture(canvasMirror);
-                mirroredTex.needsUpdate = true;
-                callback(mirroredTex);
-            };
-
-            // الوجه الأمامي (طبيعي)
             const frontMat = new THREE.MeshStandardMaterial({
                 map: logoTexture,
                 metalness: 0.3,
@@ -1038,7 +1883,6 @@
                 side: THREE.FrontSide,
             });
 
-            // الوجه الخلفي (معكوس) – سننشئه بعد تحميل الصورة
             const backMat = new THREE.MeshStandardMaterial({
                 map: logoTexture.clone(),
                 metalness: 0.3,
@@ -1059,7 +1903,6 @@
             group.add(frontPlane);
             group.add(backPlane);
 
-            // إطار
             const edgeGeo = new THREE.EdgesGeometry(new THREE.PlaneGeometry(1.82, 1.82));
             const edgeMat = new THREE.LineBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.3 });
             const edgeLine = new THREE.LineSegments(edgeGeo, edgeMat);
@@ -1068,7 +1911,6 @@
 
             scene.add(group);
 
-            // تحديث النسيج المعكوس عند تحميل الصورة
             logoTexture.image = new Image();
             logoTexture.image.crossOrigin = 'Anonymous';
             logoTexture.image.src = 'IMG_2845.jpeg';
@@ -1086,7 +1928,6 @@
                 backPlane.material.needsUpdate = true;
             };
 
-            // دوران
             let time = 0;
             let scale = 1;
             let scaleDir = 1;
@@ -1095,21 +1936,18 @@
                 requestAnimationFrame(animateLogo);
                 time += 0.015;
                 group.rotation.y = time * 1.2;
-
                 scale += 0.002 * scaleDir;
                 if (scale > 1.05) scaleDir = -1;
                 if (scale < 0.95) scaleDir = 1;
                 group.scale.set(scale, scale, scale);
-
                 edgeMat.color.setHSL(0.10 + Math.sin(time * 0.5) * 0.02, 0.8, 0.6);
-
                 renderer.render(scene, camera);
             }
             animateLogo();
 
             function resizeLogo() {
-                const w = canvas.clientWidth || 260;
-                const h = canvas.clientHeight || 260;
+                const w = canvas.clientWidth || 200;
+                const h = canvas.clientHeight || 200;
                 renderer.setSize(w, h);
                 camera.aspect = w / h;
                 camera.updateProjectionMatrix();
@@ -1125,15 +1963,19 @@
         const lbImg = document.getElementById('lightboxImg');
         const closeLb = document.getElementById('closeLightboxBtn');
 
-        function openLightbox(src) { lbImg.src = src;
+        function openLightbox(src) {
+            lbImg.src = src;
             lb.classList.add('active');
-            document.body.style.overflow = 'hidden'; }
+            document.body.style.overflow = 'hidden';
+        }
 
-        function closeLightbox() { lb.classList.remove('active');
+        function closeLightbox() {
+            lb.classList.remove('active');
             document.body.style.overflow = '';
-            lbImg.src = ''; }
+            lbImg.src = '';
+        }
 
-        document.querySelectorAll('.customer-photo').forEach(p => {
+        document.querySelectorAll('.gallery-bento .photo').forEach(p => {
             p.addEventListener('click', () => {
                 const img = p.querySelector('img');
                 if (img && img.src) openLightbox(img.src);
@@ -1144,6 +1986,7 @@
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.classList.contains('active'))
                 closeLightbox(); });
 
+        // Theme
         const themeBtn = document.getElementById('themeToggle');
         themeBtn.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
@@ -1154,6 +1997,7 @@
             }
         });
 
+        // Bilingual
         const langBtns = document.querySelectorAll('.lang-btn');
         let curLang = 'ar';
 
@@ -1162,32 +2006,32 @@
             document.querySelectorAll('[data-ar][data-en]').forEach(el => {
                 el.innerText = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
             });
-            document.querySelectorAll('.gift-card h3').forEach(el => {
-                if (el.hasAttribute('data-ar')) el.innerText = lang === 'ar' ? el.getAttribute('data-ar') : el
-                    .getAttribute('data-en');
-            });
-            document.querySelectorAll('.resort-info, .pickup-hours, .optional-note-badge, footer p, .logo-sub, .intro-text, .footer-info span')
+            document.querySelectorAll('.gift-premium-card h4, .gift-premium-card .sub, .branch-premium h4, .branch-premium address, .branch-premium .hours, .footer-premium .brand small, .footer-premium .links span, .hero-badge, .hero-actions .btn-primary, .hero-actions .btn-ghost, .hero-scroll-hint span')
                 .forEach(el => {
-                    if (el.hasAttribute('data-ar')) el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar') : el
-                        .getAttribute('data-en');
+                    if (el.hasAttribute('data-ar')) {
+                        if (el.tagName === 'ADDRESS' || el.classList.contains('sub') || el.classList.contains(
+                                'hours')) {
+                            el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute(
+                            'data-en');
+                        } else {
+                            el.innerText = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute(
+                            'data-en');
+                        }
+                    }
                 });
-            document.querySelectorAll('.branch address strong').forEach(s => {
-                s.innerText = lang === 'ar' ? s.getAttribute('data-ar') : s.getAttribute('data-en');
-            });
             document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
             langBtns.forEach(btn => {
-                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-                else btn.classList.remove('active');
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
         }
+
         langBtns.forEach(btn => {
             btn.addEventListener('click', () => { updateTexts(btn.getAttribute('data-lang')); });
         });
         updateTexts('ar');
-        document.querySelectorAll('.phone-card a').forEach(l => {
-            if (l.href.includes('wa.me')) l.setAttribute('target', '_blank');
-        });
-    </script>
 
+        // Ensure WhatsApp links open in new tab
+        document.querySelectorAll('.contact-card a[href*="wa.me"]').forEach(l => l.setAttribute('target', '_blank'));
+    </script>
 </body>
 </html>
