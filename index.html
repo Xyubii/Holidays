@@ -916,7 +916,7 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                   FLOATING BUTTONS
+                   FLOATING BUTTONS (WhatsApp only)
                 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .whatsapp-float {
             position: fixed;
@@ -955,53 +955,6 @@
             100% {
                 transform: translateY(-10px) rotateY(6deg);
                 box-shadow: 0 0 40px rgba(37, 211, 102, 0.5);
-            }
-        }
-
-        .watermark-3d {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 1000;
-            width: 64px;
-            height: 64px;
-            background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 0 24px var(--accent-glow);
-            transition: all 0.3s;
-            animation: watermarkFloat 3.2s infinite ease-in-out;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .watermark-3d:hover {
-            transform: scale(1.12) translateY(-6px) rotateY(8deg);
-            box-shadow: 0 0 40px var(--accent-glow);
-            border-color: var(--accent-gold);
-        }
-        .watermark-3d svg {
-            width: 38px;
-            height: 38px;
-            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
-            transition: transform 0.3s;
-        }
-        .watermark-3d:hover svg {
-            transform: scale(1.06) rotate(4deg);
-        }
-        @keyframes watermarkFloat {
-            0% {
-                transform: translateY(0px) rotateY(0deg);
-            }
-            50% {
-                transform: translateY(-8px) rotateY(4deg);
-            }
-            100% {
-                transform: translateY(0px) rotateY(0deg);
             }
         }
 
@@ -1177,16 +1130,6 @@
                 width: 34px;
                 height: 34px;
             }
-            .watermark-3d {
-                width: 52px;
-                height: 52px;
-                bottom: 20px;
-                right: 20px;
-            }
-            .watermark-3d svg {
-                width: 30px;
-                height: 30px;
-            }
             #logoCanvas3d {
                 width: 130px;
                 height: 130px;
@@ -1254,13 +1197,13 @@
 </head>
 <body>
 
-    <!-- ━━━━━━━━━━ 3D BG ━━━━━━━━━━ -->
+    <!-- 3D BG -->
     <canvas id="three-canvas"></canvas>
 
-    <!-- ━━━━━━━━━━ CONTENT ━━━━━━━━━━ -->
+    <!-- CONTENT -->
     <div class="content">
 
-        <!-- ─── TOP BAR ─── -->
+        <!-- TOP BAR -->
         <header class="top-bar">
             <div class="lang-switch">
                 <button class="lang-btn active" data-lang="ar">العربية</button>
@@ -1269,10 +1212,10 @@
             <button id="themeToggle" class="toggle-btn">Light Mode</button>
         </header>
 
-        <!-- ─── HERO ─── -->
+        <!-- HERO -->
         <section class="hero" id="hero">
             <div class="hero-glass" data-gsap="fade-up">
-                <div class="hero-badge" data-ar="✦ دعاية استثنائية" data-en="✦ Premium Advertising">✦ دعاية استثنائية</div>
+                <div class="hero-badge" data-ar="دعاية استثنائية" data-en="Premium Advertising">دعاية استثنائية</div>
 
                 <div class="hero-logo-wrap">
                     <canvas id="logoCanvas3d"></canvas>
@@ -1295,15 +1238,15 @@
             </div>
         </section>
 
-        <!-- ─── STATS ─── -->
+        <!-- STATS -->
         <div class="stats-bar" data-gsap="fade-up" data-delay="0.2">
             <div class="stat-item"><span class="num" data-count="150">0</span><span class="label" data-ar="عميل سعيد" data-en="Happy Clients">عميل سعيد</span></div>
             <div class="stat-item"><span class="num" data-count="12">0</span><span class="label" data-ar="هدية متنوعة" data-en="Gift Types">هدية متنوعة</span></div>
-            <div class="stat-item"><span class="num" data-count="4">0</span><span class="label" data-ar="فروع" data-en="Branches">فروع</span></div>
+            <div class="stat-item"><span class="num" data-count="2">0</span><span class="label" data-ar="فروع" data-en="Branches">فروع</span></div>
             <div class="stat-item"><span class="num" data-count="3">0</span><span class="label" data-ar="وجهات سياحية" data-en="Destinations">وجهات سياحية</span></div>
         </div>
 
-        <!-- ─── BENTO FEATURES ─── -->
+        <!-- BENTO FEATURES -->
         <section class="section-pad" id="features">
             <div class="container">
                 <div class="title-center">
@@ -1340,7 +1283,7 @@
             </div>
         </section>
 
-        <!-- ─── STICKY SCROLL CARDS — How It Works ─── -->
+        <!-- STICKY SCROLL CARDS — How It Works -->
         <section class="section-pad-sm" id="process">
             <div class="container">
                 <div class="title-center">
@@ -1375,7 +1318,7 @@
             </div>
         </section>
 
-        <!-- ─── GIFTS ─── -->
+        <!-- GIFTS -->
         <section class="section-pad" id="gifts">
             <div class="container">
                 <div class="title-center">
@@ -1403,17 +1346,17 @@
                         <div class="glow-ring"></div>
                         <span class="icon"><i class="fas fa-umbrella-beach"></i></span>
                         <h4 data-ar="أسبوع مصيف" data-en="Resort Week">أسبوع مصيف</h4>
-                        <div class="sub" data-ar="4 أيام / 3 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات" data-en="4 days / 3 nights · 4-6 persons<br>Customer covers meals">4 أيام / 3 ليالي · 4-6 أفراد<br>العميل يتحمل الوجبات</div>
+                        <div class="sub" data-ar="4 أيام / 3 ليالي · 4-6 أفراد" data-en="4 days / 3 nights · 4-6 persons">4 أيام / 3 ليالي · 4-6 أفراد</div>
                     </div>
                 </div>
 
                 <div style="text-align:center;margin-top:36px;">
-                    <span class="hero-badge" style="font-size:0.9rem;padding:8px 30px;" data-ar="✓ الهدية مجانية بالكامل — بدون أي رسوم إضافية" data-en="✓ The gift is completely free — no additional fees">✓ الهدية مجانية بالكامل — بدون أي رسوم إضافية</span>
+                    <span class="hero-badge" style="font-size:0.9rem;padding:8px 30px;" data-ar="الهدية مجانية بالكامل — بدون أي رسوم إضافية" data-en="The gift is completely free — no additional fees">الهدية مجانية بالكامل — بدون أي رسوم إضافية</span>
                 </div>
             </div>
         </section>
 
-        <!-- ─── CUSTOMER GALLERY ─── -->
+        <!-- CUSTOMER GALLERY -->
         <section class="section-pad-sm" id="gallery">
             <div class="container">
                 <div class="title-center">
@@ -1424,33 +1367,33 @@
                 <div class="gallery-bento" data-gsap="fade-up" data-stagger="0.06">
                     <div class="photo" data-img="31288508-5ef4-4f6b-9d99-118af667e451.jpeg">
                         <img src="31288508-5ef4-4f6b-9d99-118af667e451.jpeg" alt="client" />
-                        <div class="overlay">✨</div>
+                        <div class="overlay"></div>
                     </div>
                     <div class="photo" data-img="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg">
                         <img src="547726c5-eafd-49ad-966f-1ac2a5e19944.jpeg" alt="client" />
-                        <div class="overlay">✨</div>
+                        <div class="overlay"></div>
                     </div>
                     <div class="photo" data-img="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg">
                         <img src="b4b63bc2-ed9a-463d-b635-248a821c4530.jpeg" alt="client" />
-                        <div class="overlay">✨</div>
+                        <div class="overlay"></div>
                     </div>
                     <div class="photo" data-img="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg">
                         <img src="b516ba67-ad60-49c5-a707-103a13ece57d.jpeg" alt="client" />
-                        <div class="overlay">✨</div>
+                        <div class="overlay"></div>
                     </div>
                     <div class="photo" data-img="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg">
                         <img src="d93ae9dc-681d-4b96-a139-4cb433dab514.jpeg" alt="client" />
-                        <div class="overlay">✨</div>
+                        <div class="overlay"></div>
                     </div>
                 </div>
 
                 <div style="text-align:center;margin-top:24px;">
-                    <span class="hero-badge" style="font-size:0.85rem;" data-ar="📸 التصوير اختياري وليس إجباري" data-en="📸 Photography is optional and not mandatory">📸 التصوير اختياري وليس إجباري</span>
+                    <span class="hero-badge" style="font-size:0.85rem;" data-ar="التصوير اختياري وليس إجباري" data-en="Photography is optional and not mandatory">التصوير اختياري وليس إجباري</span>
                 </div>
             </div>
         </section>
 
-        <!-- ─── RESORTS ─── -->
+        <!-- RESORTS -->
         <section class="section-pad" id="resorts">
             <div class="container">
                 <div class="title-center">
@@ -1475,7 +1418,7 @@
             </div>
         </section>
 
-        <!-- ─── BRANCHES ─── -->
+        <!-- BRANCHES -->
         <section class="section-pad-sm" id="branches">
             <div class="container">
                 <div class="title-center">
@@ -1490,7 +1433,7 @@
                         <address data-ar="38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي، شركه هوليدايز، الدور الثامن." data-en="38 Al-Tayaran St., above the National Bank, first health insurance bridge, Holidays Co., 8th floor.">
                             38 شارع الطيران، البرج اللي فوق البنك الأهلي، أول كوبري التأمين الصحي، شركه هوليدايز، الدور الثامن.
                         </address>
-                        <div class="hours" data-ar="🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً" data-en="🕒 Gift pickup: 6:30 – 8:30 PM daily">🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً</div>
+                        <div class="hours" data-ar="استلام الهدايا: 6:30 – 8:30 مساءً يومياً" data-en="Gift pickup: 6:30 – 8:30 PM daily">استلام الهدايا: 6:30 – 8:30 مساءً يومياً</div>
                     </div>
 
                     <div class="branch-premium">
@@ -1499,18 +1442,18 @@
                         <address data-ar="25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر، عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز." data-en="25 Naser Khosro, second intersection of Military Records St., after the International Park, Abbas El-Akkad, Nasr City, next to Al-Haram Al-Sharif pharmacy &amp; Sond Sobhy car showroom, building 25, 2nd floor, Holidays Co.">
                             25 ناصر خسرو، تاني تقاطع شارع السجلات العسكريه، بعد الحديقه الدوليه، عباس العقاد، مدينه نصر، عند صيدليه الحرم الشريف ومعرض سيارات سند صبحي والوكيل، عمارة 25 الدور الثاني، شركه هوليدايز.
                         </address>
-                        <div class="hours" data-ar="🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً" data-en="🕒 Gift pickup: 6:30 – 8:30 PM daily">🕒 استلام الهدايا: 6:30 – 8:30 مساءً يومياً</div>
+                        <div class="hours" data-ar="استلام الهدايا: 6:30 – 8:30 مساءً يومياً" data-en="Gift pickup: 6:30 – 8:30 PM daily">استلام الهدايا: 6:30 – 8:30 مساءً يومياً</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ─── CONTACT ─── -->
+        <!-- CONTACT -->
         <section class="section-pad" id="contact">
             <div class="container">
                 <div class="title-center">
                     <h2 class="section-title" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
-                    <p class="section-sub" data-ar="خدمة العملاء على مدار الساعة" data-en="Customer service 24/7.">خدمة العملاء على مدار الساعة</p>
+                    <p class="section-sub" data-ar="خدمة العملاء متاحة يومياً من 3 عصراً إلى 9 مساءً" data-en="Customer service available daily from 3 PM to 9 PM.">خدمة العملاء متاحة يومياً من 3 عصراً إلى 9 مساءً</p>
                 </div>
 
                 <div class="contact-grid" data-gsap="fade-up" data-stagger="0.06">
@@ -1531,7 +1474,7 @@
             </div>
         </section>
 
-        <!-- ─── FOOTER ─── -->
+        <!-- FOOTER -->
         <footer class="footer-premium">
             <div class="container">
                 <div class="inner">
@@ -1552,7 +1495,7 @@
 
     </div><!-- /.content -->
 
-    <!-- ━━━━━━━━━━ FLOATING BUTTONS ━━━━━━━━━━ -->
+    <!-- FLOATING BUTTONS (WhatsApp only) -->
     <a href="https://wa.me/201040514792" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="waGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#25D366"/><stop offset="100%" stop-color="#128C7E"/></linearGradient></defs>
@@ -1562,22 +1505,13 @@
         </svg>
     </a>
 
-    <a href="https://instagram.com/chilldiavolo" target="_blank" class="watermark-3d" aria-label="Instagram Developer">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <defs><radialGradient id="igGrad" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#igGrad)"/>
-            <circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="1.8"/>
-            <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
-        </svg>
-    </a>
-
-    <!-- ━━━━━━━━━━ LIGHTBOX ━━━━━━━━━━ -->
+    <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox">
         <button class="close" id="closeLightboxBtn">✕</button>
         <img id="lightboxImg" src="" alt="" />
     </div>
 
-    <!-- ━━━━━━━━━━ SCRIPTS ━━━━━━━━━━ -->
+    <!-- SCRIPTS -->
     <script>
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         // 1. GSAP + ScrollTrigger
